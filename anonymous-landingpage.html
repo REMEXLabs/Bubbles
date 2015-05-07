@@ -15,6 +15,7 @@
 		<script type="text/javascript" src="scripts/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="scripts/jquery-ui-1.11.4/jquery-ui.js"></script>
 		<script type="text/javascript" src="scripts/myscript.js"></script>
+		<script type="text/javascript" src="scripts/bubblesBasicFunctions.js"></script>
 
 		<!-- <link href="css/normalize.css" rel="stylesheet" /> -->
 		<link rel="stylesheet" type="text/css" href="scripts/jquery-ui-1.11.4/jquery-ui.css" />
@@ -123,7 +124,7 @@
 						</p>
 						<p>
 							<!-- #### ACCORDION #### -->
-							<div id="accordion-projects-stackoverflow">
+							<div id="acc_projects-stackoverflow">
 								<h3>First Stack Overflow Project</h3>
 								<div>
 									Description and link of the project
@@ -136,7 +137,7 @@
 							</div>
 						</p>
 						<p>
-							<a class="btn btn-default glyphicon glyphicon-plus" href="#" role="button" title="Add a project"></a>
+							<a id="btn_addStackOverflow" class="btn btn-default glyphicon glyphicon-plus" href="#" role="button" title="Add a project"></a>
 						</p>
 
 					</div>
@@ -147,7 +148,7 @@
 						</p>
 						<p>
 							<!-- #### ACCORDION #### -->
-							<div id="accordion-projects-github">
+							<div id="acc_projects-github">
 								<h3>First GitHub Project</h3>
 								<div>
 									Description and link of the project
@@ -183,7 +184,7 @@
 			</div>
 			<!-- /container -->
 
-			<hr>
+			
 
 			<div id="content">
 				<div class="container">
@@ -199,10 +200,18 @@
 							<input type="password" name="password" id="password">
 						</form>
 					</div>
-					<button id="myButton">
-						Open Dialog
-					</button>
-					<div id="output"></div>
+					
+					<form class="" role="">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Headline">
+							<input type="text" class="form-control" placeholder="Your project description and link">
+						</div>
+						<button type="submit" class="btn btn-default">
+							Ok
+						</button>
+					</form>
+					
+					
 				</div>
 				<!-- /container -->
 			</div>

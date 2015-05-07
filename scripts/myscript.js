@@ -16,22 +16,24 @@ function login(email, password) {
 $(function() {
 
     //#### Accordion for projects ####
+    
+    // deactivate accordion because of dynamic functions for adding elements.
+    
+    // $("#acc_projects-stackoverflow").accordion({
+        // active : 0,
+        // animate : {
+            // duration : 400,
+            // easing : "swing",
+        // }
+    // });
 
-    $("#accordion-projects-stackoverflow").accordion({
-        active : 0,
-        animate : {
-            duration : 400,
-            easing : "swing",
-        }
-    });
-
-    $("#accordion-projects-github").accordion({
-        active : 0,
-        animate : {
-            duration : 400,
-            easing : "swing",
-        }
-    });
+    // $("#acc_projects-github").accordion({
+        // active : 0,
+        // animate : {
+            // duration : 400,
+            // easing : "swing",
+        // }
+    // });
 
     //#### Buttons ####
 
