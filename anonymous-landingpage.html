@@ -22,6 +22,7 @@
 		<link rel="stylesheet" type="text/css" href="scripts/bootstrap-3.3.4-dist/css/custom-theme/jquery-ui-1.10.0.custom.css"/>
 		<!-- <link rel="stylesheet" type="text/css" href="scripts/bootstrap-3.3.4-dist/css/custom-theme/jquery-ui-1.9.2.custom.css"/> -->
 		<link rel="stylesheet" type="text/css" href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 		<title>Bubbles Demo</title>
 
@@ -192,23 +193,30 @@
 					<!-- #### DIALOG #### -->
 
 					<div id="dialog_signin">
+						
 						<form class="form" method="post" action="#">
+							<div class="form-group">
 							<h2>Login</h2>
-							<label>Email :</label>
-							<input type="text" name="demail" id="email">
-							<label>Password :</label>
-							<input type="password" name="password" id="password">
+							<label for="email">Email :</label>
+							<input class="form-control" type="text" name="email" id="email">
+							<label for="password">Password :</label>
+							<input class="form-control" type="password" name="password" id="password">
+							</div>
 						</form>
+						
 					</div>
 					
-					<form class="" role="">
+					<form id="dbx_addProject" class="form">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Headline">
-							<input type="text" class="form-control" placeholder="Your project description and link">
+							<h2>Add a project</h2>
+							<label for="projectTitle">Title of the Project :</label>
+							<input id="projectTitle" type="text" class="form-control" placeholder="Project title">
 						</div>
-						<button type="submit" class="btn btn-default">
+						<textarea rows="4" name="description" form="dbx_addProject" placeholder="Your project description and link"></textarea>
+						<br>
+						<!-- <button type="submit" class="btn btn-default">
 							Ok
-						</button>
+						</button> -->
 					</form>
 					
 					

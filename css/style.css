@@ -1,0 +1,9 @@
+#dbx_addProject {
+    width:100%;
+    
+}
+
+#dbx_addProject textarea{
+    width: 100%;
+    resize:none;
+}

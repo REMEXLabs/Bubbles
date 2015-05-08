@@ -8,6 +8,9 @@ function login(email, password) {
     if(email == "patrick" && password == "123") {
         return true;
     }
+    else if (email == "andy" && password == "123") {
+        return true;
+    }
     else {
         return false;
     }
