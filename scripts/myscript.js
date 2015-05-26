@@ -45,17 +45,19 @@ $(function() {
         window.location = "http://127.0.0.1:8020/Bubbles/anonymous-landingpage.html";
     });
 
-    // $("#btn_signin").click( function(event){
-    // event.preventDefault();
-    // console.log("Signin button pressed");
-    // });
-
-    myButton = document.getElementById("btn_signin");
-    myButton.addEventListener("click", function(e) {
+    $("#btn_signin").click( function(event){
+        event.preventDefault();
         console.log("Signin button pressed");
-        console.log(e.shiftKey);
+        console.log(event.shiftKey);
         $("#dialog_signin").dialog("open");
     });
+
+    // myButton = document.getElementById("btn_signin");
+    // myButton.addEventListener("click", function(e) {
+        // console.log("Signin button pressed");
+        // console.log(e.shiftKey);
+        // $("#dialog_signin").dialog("open");
+    // });
 
     //#### Dialogbox for signin ####
 
@@ -175,9 +177,7 @@ $(function() {
             }
         }
     });
-    $("#myButton").click(function() {
-        $("#myDialog").dialog("open");
-    });
+    
 
 });
 

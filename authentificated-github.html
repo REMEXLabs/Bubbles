@@ -43,18 +43,48 @@
 						<a class="navbar-brand" href="#">Bubbles</a>
 					</div>
 
-					<!-- #### SHOW SIGNED IN USER #### -->
-					<!-- <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Patrick Münster</a></p> -->
-
 					<div id="navbar" class="navbar-collapse collapse">
+
+						<!-- #### SIGN OUT BUTTON #### -->
+
 						<form class="navbar-form navbar-right">
-							<button id="btn_signin" type="button" class="btn btn-success">
-								Sign in
+							<button id="btn_signout" type="button" class="btn btn-warning">
+								Sign out
+							</button>
+						</form>
+
+						<!-- #### SHOW SIGNED IN USER #### -->
+						<p class="navbar-text navbar-right">
+							Welcome <a href="#" class="navbar-link"><strong>Patrick Münster</strong></a>
+						</p>
+
+						<!-- #### SIGN IN FORM #### -->
+
+						<!-- <form class="navbar-form navbar-right">
+						<div class="form-group">
+						<input placeholder="Email" class="form-control" type="text">
+						</div>
+						<div class="form-group">
+						<input placeholder="Password" class="form-control" type="password">
+						</div>
+						<button type="submit" class="btn btn-success">
+						Sign in
+						</button>
+						</form> -->
+
+						<!-- #### SEARCH #### -->
+
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+							<button type="submit" class="btn btn-default">
+								Submit
 							</button>
 						</form>
 
 						<ul class="nav navbar-nav">
-							
+
 							<li>
 								<a href="#">GitHub</a>
 							</li>
@@ -86,15 +116,8 @@
 							<li class="active">
 								<a href="#">Settings <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
 							</li>
+
 						</ul>
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-							</div>
-							<button type="submit" class="btn btn-default">
-								Submit
-							</button>
-						</form>
 
 					</div><!--/.navbar-collapse -->
 				</div>
@@ -137,9 +160,10 @@
 
 							</div>
 						</p>
-						<!-- <p>
+						<p>
 							<a id="btn_addStackOverflow" class="btn btn-default glyphicon glyphicon-plus" href="#" role="button" title="Add a project"></a>
-						</p> -->
+						</p>
+
 					</div>
 					<div class="col-md-6">
 						<h2>GitHub</h2>
@@ -148,7 +172,7 @@
 						</p>
 						<p>
 							<!-- #### ACCORDION #### -->
-							<div id="acc_projects-github">
+							<div id="acc_rojects-github">
 								<h3>First GitHub Project</h3>
 								<div>
 									Description and link of the project
@@ -159,9 +183,9 @@
 								</div>
 							</div>
 						</p>
-						<!-- <p>
+						<p>
 							<a class="btn btn-default glyphicon glyphicon-plus" href="#" role="button" title="Add a project"></a>
-						</p> -->
+						</p>
 					</div>
 
 				</div>
@@ -192,20 +216,20 @@
 					<!-- #### DIALOG #### -->
 
 					<div id="dialog_signin">
-						
+
 						<form class="form" method="post" action="#">
 							<div class="form-group">
-							<h2>Login</h2>
-							<label for="email">Email :</label>
-							<input class="form-control" type="text" name="email" id="email">
-							<label for="password">Password :</label>
-							<input class="form-control" type="password" name="password" id="password">
+								<h2>Login</h2>
+								<label for="email">Email :</label>
+								<input class="form-control" type="text" name="email" id="email">
+								<label for="password">Password :</label>
+								<input class="form-control" type="password" name="password" id="password">
 							</div>
 						</form>
-						
+
 					</div>
-					 
-					<form id="dbx_addProject" class="form"> 
+
+					<form id="dbx_addProject" class="form">
 						<div class="form-group">
 							<h2>Add a project</h2>
 							<label for="projectTitle">Title of the Project :</label>
@@ -214,11 +238,10 @@
 						<textarea rows="4" name="description" form="dbx_addProject" placeholder="Your project description and link"></textarea>
 						<br>
 						<!-- <button type="submit" class="btn btn-default">
-							Ok
+						Ok
 						</button> -->
 					</form>
-					
-					
+
 				</div>
 				<!-- /container -->
 			</div>
