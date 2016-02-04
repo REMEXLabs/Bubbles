@@ -1,0 +1,30 @@
+# httpd.conf:
+
+#uncomment: LoadModule rewrite_module modules/mod_rewrite.so 
+
+#<Directory />
+#   AllowOverride All
+#   AllowOverride FileInfo
+#   Allow from all
+#</Directory>
+
+
+RewriteEngine On
+
+#RewriteCond %{REQUEST_URI}/(.*).htm
+
+
+RewriteBase "/Aptana Studio 3 Workspace/Bubblescms/"
+
+# Verhindert dass Ordnerpfade als Parameter übergeben werden z.B. bei Javascript 
+# und CSS Dateien deren Pfad soll weiterhin gelten.
+ 
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Keine "\" in Parameter $1
+# qsapend (query string apend) parameter werden an URl angehängt.
+
+RewriteRule ^(.*)$ index.php?include=$1 [QSA,last,B]
+
+# RewriteRules Pfade relativ zur .htaccess Datei.
+#RewriteRule ^testseite.htm http://www.google.com/ [R=301,L]

@@ -40,17 +40,17 @@ $(function() {
 
     //#### Buttons ####
 
-    $("#btn_signout").click( function(event) {
-        event.preventDefault();
-        window.location = "http://bubbles.gpii.eu/demo/anonymous-landingpage.html";
-    });
+    // $("#btn_signout").click( function(event) {
+        // event.preventDefault();
+        // window.location = "http://bubbles.gpii.eu/demo/anonymous-landingpage.html";
+    // });
 
-    $("#btn_signin").click( function(event){
-        event.preventDefault();
-        console.log("Signin button pressed");
-        console.log(event.shiftKey);
-        $("#dialog_signin").dialog("open");
-    });
+    // $("#btn_signin").click( function(event){
+        // event.preventDefault();
+        // console.log("Signin button pressed");
+        // console.log(event.shiftKey);
+        // $("#dialog_signin").dialog("open");
+    // });
 
     // myButton = document.getElementById("btn_signin");
     // myButton.addEventListener("click", function(e) {
