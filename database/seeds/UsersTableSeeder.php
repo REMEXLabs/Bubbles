@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
         $users = array(
             array(
-                'name'        => 'nok',
+                'name'        => 'morawiec',
                 'email'       => 'morawiec@hdm-stuttgart.de',
                 'password'    => Hash::make('pw'),
                 // 'confirmed'   => 1,
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             array(
                 'name'        => 'admin',
                 'email'       => 'admin@hdm-stuttgart.de',
-                'password'    => Hash::make('p4all'),
+                'password'    => Hash::make('pw'),
                 // 'confirmed'   => 1,
 		            // 'confirmation_code' => md5(microtime().Config::get('app.key')),
                 'created_at'  => new DateTime,
