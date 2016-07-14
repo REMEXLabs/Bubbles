@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
         $users = array(
             array(
-                'name'        => 'morawiec',
+                'username'    => 'morawiec',
                 'email'       => 'morawiec@hdm-stuttgart.de',
                 'password'    => Hash::make('pw'),
                 // 'confirmed'   => 1,
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
                 'updated_at'  => new DateTime,
             ),
             array(
-                'name'        => 'admin',
+                'username'    => 'admin',
                 'email'       => 'admin@hdm-stuttgart.de',
                 'password'    => Hash::make('pw'),
                 // 'confirmed'   => 1,
