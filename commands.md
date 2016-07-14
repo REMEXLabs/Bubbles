@@ -17,3 +17,15 @@ $ chmod -R 777 bootstrap/cache
 ```
 alias art='php artisan'
 ```
+
+### Development Commands
+
+- `php artisan migrate:refresh`
+- `php artisan migrate:refresh --seed`
+- `php artisan db:seed`
+
+Or with the defined alias:
+
+- `art migrate:refresh`
+- `art migrate:refresh --seed`
+- `art db:seed`
