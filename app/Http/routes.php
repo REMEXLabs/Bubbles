@@ -16,10 +16,10 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 // Users
-Route::resource('users', 'UserController',
-  ['only' => ['index', 'show', 'edit', 'update']]);
-// Route::resource('users', 'UserController',
-//   ['except' => ['create', 'store', 'update', 'destroy']]);
+Route::resource('users', 'UserController');
+
+// Route::resource('users', 'UserController', ['only' => ['index', 'show', 'edit', 'update', 'store']]);
+// Route::resource('users', 'UserController', ['except' => ['create', 'store', 'update', 'destroy']]);
 
 Route::get('/', function () {
     return view('welcome');

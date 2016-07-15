@@ -14,7 +14,18 @@
                     @if ($user->bio)
                       <p>{{ $user->bio }}</p>
                     @endif
-                    <a href="{{ route('users.index') }}">Back</a>
+
+                    <hr>
+
+                    <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary">Update profile</a>
+
+                    {!! Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id), 'style' => 'display: inline;')) !!}
+                        {{ Form::submit('Delete account', array('class' => 'btn btn-danger')) }}
+                    {!! Form::close() !!}
+
+                </div>
+                <div class="panel-footer">
+                    <a href="{{ route('users.index') }}">Back to all users</a>
                 </div>
             </div>
         </div>
