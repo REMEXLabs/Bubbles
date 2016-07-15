@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+// use Auth;
 use App\User;
 use App\Http\Requests;
 
 class UserController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +55,7 @@ class UserController extends Controller
             'email' => $input['email'],
             'password' => bcrypt($input['password']),
         ]);
+        Auth::login($user);
         return view('users.show',
             ['user' => $user ]);
     }
@@ -76,6 +84,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        // if (Auth::guest()) {
+        //     return redirect()->route('users.index');
+        // }
+
         $user = User::find($id);
         if (is_null($user)) {
             return redirect()->route('users.index');
@@ -93,6 +105,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // if (Auth::guest()) {
+        //     return redirect()->route('users.index');
+        // }
+
         $this->validate($request, [
             'name' => 'alpha_num|max:255',
         ]);
@@ -114,6 +130,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // if (Auth::guest()) {
+        //     return redirect()->route('users.index');
+        // }
+
         User::find($id)->delete();
 		return redirect()->route('users.index');
     }

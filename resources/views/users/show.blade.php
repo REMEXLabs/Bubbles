@@ -17,13 +17,16 @@
                     @if ($user->bio)
                       <p>{{ $user->bio }}</p>
                     @endif
+
+
+                    @if (Auth::user())
                     <hr>
-
                     <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary">Update profile</a>
-
+                    
                     {!! Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id), 'style' => 'display: inline;')) !!}
                         {{ Form::submit('Delete account', array('class' => 'btn btn-danger')) }}
                     {!! Form::close() !!}
+                    @endif
 
                 </div>
                 <div class="panel-footer">

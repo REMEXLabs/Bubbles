@@ -12,15 +12,10 @@
 */
 
 
-Route::auth();
-Route::get('/home', 'HomeController@index');
 
-// Users
+Route::auth();
+
 Route::resource('users', 'UserController');
 
-// Route::resource('users', 'UserController', ['only' => ['index', 'show', 'edit', 'update', 'store']]);
-// Route::resource('users', 'UserController', ['except' => ['create', 'store', 'update', 'destroy']]);
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UserController@index');
+Route::get('home', 'HomeController@index');
