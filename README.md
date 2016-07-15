@@ -1,5 +1,7 @@
 # Bubbles
 
+[![Join the chat at https://gitter.im/REMEXLabs/Bubbles](https://badges.gitter.im/REMEXLabs/Bubbles.svg)](https://gitter.im/REMEXLabs/Bubbles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 ## Funding Acknowledgement
 
