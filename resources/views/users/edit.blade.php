@@ -28,6 +28,10 @@
                         {{ Form::textarea('bio', $user->bio, array('class'=>'form-control', 'placeholder'=>'Bio')) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('email_public', 'Make e-mail public?:') }}
+                        {{ Form::checkbox('email_public', 1, $user->email_public) }}
+                    </div>
+                    <div class="form-group">
                 		    {{ Form::submit('Update profile', array('class' => 'btn btn-primary')) }}
                 	  </div>
                     {!! Form::close() !!}

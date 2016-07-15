@@ -96,7 +96,10 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'alpha_num|max:255',
         ]);
+
         $input = $request->all();
+        $input['email_public'] =((is_null($request->input('email_public')))?0:1);
+
         $user = User::find($id);
         $user->update($input);
         return redirect()->route('users.show',

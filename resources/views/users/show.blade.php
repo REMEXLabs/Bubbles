@@ -5,16 +5,18 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">User: {{ $user->username }}</div>
+                <div class="panel-heading">User</div>
                 <div class="panel-body">
-                    <p>{{ $user->email }}</p>
+                    <h3>{{ $user->username }}</h3>
+                    @if ($user->email_public)
+                      <p>{{ $user->email }}</p>
+                    @endif
                     @if ($user->name)
                       <p>{{ $user->name }}</p>
                     @endif
                     @if ($user->bio)
                       <p>{{ $user->bio }}</p>
                     @endif
-
                     <hr>
 
                     <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary">Update profile</a>
