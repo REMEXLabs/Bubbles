@@ -14,9 +14,17 @@
 
 
 Route::auth();
+Route::get('register', 'UserController@create');
 
 Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
+
+Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
+  Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'UserController@overview']);
+  Route::get('projects', ['as' => 'my-projects', 'uses' => 'UserController@overview']);
+  Route::get('resources', ['as' => 'my-resources', 'uses' => 'UserController@overview']);
+  Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
+});
 
 // Route::get('projects', 'ProjectController@index');
 // Route::get('projects/create', 'ProjectController@create');
@@ -56,5 +64,5 @@ Route::resource('projects', 'ProjectController');
 //     'create', 'store', 'update', 'destroy'
 // ]]);
 
-Route::get('/', 'UserController@index');
-Route::get('home', 'HomeController@index');
+Route::get('/', 'ProjectController@index');
+// Route::get('home', 'HomeController@index');

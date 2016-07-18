@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-// use Auth;
+use Auth;
 use App\User;
 use App\Http\Requests;
 
 class UserController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show', 'create', 'store']]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -72,8 +71,22 @@ class UserController extends Controller
         if (is_null($user)) {
             return redirect()->route('users.index');
         }
-        return view('users.show',
-            ['user' => $user ]);
+        return view('users.show', ['user' => $user ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $user = User::find(Auth::user()->id);
+        if (is_null($user)) {
+            return redirect()->route('users.index');
+        }
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -84,16 +97,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // if (Auth::guest()) {
-        //     return redirect()->route('users.index');
-        // }
-
         $user = User::find($id);
         if (is_null($user)) {
             return redirect()->route('users.index');
         }
-        return view('users.edit',
-            ['user' => $user ]);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -105,10 +113,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // if (Auth::guest()) {
-        //     return redirect()->route('users.index');
-        // }
-
         $this->validate($request, [
             'name' => 'alpha_num|max:255',
         ]);
@@ -118,8 +122,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->update($input);
-        return redirect()->route('users.show',
-            ['id' => $user->id]);
+        return redirect()->route('users.show', ['id' => $user->id]);
     }
 
     /**
@@ -130,11 +133,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // if (Auth::guest()) {
-        //     return redirect()->route('users.index');
-        // }
-
         User::find($id)->delete();
 		return redirect()->route('users.index');
+    }
+
+    public function overview()
+    {
+        return '-';
     }
 }

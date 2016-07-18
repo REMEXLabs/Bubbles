@@ -1,26 +1,40 @@
 @extends('layouts.app')
 
+@section('css')
+.content ul {
+    padding: 0;
+    list-style: none;
+}
+.content h1 {
+    padding-bottom: 10px;
+}
+@endsection
+
 @section('content')
-<div class="container">
+<div class="content container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Users</div>
-                <div class="panel-body">
-                    {{ count($users) }} Users
-                    <hr>
+        <div class="col-md-12">
+            <h1>{{ count($users) }} users</h1>
+            @if(count($users))
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
                     @foreach ($users as $user)
-                      <p>
-                        <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
-                      </p>
+                    <tr>
+                        <td>
+                            <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
+                        </td>
+                    </tr>
                     @endforeach
-                    <hr>
-                    <a href="{{ route('users.create')}}" class="btn btn-primary">Register new user</a>
-                </div>
-                {{-- <div class="panel-footer">
-                    <a href="{{ route('users.create')}}">Register new user</a>
-                </div> --}}
-            </div>
+                </table>
+            @endif
+            @if (Auth::guest())
+                <hr>
+                <a href="{{ route('users.create')}}" class="btn btn-success">Sign up</a>
+            @endif
         </div>
     </div>
 </div>

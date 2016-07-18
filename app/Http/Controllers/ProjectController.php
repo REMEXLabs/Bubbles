@@ -11,7 +11,6 @@ class ProjectController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
@@ -108,7 +107,7 @@ class ProjectController extends Controller
             'name' => 'alpha_num|max:255',
         ]);
         Project::find($id)->update($request->all());
-        return redirect()->route('users.show',
+        return redirect()->route('projects.show',
             ['id' => $project->id]);
     }
 

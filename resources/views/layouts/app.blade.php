@@ -23,6 +23,7 @@
         .fa-btn {
             margin-right: 6px;
         }
+        @yield('css')
     </style>
 </head>
 <body id="app-layout">
@@ -47,19 +48,25 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ route('users.index') }}">Users</a></li>
+                    {{-- <li><a href="{{ url('/home') }}">Home</a></li> --}}
                     <li><a href="{{ route('projects.index') }}">Projects</a></li>
+                    <li><a href="{{ route('users.index') }}">Users</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
+                        <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
                     @else
-                        <li class="dropdown">
+                        <li><a href="{{ route('my-bubbles') }}"><i class="fa fa-btn fa-circle-o"></i>My Bubbles</a></li>
+                        <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul"></i>My Projects</a></li>
+                        <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o"></i>My Resources</a></li>
+                        <li><a href="{{ route('my-profile') }}"><i class="fa fa-btn fa-user"></i>{{ Auth::user()->username }}</a></li>
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i></a></li>
+
+                        {{-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
@@ -67,7 +74,7 @@
                                 <li><a href="{{ route('users.show', Auth::user()->id) }}"><i class="fa fa-btn"></i>Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                     @endif
                 </ul>
             </div>
