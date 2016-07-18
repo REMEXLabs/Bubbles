@@ -35,4 +35,12 @@ class User extends Authenticatable
         return (bool)($this->role == 'admin');
     }
 
+    /**
+     * Get the comments for the blog post.
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Project');
+    }
+
 }

@@ -49,6 +49,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ route('users.index') }}">Users</a></li>
+                    <li><a href="{{ route('projects.index') }}">Projects</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
