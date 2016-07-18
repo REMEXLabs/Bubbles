@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class RedirectIfNotAnAdmin
+class IsAnAdmin
 {
     /**
      * Handle an incoming request.
