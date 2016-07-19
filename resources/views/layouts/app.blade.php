@@ -60,9 +60,10 @@
                         <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
                     @else
-                        <li><a href="{{ route('my-bubbles') }}"><i class="fa fa-btn fa-circle-o"></i>My Bubbles</a></li>
-                        <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul"></i>My Projects</a></li>
-                        <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o"></i>My Resources</a></li>
+                        <li><a href="{{ route('my-bubbles') }}"><i class="fa fa-btn fa-circle-o"></i>Bubbles</a></li>
+                        <li><a href="{{ route('my-quests') }}"><i class="fa fa-btn fa-code"></i>Quests</a></li>
+                        <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul"></i>Projects</a></li>
+                        <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o"></i>Resources</a></li>
                         <li><a href="{{ route('my-profile') }}"><i class="fa fa-btn fa-user"></i>{{ Auth::user()->username }}</a></li>
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i></a></li>
 
