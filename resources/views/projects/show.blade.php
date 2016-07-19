@@ -1,37 +1,41 @@
 @extends('layouts.app')
 
-@section('css')
-.content h1 {
-    padding-bottom: 10px;
-}
+@section('subnav')
+    @if (Auth::check())
+        <nav class="navbar subnav" role="navigation">
+            <div class="container">
+                @if (Auth::user()->id == $project->user_id)
+                    <ul class="list-inline list-inline--right">
+                        <li>
+                            <a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-primary btn-sm">Update project</a>
+                        </li>
+                    </ul>
+                @endif
+                <ul class="list-inline list-inline--left">
+                    <li>
+                        {{-- <a href="{{ route('projects.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all projects</a> --}}
+                        <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    @endif
 @endsection
 
 @section('content')
-<div class="container content">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{ $project->name }}</h1>
-            <p>
-                Project owner: <a href="{{ route('users.show', ['id' => $project->user_id]) }}">{{ $project->user()->username }}</a>
-            </p>
-            @if ($project->description)
-            <div class="description">
-                {{ $project->description }}
+<main class="main" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ $project->name }}</h1>
+                @if ($project->description)
+                    <p><strong>Project owner</strong>: <br> <a href="{{ route('users.show', ['id' => $project->user_id]) }}">{{ $project->user()->username }}</a></p>
+                @endif
+                @if ($project->description)
+                    <p><strong>Description</strong>: <br> {{ $project->description }}</p>
+                @endif
             </div>
-            @endif
-
-            @if (Auth::check() && Auth::user()->id == $project->user_id)
-            <hr>
-            <a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-primary">Update project</a>
-
-            {!! Form::open(array('method' => 'DELETE', 'route' => array('projects.destroy', $project->id), 'style' => 'display: inline;')) !!}
-                {{ Form::submit('Delete project', array('class' => 'btn btn-danger')) }}
-            {!! Form::close() !!}
-            @endif
-
-            <hr>
-            <a href="{{ route('projects.index') }}">List all projects</a>
         </div>
     </div>
-</div>
+</main>
 @endsection

@@ -1,20 +1,36 @@
 @extends('layouts.app')
 
-@section('css')
-.content ul {
-    padding: 0;
-    list-style: none;
-}
-.content h2{
-    padding-bottom: 10px;
-}
+@section('subnav')
+    @if (Auth::check())
+        <nav class="navbar subnav" role="navigation">
+            <div class="container">
+                <ul class="list-inline list-inline--right">
+                    <li>
+                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success">Create new project</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    @endif
+    {{-- @else
+        <nav class="navbar subnav" role="navigation">
+            <div class="container">
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ route('users.create')}}" class="btn btn-success">Join the adventure!</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    @endif --}}
 @endsection
 
 @section('content')
-<div class="container content">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>{{ count($projects) }} projects</h2>
+<main class="main" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <h3>{{ count($projects) }} projects</h3>
             @if(count($projects))
                 <table class="table">
                     <thead>
@@ -31,11 +47,7 @@
                     @endforeach
                 </table>
             @endif
-            @if (Auth::check())
-                <hr>
-                <a href="{{ route('projects.create')}}" class="btn btn-success">Create new project</a>
-            @endif
         </div>
     </div>
-</div>
+</main>
 @endsection

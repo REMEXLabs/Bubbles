@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>Bubbles</title>
 
     <!-- Fonts -->
@@ -16,18 +15,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-        .fa-btn {
-            margin-right: 6px;
-        }
+    <link rel="stylesheet" href="/assets/css/main.css" media="screen">
+    @if (trim($__env->yieldContent('css')))
+    <style media="screen">
         @yield('css')
     </style>
+    @endif
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+<body id="app-layout" class="@yield('route')">
+    <nav class="navbar navbar-default navbar-static-top mainnav">
         <div class="container">
             <div class="navbar-header">
 
@@ -82,7 +78,14 @@
         </div>
     </nav>
 
+    @yield('subnav')
     @yield('content')
+
+    <footer class="footer">
+        <div class="container">
+            © Stuttgart Media University, 2016
+        </div>
+    </footer>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>

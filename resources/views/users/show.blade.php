@@ -1,51 +1,44 @@
 @extends('layouts.app')
 
-@section('css')
-.content .actions {
-    float: right;
-    padding-top: 20px;
-}
-dt, dd {
-    padding-bottom: 3px;
-}
-@endsection
-
-@section('content')
-<div class="content container">
-    <div class="row">
-        <div class="col-md-12">
-            {{-- @if (Auth::check() && Auth::user()->id == $user->id)
-            <div class="actions clearfix">
-                <ul class="list-inline">
+@section('subnav')
+    @if (Auth::check())
+        <nav class="navbar subnav" role="navigation">
+            <div class="container">
+                @if (Auth::user()->id == $user->id)
+                    <ul class="list-inline list-inline--right">
+                        <li>
+                            <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-sm">Update profile</a>
+                        </li>
+                    </ul>
+                @endif
+                <ul class="list-inline list-inline--left">
                     <li>
-                        <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-sm">Update profile</a>
+                        {{-- <a href="{{ route('users.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all users</a> --}}
+                        <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a>
                     </li>
                 </ul>
             </div>
-            @endif --}}
+        </nav>
+    @endif
+@endsection
 
-            @if (Auth::check() && Auth::user()->id == $user->id)
-            <div class="actions">
-                <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-sm">Update profile</a>
-            </div>
-            @endif
-
-            <h2>{{ $user->username }}</h2>
-            <dl class="dl-horizontal">
-                @if ($user->name)
-                    <dt>Name</dt>
-                    <dd>{{ $user->name }}</dd>
-                @endif
+@section('content')
+<main class="main" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{ $user->username }}</h2>
                 @if ($user->email_public == 1)
-                    <dt>E-Mail</dt>
-                    <dd><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></dd>
+                    <p><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
+                @endif
+                @if ($user->name)
+                    <p><strong>Name</strong>: <br> {{ $user->name }}</p>
                 @endif
                 @if ($user->bio)
-                    <dt>Biography</dt>
-                    <dd>{{ $user->bio }}</dd>
+                    <p><strong>Biography</strong>: <br> {{ $user->bio }}</p>
                 @endif
-            </dl>
+            </div>
         </div>
     </div>
-</div>
+</main>
 @endsection
