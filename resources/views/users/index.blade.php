@@ -5,7 +5,7 @@
     padding: 0;
     list-style: none;
 }
-.content h1 {
+.content h2 {
     padding-bottom: 10px;
 }
 @endsection
@@ -14,7 +14,7 @@
 <div class="content container">
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ count($users) }} users</h1>
+            <h2>{{ count($users) }} users</h2>
             @if(count($users))
                 <table class="table">
                     <thead>
