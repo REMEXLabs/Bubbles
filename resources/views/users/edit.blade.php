@@ -39,13 +39,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            {{ Form::submit('Update profile', array('class' => 'btn btn-block btn-success')) }}
+                            {{ Form::submit('Update profile', array('class' => 'btn btn-block btn-primary')) }}
                         </div>
                     </div>
                 {!! Form::close() !!}
                 {{-- <a href="{{ route('users.show', ['id' => $user->id]) }}">Back to user profile</a> or <a href="{{ route('users.index') }}">back to list</a> --}}
                 {!! Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id), 'style' => 'margin-top: 20px; display: inline; float: right;')) !!}
-                    {{ Form::submit('Delete account', array('class' => 'btn btn-default btn-sm')) }}
+                    {{ Form::submit('Delete account', array('class' => 'btn btn-default btn-sm btn-danger')) }}
                 {!! Form::close() !!}
             </div>
         </div>
