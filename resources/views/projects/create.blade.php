@@ -42,7 +42,10 @@
                         </div> --}}
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                {{ Form::submit('Create project', array('class' => 'btn btn-block btn-success')) }}
+                                <ul class="list-inline">
+                                    <li>{{ Form::submit('Create project', array('class' => 'btn btn-primary')) }}</li>
+                                    <li><a class="btn btn-default btn-close" href="{{ route('projects.index') }}">Cancel</a></li>
+                                </ul>
                             </div>
                         </div>
                     {!! Form::close() !!}

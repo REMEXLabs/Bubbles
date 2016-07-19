@@ -39,8 +39,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            {{ Form::submit('Update profile', array('class' => 'btn btn-primary')) }}
-                            <a class="btn btn-default btn-close" href="{{ route('users.show', $user->id) }}">Cancel</a>
+                            <ul class="list-inline">
+                                <li>{{ Form::submit('Update profile', array('class' => 'btn btn-primary')) }}</li>
+                                <li><a class="btn btn-default btn-close" href="{{ route('users.show', $user->id) }}">Cancel</a></li>
+                            </ul>
                         </div>
                     </div>
                 {!! Form::close() !!}
