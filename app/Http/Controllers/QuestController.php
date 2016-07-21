@@ -46,21 +46,13 @@ class QuestController extends Controller
        */
       public function store(Request $request)
       {
-          // 'description',
-          // 'author_id',
-          // 'editor_id',
-          // 'language',
-          // 'difficulty',
-          // 'stage'
-          $this->validate($request, [
-              'name' => 'required|max:255',
-            //   'language' => 'max:255',
-          ]);
+          $this->validate($request, Quest::getValidationRules());
           $input = $request->all();
           $quest = Quest::create([
               'name' => $input['name'],
               'description' => $input['description'],
-              'author_id' => $request->user()->id
+              'difficulty' => $input['difficulty'],
+              'author_id' => $request->user()->id,
           ]);
           $quest->save();
           return view('quests.show',
@@ -112,9 +104,7 @@ class QuestController extends Controller
           if (is_null($quest) || ($request->user()->id != $quest->author_id)) {
               return redirect()->route('quests.create');
           }
-          $this->validate($request, [
-              'name' => 'required|max:255',
-          ]);
+          $this->validate($request, Quest::getValidationRules());
           Quest::find($id)->update($request->all());
           return redirect()->route('quests.show',
               ['id' => $quest->id]);

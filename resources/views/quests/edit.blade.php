@@ -29,6 +29,19 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {{ Form::label('language', 'Language:', ['class'=>'col-md-2 control-label']) }}
+                        <div class="col-md-10">
+                            {{ Form::text('language', $quest->language, array('class'=>'form-control', 'placeholder'=>'Java, PHP, C ...')) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('difficulty', 'Difficulty:', ['class'=>'col-md-2 control-label']) }}
+                        <div class="col-md-10">
+                            {{ Form::select('difficulty', Quest::getDifficulties(), $quest->difficulty, ['class' =>
+'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <ul class="list-inline">
                                 <li>{{ Form::submit('Update quest', array('class' => 'btn btn-primary')) }}</li>

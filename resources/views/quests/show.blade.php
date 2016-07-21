@@ -37,6 +37,32 @@
                 @if ($quest->description)
                     <p><strong>Description</strong>: <br> {{ $quest->description }}</p>
                 @endif
+                @if ($quest->language)
+                    <p><strong>Language</strong>: <br> {{ $quest->language }}</p>
+                @endif
+                @if ($quest->difficulty)
+                    <p><strong>Difficulty</strong>: <br> {{ $quest->difficulty }}</p>
+                @endif
+                <p>
+                @if ($quest->state == 'open')
+                    <i>The quest is open.</i>
+                    @if (Auth::user()->id != $quest->author_id)
+                        {{-- TODO: Add link to get the quest. --}}
+                        <strong>Take it now!</strong>
+                    @endif
+                @elseif ($quest->state == 'wip')
+                    The quest is running.
+                    @if ($quest->editor_id)
+                        The editor is <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>
+                    @endif
+                @else
+                    @if ($quest->editor_id)
+                        The quest is closed by <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
+                    @endif
+                @endif
+                </p>
+
+
             </div>
         </div>
     </div>
