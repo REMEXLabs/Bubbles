@@ -47,6 +47,9 @@
                     {{-- <li><a href="{{ url('/home') }}">Home</a></li> --}}
                     <li><a href="{{ route('projects.index') }}">Projects</a></li>
                     <li><a href="{{ route('users.index') }}">Users</a></li>
+                    @if (!Auth::guest())
+                        <li><a href="{{ route('quests.index') }}">Quests</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
