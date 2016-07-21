@@ -31,10 +31,10 @@
                         <div class="form-group">
                             {{ Form::label('language', 'Language:', ['class'=>'col-md-2 control-label']) }}
                             <div class="col-md-10">
-                                {{ Form::text('language', null, array('class'=>'form-control', 'placeholder'=>'Java, PHP, C, ...')) }}
+                                {{ Form::select('language', Quest::getLanguages(), Quest::getDefaultLanguage(), ['class' =>
+'form-control']) }}
                             </div>
                         </div>
-
                         <div class="form-group">
                             {{ Form::label('difficulty', 'Difficulty:', ['class'=>'col-md-2 control-label']) }}
                             <div class="col-md-10">

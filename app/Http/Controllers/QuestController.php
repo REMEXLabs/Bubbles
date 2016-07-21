@@ -24,7 +24,7 @@ class QuestController extends Controller
       public function index()
       {
           return view('quests.index', [
-            'quests' => Quest::all()
+            'quests' => Quest::orderBy('id', 'DESC')->get()
           ]);
       }
 
@@ -52,6 +52,7 @@ class QuestController extends Controller
               'name' => $input['name'],
               'description' => $input['description'],
               'difficulty' => $input['difficulty'],
+              'language' => $input['language'],
               'author_id' => $request->user()->id,
           ]);
           $quest->save();

@@ -20,7 +20,8 @@ class CreateQuestsTable extends Migration
             $table->foreign('author_id')->references('id')->on('users');
             $table->integer('editor_id')->unsigned()->nullable();
             $table->foreign('editor_id')->references('id')->on('users');
-            $table->string('language');
+            // https://cloud.githubusercontent.com/assets/2623954/9098640/f15e22b4-3b7f-11e5-9496-12b6d811f0ea.jpg
+            $table->enum('language', array_keys(Quest::getLanguages()));
             $table->enum('difficulty', ['easy', 'normal', 'hard'])->default('normal');
             $table->enum('state', ['open', 'wip', 'resolved'])->default('open');
             $table->timestamps();

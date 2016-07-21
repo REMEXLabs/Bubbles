@@ -31,7 +31,9 @@
                     <div class="form-group">
                         {{ Form::label('language', 'Language:', ['class'=>'col-md-2 control-label']) }}
                         <div class="col-md-10">
-                            {{ Form::text('language', $quest->language, array('class'=>'form-control', 'placeholder'=>'Java, PHP, C ...')) }}
+                            {{-- {{ Form::text('language', $quest->language, array('class'=>'form-control', 'placeholder'=>'Java, PHP, C ...')) }} --}}
+                            {{ Form::select('language', Quest::getLanguages(), $quest->language, ['class' =>
+                            'form-control']) }}
                         </div>
                     </div>
                     <div class="form-group">

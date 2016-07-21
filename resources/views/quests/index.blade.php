@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Language</th>
                             <th>Level</th>
                             <th>Points</th>
                             <th>Created at</th>
@@ -43,18 +44,11 @@
                     </thead>
                     @foreach ($quests as $quest)
                         <tr>
-                            <td>
-                                <a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a>
-                            </td>
-                            <td>
-                                {{ $quest->difficulty }}
-                            </td>
-                            <td>
-                                {{ $quest->points }}
-                            </td>
-                            <td>
-                                {{ date_format($quest->created_at, 'd.m.Y') }}
-                            </td>
+                            <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                            <td>{{ $quest->language }}</td>
+                            <td>{{ $quest->difficulty }}</td>
+                            <td>{{ $quest->points }}</td>
+                            <td>{{ date_format($quest->created_at, 'd.m.Y') }}</td>
                         </tr>
                     @endforeach
                 </table>

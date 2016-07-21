@@ -27,6 +27,7 @@ class Quest extends Model
       'name' => 'required|max:255',
       'description' => 'required',
       'difficulty' => 'required|in:'.implode(',', array_keys(Quest::getDifficulties())),
+      'language' => 'required|in:'.implode(',', array_keys(Quest::getLanguages())),
     );
   }
 
@@ -40,6 +41,32 @@ class Quest extends Model
 
   public static function getDefaultDifficulty() {
     return 'normal';
+  }
+
+  public static function getLanguages() {
+    $languages = array(
+      'javascript' => 'JavaScript',
+      'java' => 'Java',
+      'ruby' => 'Ruby',
+      'php' => 'PHP',
+      'python' => 'Python',
+      'css' => 'CSS',
+      'c' => 'C',
+      'cpp' => 'C++',
+      'csharp' => 'C#',
+      'html' => 'HTML',
+      'd' => 'D',
+      'swift' => 'Swift',
+      'sql' => 'SQL',
+      'r' => 'R',
+      'matlab' => 'Matlab',
+    );
+    ksort($languages);
+    return $languages;
+  }
+
+  public static function getDefaultLanguage() {
+    return 'javascript';
   }
 
   public static function getStates() {
