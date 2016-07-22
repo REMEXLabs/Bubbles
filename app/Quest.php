@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quest extends Model
 {
-  // Preferences:
-
   protected $fillable = [
       'name',
       'description',
@@ -18,9 +16,6 @@ class Quest extends Model
       'state',
       'points',
   ];
-
-
-  // Statics:
 
   public static function getValidationRules() {
     return array(
@@ -76,9 +71,6 @@ class Quest extends Model
       'resolved' => 'Resolved'
     );
   }
-
-
-  // Attributes:
 
   function getPointsAttribute() {
     $points = 10;

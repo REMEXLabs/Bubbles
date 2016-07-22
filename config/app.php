@@ -212,6 +212,7 @@ return [
 
         // Application:
         'Quest' => App\Quest::class,
+        'Resource' => App\Resource::class,
 
     ],
 
