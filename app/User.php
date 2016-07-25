@@ -43,4 +43,33 @@ class User extends Authenticatable
         return $this->hasMany('App\Project');
     }
 
+    /**
+     * Get the private quests of a user.
+     */
+    public function createdQuests()
+    {
+        return $this->hasMany('App\Quest', 'author_id')
+            ->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Get the private quests of a user.
+     */
+    public function acceptedQuests()
+    {
+        return $this->hasMany('App\Quest', 'editor_id')
+            ->where('state', 'wip')
+            ->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Get the private quests of a user.
+     */
+    public function resolvedQuests()
+    {
+        return $this->hasMany('App\Quest', 'editor_id')
+            ->where('state', 'resolved')
+            ->orderBy('id', 'DESC');
+    }
+
 }

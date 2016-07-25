@@ -29,6 +29,20 @@ class QuestController extends Controller
       }
 
       /**
+       * Display a listing of the personal resource.
+       *
+       * @return \Illuminate\Http\Response
+       */
+      public function overview()
+      {
+            return view('quests.overview', [
+                  'accepted_quests' => Auth::user()->acceptedQuests,
+                  'resolved_quests' => Auth::user()->resolvedQuests,
+                  'created_quests' => Auth::user()->createdQuests,
+            ]);
+      }
+
+      /**
        * Show the form for creating a new resource.
        *
        * @return \Illuminate\Http\Response
@@ -88,8 +102,7 @@ class QuestController extends Controller
           if (is_null($quest) || (Auth::user()->id != $quest->author_id)) {
               return redirect()->route('quests.create');
           }
-          return view('quests.edit',
-              ['quest' => $quest ]);
+          return view('quests.edit', ['quest' => $quest ]);
       }
 
       /**

@@ -27,7 +27,7 @@ Route::resource('quests', 'QuestController');
 Route::resource('resources', 'ResourceController');
 
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
-  Route::get('quests', ['as' => 'my-quests', 'uses' => 'UserController@overview']);
+  Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
   Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'UserController@overview']);
   Route::get('projects', ['as' => 'my-projects', 'uses' => 'UserController@overview']);
   Route::get('resources', ['as' => 'my-resources', 'uses' => 'UserController@overview']);
