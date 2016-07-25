@@ -23,15 +23,16 @@ Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
 
 // Private:
+Route::resource('bubbles', 'BubbleController');
 Route::resource('quests', 'QuestController');
 Route::resource('resources', 'ResourceController');
 
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
-  Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
-  Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'UserController@overview']);
-  Route::get('projects', ['as' => 'my-projects', 'uses' => 'ProjectController@overview']);
-  Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
-  Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
+    Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
+    Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'BubbleController@index']);
+    Route::get('projects', ['as' => 'my-projects', 'uses' => 'ProjectController@overview']);
+    Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
+    Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
 });
 
 // Route::get('projects', 'ProjectController@index');
@@ -72,5 +73,5 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
 //     'create', 'store', 'update', 'destroy'
 // ]]);
 
-Route::get('/', 'ProjectController@index');
+Route::get('/', 'BubbleController@overview');
 // Route::get('home', 'HomeController@index');

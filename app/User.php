@@ -31,8 +31,42 @@ class User extends Authenticatable
         'role',
     ];
 
-    public function isAnAdmin() {
+    public function isAnAdmin()
+    {
         return (bool)($this->role == 'admin');
+    }
+
+    /**
+     * Get the created bubbles by the user.
+     */
+    public function bubbles()
+    {
+        return $this->hasMany('App\Bubble')
+            ->orderBy('order', 'DESC')
+            ->orderBy('id', 'DESC');
+        ;
+    }
+
+    /**
+     * Get the created bubbles by the user.
+     */
+    public function questBubbles()
+    {
+        return $this->hasMany('App\Bubble')
+            ->where('type', 'quest')
+            ->orderBy('order', 'ASC')
+            ->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Get the created bubbles by the user.
+     */
+    public function projectBubbles()
+    {
+        return $this->hasMany('App\Bubble')
+            ->where('type', 'project')
+            ->orderBy('order', 'ASC')
+            ->orderBy('id', 'DESC');
     }
 
     /**
@@ -80,5 +114,4 @@ class User extends Authenticatable
             ->where('state', 'resolved')
             ->orderBy('id', 'DESC');
     }
-
 }
