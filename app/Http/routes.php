@@ -30,7 +30,7 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
   Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
   Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'UserController@overview']);
   Route::get('projects', ['as' => 'my-projects', 'uses' => 'ProjectController@overview']);
-  Route::get('resources', ['as' => 'my-resources', 'uses' => 'Controller@overview']);
+  Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
   Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
 });
 

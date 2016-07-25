@@ -28,6 +28,18 @@ class ResourceController extends Controller
   }
 
   /**
+   * Display a listing of the personal resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function overview()
+  {
+      return view('resources.index', [
+        'resources' => Auth::user()->resources,
+      ]);
+  }
+
+  /**
    * Show the form for creating a new resource.
    *
    * @return \Illuminate\Http\Response

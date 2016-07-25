@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the comments for the blog post.
+     * Get the created projects by the user.
      */
     public function projects()
     {
@@ -44,7 +44,16 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the private quests of a user.
+     * Get the created resources by the user.
+     */
+    public function resources()
+    {
+        return $this->hasMany('App\Resource', 'author_id')
+            ->orderBy('id', 'DESC');
+    }
+
+    /**
+     * Get the created quests by the user.
      */
     public function createdQuests()
     {
@@ -53,7 +62,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the private quests of a user.
+     * Get the accepted quests by the user.
      */
     public function acceptedQuests()
     {
@@ -63,7 +72,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the private quests of a user.
+     * Get the resolved quests by the user.
      */
     public function resolvedQuests()
     {
