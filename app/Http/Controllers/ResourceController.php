@@ -54,8 +54,8 @@ class ResourceController extends Controller
           'author_id' => $request->user()->id,
       ]);
       $resource->save();
-      return view('resources.show',
-          ['resource' => $resource]);
+      // return view('resources.show', ['resource' => $resource]);
+      return redirect()->route('resources.show', ['id' => $resource->id]);
   }
 
   /**
