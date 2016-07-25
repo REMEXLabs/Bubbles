@@ -56,8 +56,8 @@ class QuestController extends Controller
               'author_id' => $request->user()->id,
           ]);
           $quest->save();
-          return view('quests.show',
-              ['quest' => $quest]);
+      //     return view('quests.show', ['quest' => $quest]);
+          return redirect()->route('quests.show', ['id' => $quest->id]);
       }
 
       /**
