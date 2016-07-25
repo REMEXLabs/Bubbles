@@ -54,8 +54,8 @@ class ProjectController extends Controller
             'user_id' => $request->user()->id
         ]);
         $project->save();
-        return view('projects.show',
-            ['project' => $project]);
+        // return view('projects.show', ['project' => $project]);
+        return redirect()->route('projects.show', ['id' => $project->id]);
     }
 
     /**
