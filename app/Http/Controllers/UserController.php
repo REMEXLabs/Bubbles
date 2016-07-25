@@ -55,8 +55,8 @@ class UserController extends Controller
             'password' => bcrypt($input['password']),
         ]);
         Auth::login($user);
-        return view('users.show',
-            ['user' => $user ]);
+        // return view('users.show', ['user' => $user ]);
+        return redirect()->route('users.show', ['id' => $user->id]);
     }
 
     /**
