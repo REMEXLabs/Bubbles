@@ -24,55 +24,51 @@
     @endif
 </head>
 <body id="app-layout" class="{{ $controller }}">
-    <nav class="navbar navbar-default navbar-static-top mainnav">
+    <nav class="navbar navbar-default navbar-static-top mainnav" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Bubbles
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
+                {{-- Left Sidebar --}}
                 <ul class="nav navbar-nav">
-                    {{-- <li><a href="{{ url('/home') }}">Home</a></li> --}}
                     @if (!Auth::guest())
                         <li><a href="{{ route('quests.index') }}">Quests</a></li>
                     @endif
                     <li><a href="{{ route('projects.index') }}">Projects</a></li>
                     <li><a href="{{ route('users.index') }}">Users</a></li>
                 </ul>
-
-                <!-- Right Side Of Navbar -->
+                {{-- Right Sidebar --}}
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
                     @else
-                        <li><a href="{{ route('my-bubbles') }}"><i class="fa fa-btn fa-circle-o"></i>Bubbles</a></li>
-                        <li><a href="{{ route('my-quests') }}"><i class="fa fa-btn fa-code"></i>Quests</a></li>
-                        <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul"></i>Projects</a></li>
-                        <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o"></i>Resources</a></li>
-                        <li><a href="{{ route('my-profile') }}"><i class="fa fa-btn fa-user"></i>{{ Auth::user()->username }}</a></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i></a></li>
-
-                        {{-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->username }} <span class="caret" aria-hidden="true"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('users.show', Auth::user()->id) }}"><i class="fa fa-btn"></i>Profile</a></li>
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li class="dropdown-header">Signed in as <strong>{{ Auth::user()->username }}</strong></li>
+                                <li><a href="{{ route('users.show', Auth::user()->id) }}"><i class="fa fa-btn fa-user" aria-hidden="true"></i>Your profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Actions</strong></li>
+                                <li><a href="{{ route('my-bubbles') }}"><i class="fa fa-btn fa-circle-o" aria-hidden="true"></i>Your bubbles</a></li>
+                                <li><a href="{{ route('my-quests') }}"><i class="fa fa-btn fa-code" aria-hidden="true"></i>Your quests</a></li>
+                                <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul" aria-hidden="true"></i>Your projects</a></li>
+                                <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o" aria-hidden="true"></i>Your resources</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                             </ul>
-                        </li> --}}
+                        </li>
                     @endif
                 </ul>
             </div>
@@ -83,12 +79,8 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="container">
-            © Stuttgart Media University, 2016
-        </div>
+        <div class="container">© Stuttgart Media University, 2016</div>
     </footer>
-
-    <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
