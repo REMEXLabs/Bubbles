@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use Validator;
+use View;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -38,6 +39,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        View::share('controller', 'auth');
     }
 
     /**

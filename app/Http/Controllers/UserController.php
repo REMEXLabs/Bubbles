@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use View;
 use App\User;
 use App\Http\Requests;
 
@@ -12,6 +13,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show', 'create', 'store']]);
+        View::share('controller', 'user');
     }
 
     /**

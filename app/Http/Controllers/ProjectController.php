@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Auth;
+use View;
 use App\Project;
 use App\Http\Requests;
 
@@ -12,6 +14,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        View::share('controller', 'project');
     }
 
     /**
@@ -82,8 +85,10 @@ class ProjectController extends Controller
         if (is_null($project)) {
             return redirect()->route('projects.index');
         }
-        return view('projects.show',
-            ['project' => $project]);
+        return view(
+            'projects.show',
+            ['project' => $project]
+        );
     }
 
     /**
@@ -98,8 +103,10 @@ class ProjectController extends Controller
         if (is_null($project) || (Auth::user()->id != $project->user_id)) {
             return redirect()->route('projects.create');
         }
-        return view('projects.edit',
-            ['project' => $project ]);
+        return view(
+            'projects.edit',
+            ['project' => $project ]
+        );
     }
 
     /**
@@ -119,8 +126,10 @@ class ProjectController extends Controller
             'name' => 'alpha_num|max:255',
         ]);
         Project::find($id)->update($request->all());
-        return redirect()->route('projects.show',
-            ['id' => $project->id]);
+        return redirect()->route(
+            'projects.show',
+            ['id' => $project->id]
+        );
     }
 
     /**
@@ -136,6 +145,6 @@ class ProjectController extends Controller
             return redirect()->route('projects.create');
         }
         Project::find($id)->delete();
-		return redirect()->route('projects.index');
+        return redirect()->route('projects.index');
     }
 }

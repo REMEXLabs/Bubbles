@@ -4,50 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use View;
 use App\User;
 use App\Resource;
 use App\Http\Requests;
 
 class ResourceController extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
+    public function __construct()
+    {
+        $this->middleware('auth');
+        View::share('controller', 'resource');
+    }
 
   /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
-      return view('resources.index', [
+    public function index()
+    {
+        return view('resources.index', [
         'resources' => Resource::orderBy('id', 'DESC')->get()
-      ]);
-  }
+        ]);
+    }
 
   /**
    * Display a listing of the personal resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function overview()
-  {
-      return view('resources.index', [
+    public function overview()
+    {
+        return view('resources.index', [
         'resources' => Auth::user()->resources,
-      ]);
-  }
+        ]);
+    }
 
   /**
    * Show the form for creating a new resource.
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
-  {
-      return view('resources.create');
-  }
+    public function create()
+    {
+        return view('resources.create');
+    }
 
   /**
    * Store a newly created resource in storage.
@@ -55,20 +57,20 @@ class ResourceController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      $this->validate($request, Resource::getValidationRules());
-      $input = $request->all();
-      $resource = Resource::create([
+    public function store(Request $request)
+    {
+        $this->validate($request, Resource::getValidationRules());
+        $input = $request->all();
+        $resource = Resource::create([
           'type' => $input['type'],
           'data' => $input['data'],
           'description' => $input['description'],
           'author_id' => $request->user()->id,
-      ]);
-      $resource->save();
-      // return view('resources.show', ['resource' => $resource]);
-      return redirect()->route('resources.show', ['id' => $resource->id]);
-  }
+        ]);
+        $resource->save();
+        // return view('resources.show', ['resource' => $resource]);
+        return redirect()->route('resources.show', ['id' => $resource->id]);
+    }
 
   /**
    * Display the specified resource.
@@ -76,15 +78,17 @@ class ResourceController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
-  {
-      $resource = Resource::find($id);
-      if (is_null($resource)) {
-          return redirect()->route('resources.index');
-      }
-      return view('resources.show',
-          ['resource' => $resource]);
-  }
+    public function show($id)
+    {
+        $resource = Resource::find($id);
+        if (is_null($resource)) {
+            return redirect()->route('resources.index');
+        }
+        return view(
+            'resources.show',
+            ['resource' => $resource]
+        );
+    }
 
   /**
    * Show the form for editing the specified resource.
@@ -92,15 +96,17 @@ class ResourceController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
-  {
-      $resource = Resource::find($id);
-      if (is_null($resource) || (Auth::user()->id != $resource->author_id)) {
-          return redirect()->route('resources.create');
-      }
-      return view('resources.edit',
-          ['resource' => $resource ]);
-  }
+    public function edit($id)
+    {
+        $resource = Resource::find($id);
+        if (is_null($resource) || (Auth::user()->id != $resource->author_id)) {
+            return redirect()->route('resources.create');
+        }
+        return view(
+            'resources.edit',
+            ['resource' => $resource ]
+        );
+    }
 
   /**
    * Update the specified resource in storage.
@@ -109,17 +115,19 @@ class ResourceController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
-  {
-      $resource = Resource::find($id);
-      if (is_null($resource) || ($request->user()->id != $resource->author_id)) {
-          return redirect()->route('resources.create');
-      }
-      $this->validate($request, Resource::getValidationRules());
-      Resource::find($id)->update($request->all());
-      return redirect()->route('resources.show',
-          ['id' => $resource->id]);
-  }
+    public function update(Request $request, $id)
+    {
+        $resource = Resource::find($id);
+        if (is_null($resource) || ($request->user()->id != $resource->author_id)) {
+            return redirect()->route('resources.create');
+        }
+        $this->validate($request, Resource::getValidationRules());
+        Resource::find($id)->update($request->all());
+        return redirect()->route(
+            'resources.show',
+            ['id' => $resource->id]
+        );
+    }
 
   /**
    * Remove the specified resource from storage.
@@ -127,13 +135,13 @@ class ResourceController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
-  {
-      $resource = Resource::find($id);
-      if (is_null($resource) || (Auth::user()->id != $resource->author_id)) {
-          return redirect()->route('resources.create');
-      }
-      Resource::find($id)->delete();
-      return redirect()->route('resources.index');
-  }
+    public function destroy($id)
+    {
+        $resource = Resource::find($id);
+        if (is_null($resource) || (Auth::user()->id != $resource->author_id)) {
+            return redirect()->route('resources.create');
+        }
+        Resource::find($id)->delete();
+        return redirect()->route('resources.index');
+    }
 }
