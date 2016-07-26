@@ -159,6 +159,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -214,6 +215,9 @@ return [
         'Quest' => App\Quest::class,
         'Resource' => App\Resource::class,
         'Bubble' => App\Bubble::class,
+
+        // Debugging:
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
