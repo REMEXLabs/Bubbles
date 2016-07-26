@@ -11,14 +11,13 @@
 |
 */
 
-
-
-
 // Public:
 // -> Authentication:
 Route::auth();
 Route::get('register', 'UserController@create');
+
 // -> Controllers:
+Route::get('/', 'BubbleController@index');
 Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
 
@@ -29,7 +28,7 @@ Route::resource('resources', 'ResourceController');
 
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
     Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
-    Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'BubbleController@index']);
+    Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'BubbleController@overview']);
     Route::get('projects', ['as' => 'my-projects', 'uses' => 'ProjectController@overview']);
     Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
     Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
@@ -73,5 +72,4 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
 //     'create', 'store', 'update', 'destroy'
 // ]]);
 
-Route::get('/', 'BubbleController@overview');
 // Route::get('home', 'HomeController@index');

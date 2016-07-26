@@ -1,17 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
+<main class="main" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <h1>Welcome to Bubbles</h1>
+              <p>This is the HdM Bubbles project, a network to get developers connected.</p>
             </div>
         </div>
     </div>
-</div>
+</main>
 @endsection

@@ -12,7 +12,7 @@ class BubbleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index']]);
     }
 
   /**
@@ -22,9 +22,13 @@ class BubbleController extends Controller
    */
     public function index()
     {
-        return view('bubbles.index', [
-          'bubbles' => Auth::user()->bubbles,
-        ]);
+        if (Auth::check()) {
+            return view('bubbles.overview', [
+                'user' => Auth::user()
+            ]);
+        } else {
+            return view('welcome');
+        }
     }
 
   /**
@@ -34,8 +38,8 @@ class BubbleController extends Controller
    */
     public function overview()
     {
-        return view('bubbles.overview', [
-          'user' => Auth::user()
+        return view('bubbles.index', [
+          'bubbles' => Auth::user()->bubbles,
         ]);
     }
 
