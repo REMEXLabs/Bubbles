@@ -53,4 +53,8 @@ You can use specific methods for debugging:
 
 ### Frontend
 
-- -
+You have to install [Gulp.js](http://gulpjs.com/) globally:
+
+```
+npm install --global gulp-cli
+```
