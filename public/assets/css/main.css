@@ -1,71 +1,65 @@
 body {
-    font-family: 'Lato';
-    background-color: #f8f8f8;
-}
+  font-family: 'Lato';
+  background-color: #f8f8f8; }
+
 .fa-btn {
-    margin-right: 6px;
-}
+  margin-right: 6px; }
 
 .mainnav {
-    margin-bottom: 0;
-}
+  margin-bottom: 0; }
+
 .subnav {
-    background: #fff;
-    border: 0;
-    border-bottom: 1px solid #eee;
-    min-height: 50px;
-    margin-bottom: 0;
-    padding-top: 11px;
-    padding-bottom: 10px;
-}
+  background: #fff;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  min-height: 50px;
+  margin-bottom: 0;
+  padding-top: 11px;
+  padding-bottom: 10px; }
+
 .subnav ul {
-    margin-bottom: 0;
-}
+  margin-bottom: 0; }
+
 .subnav ul .fa {
-    padding-right: 5px;
-}
+  padding-right: 5px; }
+
 .subnav ul li .cut {
-    padding-left: 0;
-}
+  padding-left: 0; }
+
 .subnav .list-inline--right {
-    float: right;
-}
+  float: right; }
+
 .subnav .list-inline--right li {
-    float: left;
-    padding-right: 0;
-    padding-left: 10px;
-}
+  float: left;
+  padding-right: 0;
+  padding-left: 10px; }
 
 .subnav .list-inline--left .btn,
 .subnav .list-inline--left .btn:hover,
 .subnav .list-inline--left .btn:active,
 .subnav .list-inline--left .btn:focus,
 .subnav .list-inline--left .btn:active:focus {
-    background: transparent;
-    box-shadow: none;
-}
+  background: transparent;
+  box-shadow: none; }
 
 .main {
-    background: #fff;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
+  background: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px; }
 
 .footer {
-    color: #777;
-    font-size: 12px;
-    background-color: #f8f8f8;
-    border-top: 1px solid #e7e7e7;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
+  color: #777;
+  font-size: 12px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  padding-top: 15px;
+  padding-bottom: 15px; }
 
 .registration,
 .login {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
 .regular-registration form,
 .login form {
-    padding-top: 10px;
-}
+  padding-top: 10px; }
