@@ -74,6 +74,6 @@ gulp.task('refresh', function () {
   sync.reload();
 });
 
-gulp.task('default', ['build']);;
+gulp.task('default', ['connect']);;
 gulp.task('build', ['sass:build']);
 gulp.task('watch', ['connect', 'php:watch', 'sass:watch'])
