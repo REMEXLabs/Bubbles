@@ -38,7 +38,7 @@ php artisan migrate:refresh --seed
 php artisan db:seed
 ```
 
-You can use extended generetors provided by [Laravel-5-Generators-Extended](https://github.com/laracasts/Laravel-5-Generators-Extended):
+You can use extended generators provided by [Laravel-5-Generators-Extended](https://github.com/laracasts/Laravel-5-Generators-Extended):
 
 ```
 php artisan make:migration:schema <[create|add|remove]_[...]_[from|to]_[...]_table> --schema="<values>"
