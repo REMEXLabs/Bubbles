@@ -70,6 +70,7 @@ class UserController extends Controller
         if (is_null($user)) {
             return redirect()->route('users.index');
         }
+        View::share('title', $user->username);
         return view('users.show', ['user' => $user ]);
     }
 
@@ -85,6 +86,7 @@ class UserController extends Controller
         if (is_null($user)) {
             return redirect()->route('users.index');
         }
+        View::share('title', $user->username);
         return view('users.show', ['user' => $user]);
     }
 

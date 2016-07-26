@@ -88,6 +88,7 @@ class QuestController extends Controller
         if (is_null($quest)) {
             return redirect()->route('quests.index');
         }
+        View::share('title', $quest->name);
         return view(
             'quests.show',
             ['quest' => $quest]

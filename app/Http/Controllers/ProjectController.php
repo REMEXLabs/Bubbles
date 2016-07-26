@@ -85,6 +85,7 @@ class ProjectController extends Controller
         if (is_null($project)) {
             return redirect()->route('projects.index');
         }
+        View::share('title', $project->name);
         return view(
             'projects.show',
             ['project' => $project]
