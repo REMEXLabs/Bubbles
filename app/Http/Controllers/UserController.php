@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -43,11 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'username'    => 'required|alpha_num|unique:users,username|max:255',
-            'email'       => 'required|email|unique:users,email|max:255',
-            'password'    => 'required|min:6|max:255|confirmed',
-        ]);
+        $this->validate($request, User::getRegistrationValidationRules());
         $input = $request->all();
         $user = User::create([
             'username' => $input['username'],
@@ -113,13 +110,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'alpha_num|max:255',
-        ]);
-
+        $this->validate($request, User::getValidationRules());
         $input = $request->all();
         $input['email_public'] =((is_null($request->input('email_public')))?0:1);
-
         $user = User::find($id);
         $user->update($input);
         return redirect()->route('users.show', ['id' => $user->id]);
@@ -134,7 +127,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-		return redirect()->route('users.index');
+        return redirect()->route('users.index');
     }
 
     public function overview()

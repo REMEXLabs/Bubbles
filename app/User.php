@@ -20,6 +20,22 @@ class User extends Authenticatable
         'bio',
     ];
 
+    public static function getRegistrationValidationRules()
+    {
+        return array(
+            'username'    => 'required|regex:/^[A-Za-z0-9\-_]+$/|unique:users,username|min:3|max:255',
+            'email'       => 'required|email|unique:users,email|max:255',
+            'password'    => 'required|min:6|max:255|confirmed',
+        );
+    }
+
+    public static function getValidationRules()
+    {
+        return array(
+            'name' => 'regex:/^[A-Za-zÀ-ÿäöüÄÖÜá\- ]+$/i|min:3|max:255',
+        );
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -30,6 +46,8 @@ class User extends Authenticatable
         'remember_token',
         'role',
     ];
+
+    // /^[\pL\s]+$/u
 
     public function isAnAdmin()
     {
