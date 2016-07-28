@@ -40,7 +40,7 @@ var path = {
     js: 'public/assets/js'
   }
 };
-
+// var production = !!plug.util.env.production;
 
 /*
  |--------------------------------------------------------------------------
@@ -50,12 +50,15 @@ var path = {
 
 gulp.task('build:sass', function () {
   gulp.src(path.src.sass + '/**/*.scss')
+    .pipe(plug.sourcemaps.init())
     .pipe(plug.sass({
       includePaths: [
-        path.src.bower + '/bootstrap-sass/assets/stylesheets',
-        path.src.bower + '/font-awesome/scss',
-      ]
+          path.src.bower + '/bootstrap-sass/assets/stylesheets',
+          path.src.bower + '/font-awesome/scss',
+        ]
+        // ,outputStyle: production ? 'compressed' : 'expanded'
     }))
+    .pipe(plug.sourcemaps.write('./maps'))
     .pipe(gulp.dest(path.public.css));
 });
 gulp.task('watch:sass', function () {
