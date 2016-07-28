@@ -8009,8 +8009,9 @@ body {
   font-family: 'Lato';
   background: #f8f8f8; }
 
-.fa-btn {
-  margin-right: 6px; }
+.dropdown-toggle:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; }
 
 .mainnav {
   margin-bottom: 0; }
