@@ -2,11 +2,13 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
     "gulp-connect-php": "0.0.7",
     "gulp-load-plugins": "^1.2.4",
     "gulp-sass": "^2.3.2"

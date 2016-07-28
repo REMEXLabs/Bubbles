@@ -1,11 +1,16 @@
+@import "variables";
+
+@import "bootstrap";
+// @import "bootstrap/theme";
+@import "font-awesome";
+
 body {
     font-family: 'Lato';
-    background-color: #f8f8f8;
+    background: #f8f8f8;
 }
 .fa-btn {
     margin-right: 6px;
 }
-
 .mainnav {
     margin-bottom: 0;
 }
@@ -35,22 +40,19 @@ body {
     padding-right: 0;
     padding-left: 10px;
 }
-
 .subnav .list-inline--left .btn,
-.subnav .list-inline--left .btn:hover,
 .subnav .list-inline--left .btn:active,
+.subnav .list-inline--left .btn:active:focus,
 .subnav .list-inline--left .btn:focus,
-.subnav .list-inline--left .btn:active:focus {
+.subnav .list-inline--left .btn:hover {
     background: transparent;
     box-shadow: none;
 }
-
 .main {
     background: #fff;
     padding-top: 40px;
     padding-bottom: 40px;
 }
-
 .footer {
     color: #777;
     font-size: 12px;
@@ -59,13 +61,12 @@ body {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-
-.registration,
-.login {
+.login,
+.registration {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.regular-registration form,
-.login form {
+.login form,
+.regular-registration form {
     padding-top: 10px;
 }

@@ -53,8 +53,11 @@ You can use specific methods for debugging:
 
 ### Frontend
 
-You have to install [Gulp.js](http://gulpjs.com/) globally:
+You have to install [Gulp.js](http://gulpjs.com/) and [Bower](https://bower.io/) globally:
 
 ```
 npm install --global gulp-cli
+```
+```
+npm install -g bower
 ```
