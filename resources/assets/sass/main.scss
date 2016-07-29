@@ -208,46 +208,46 @@ body.section-user .mainnav a.is-user {
   padding-top: 11px;
   padding-bottom: 10px;
   border-radius: 0;
-}
 
-.subnav .list-inline--left a {
-  color: #fff;
-  color: transparentize(white, 0.25);
-}
+  .list-inline--left a {
+    color: #fff;
+    color: transparentize(white, 0.25);
+  }
 
-.subnav .list-inline--left a:hover {
-  color: #fff;
-}
+  .list-inline--left a:hover {
+    color: #fff;
+  }
 
-.subnav ul {
-  margin-bottom: 0;
-}
+  ul {
+    margin-bottom: 0;
+  }
 
-.subnav ul .fa {
-  padding-right: 5px;
-}
+  ul .fa {
+    padding-right: 5px;
+  }
 
-.subnav ul li .cut {
-  padding-left: 0;
-}
+  ul li .cut {
+    padding-left: 0;
+  }
 
-.subnav .list-inline--right {
-  float: right;
-}
+  .list-inline--right {
+    float: right;
+  }
 
-.subnav .list-inline--right li {
-  float: left;
-  padding-right: 0;
-  padding-left: 10px;
-}
+  .list-inline--right li {
+    float: left;
+    padding-right: 0;
+    padding-left: 10px;
+  }
 
-.subnav .list-inline--left .btn,
-.subnav .list-inline--left .btn:active,
-.subnav .list-inline--left .btn:active:focus,
-.subnav .list-inline--left .btn:focus,
-.subnav .list-inline--left .btn:hover {
-  background: transparent;
-  box-shadow: none;
+  .list-inline--left .btn,
+  .list-inline--left .btn:active,
+  .list-inline--left .btn:active:focus,
+  .list-inline--left .btn:focus,
+  .list-inline--left .btn:hover {
+    background: transparent;
+    box-shadow: none;
+  }
 }
 
 //

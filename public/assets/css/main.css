@@ -8118,38 +8118,30 @@ body.section-user .mainnav a.is-user {
   padding-top: 11px;
   padding-bottom: 10px;
   border-radius: 0; }
-
-.subnav .list-inline--left a {
-  color: #fff;
-  color: rgba(255, 255, 255, 0.75); }
-
-.subnav .list-inline--left a:hover {
-  color: #fff; }
-
-.subnav ul {
-  margin-bottom: 0; }
-
-.subnav ul .fa {
-  padding-right: 5px; }
-
-.subnav ul li .cut {
-  padding-left: 0; }
-
-.subnav .list-inline--right {
-  float: right; }
-
-.subnav .list-inline--right li {
-  float: left;
-  padding-right: 0;
-  padding-left: 10px; }
-
-.subnav .list-inline--left .btn,
-.subnav .list-inline--left .btn:active,
-.subnav .list-inline--left .btn:active:focus,
-.subnav .list-inline--left .btn:focus,
-.subnav .list-inline--left .btn:hover {
-  background: transparent;
-  box-shadow: none; }
+  .subnav .list-inline--left a {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.75); }
+  .subnav .list-inline--left a:hover {
+    color: #fff; }
+  .subnav ul {
+    margin-bottom: 0; }
+  .subnav ul .fa {
+    padding-right: 5px; }
+  .subnav ul li .cut {
+    padding-left: 0; }
+  .subnav .list-inline--right {
+    float: right; }
+  .subnav .list-inline--right li {
+    float: left;
+    padding-right: 0;
+    padding-left: 10px; }
+  .subnav .list-inline--left .btn,
+  .subnav .list-inline--left .btn:active,
+  .subnav .list-inline--left .btn:active:focus,
+  .subnav .list-inline--left .btn:focus,
+  .subnav .list-inline--left .btn:hover {
+    background: transparent;
+    box-shadow: none; }
 
 .header {
   background: red; }
