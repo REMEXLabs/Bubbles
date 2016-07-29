@@ -35,6 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        View::share('controller', 'sign-up');
         return view('users.create');
     }
 

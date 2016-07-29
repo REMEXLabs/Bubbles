@@ -39,7 +39,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        View::share('controller', 'auth');
+        View::share('controller', 'login');
     }
 
     /**

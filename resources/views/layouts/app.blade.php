@@ -18,7 +18,11 @@
         </style>
     @endif
 </head>
-<body id="app-layout" class="{{ $controller }}">
+@if (!empty($controller))
+  <body id="app-layout" class="section-{{ $controller }}">
+@else
+  <body id="app-layout">
+@endif
     <nav class="navbar navbar-default navbar-static-top mainnav" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -36,16 +40,16 @@
                 {{-- Left Sidebar --}}
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest())
-                        <li><a href="{{ route('quests.index') }}">Quests</a></li>
+                        <li><a href="{{ route('quests.index') }}" class="is-quest">Quests</a></li>
                     @endif
-                    <li><a href="{{ route('projects.index') }}">Projects</a></li>
-                    <li><a href="{{ route('users.index') }}">Users</a></li>
+                    <li><a href="{{ route('projects.index') }}" class="is-project">Projects</a></li>
+                    <li><a href="{{ route('users.index') }}" class="is-user">Users</a></li>
                 </ul>
                 {{-- Right Sidebar --}}
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
-                        <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
+                        <li><a href="{{ url('/login') }}" class="is-login"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
+                        <li><a href="{{ url('/register') }}" class="is-sign-up"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

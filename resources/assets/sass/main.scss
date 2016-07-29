@@ -1,76 +1,301 @@
+//
+// Imports
+// --------------------------------------------------
 @import "variables";
 @import "bootstrap"; // @import "bootstrap/theme";
-@import "font-awesome";
-// outline: 5px auto -webkit-focus-ring-color;
-// outline-offset: -2px;
+@import "font-awesome"; // outline: 5px auto -webkit-focus-ring-color;
+
 //
+// Style
+// --------------------------------------------------
+$ci-color: #0078C6;
+$ci-light: #1985CB;
+$ci-lighter: #7DB9E0;
+
+//
+// Basics
+// --------------------------------------------------
+
 body {
-    font-family: 'Lato';
-    background: #f8f8f8;
+  font-family: 'Lato';
+  background: #f8f8f8;
 }
+
 .fa-btn {
-    margin-right: 6px;
+  margin-right: 6px;
 }
-.dropdown-toggle:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-}
+
+//
+// Navigation
+// --------------------------------------------------
+
+// Main-Navigation
+// -------------------------
+
 .mainnav {
-    margin-bottom: 0;
-}
-.subnav {
+  background: $ci-color;
+  border: 0;
+  margin-bottom: 0;
+  @media (min-width: 768px) {
+    .navbar-header {
+      margin-right: 25px;
+    }
+  }
+
+  .navbar-brand {
+    line-height: 41px;
+    height: 70px;
+  }
+
+  .navbar-nav > li > a {
+    // line-height: 41px;
+  }
+  @media (min-width: 768px) {
+    .navbar-nav > li > a {
+      line-height: 41px;
+    }
+  }
+
+  a {
+    color: #fff !important;
+  }
+
+  .navbar-nav > .open > a:focus,
+  a:active:focus,
+  a:hover:focus {
+    outline: none;
+  }
+
+  a:focus {
+    outline-style: dotted;
+    outline-color: #fff;
+    outline-width: 2px;
+    outline-offset: -2px;
+  }
+
+  .nav li:hover {
+    background: $ci-light;
+  }
+
+  .nav {
+    border: 0;
+    border-top: 1px solid #1985CB;
+    padding-top: 6px;
+  }
+  @media (min-width: 768px) {
+    .nav {
+      padding-top: 0;
+      border: 0;
+    }
+  }
+
+  .nav li.dropdown:hover {
+    background: transparent;
+  }
+
+  // http://stackoverflow.com/questions/8878033/how-to-make-twitter-bootstrap-menu-dropdown-on-hover-rather-than-click
+  // ul.nav li.dropdown:hover > ul.dropdown-menu {
+  //   display: block;
+  // }
+  @media (min-width: 768px) {
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+      display: block;
+    }
+  }
+
+  .navbar-nav > .open > a,
+  .navbar-nav > .open > a:focus,
+  .navbar-nav > .open > a:hover {
+    background: $ci-color;
+  }
+
+  .dropdown-header {
+    color: #fff;
+    color: transparentize(#fff, 0.5);
+    padding: 5px 20px 4px;
+    font-weight: normal;
+  }
+
+  .nav .dropdown-header:hover {
+    background: transparent;
+  }
+
+  .dropdown-menu .divider {
+    height: 1px;
+    background-color: $ci-light;
+    margin: 5px 0;
+  }
+  @media (min-width: 768px) {
+    .dropdown-menu .divider {
+      margin: 10px 0;
+    }
+  }
+
+  .dropdown-menu > li > a {
+    min-height: 28px;
+  }
+
+  .dropdown-menu > li > a:focus,
+  .dropdown-menu > li > a:hover {
+    background: transparent;
+  }
+
+  .navbar-toggle {
+    margin-top: 19.5px;
+    padding: 9px 7px 8px;
     background: #fff;
     border: 0;
-    border-bottom: 1px solid #eee;
-    min-height: 50px;
-    margin-bottom: 0;
-    padding-top: 11px;
-    padding-bottom: 10px;
+
+    .icon-bar {
+      background: $ci-color;
+    }
+  }
+
+  .navbar-collapse {
+    border: 0;
+    border-color: $ci-light;
+    box-shadow: none;
+  }
+
+  .dropdown-toggle:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+
+  .navbar-nav > li > .dropdown-menu {
+    background: $ci-color;
+    box-shadow: none;
+    padding: 10px 0;
+    border: 0;
+    font-size: 15px;
+  }
+  @media (min-width: 768px) {
+    .navbar-nav > li > .dropdown-menu {
+      min-width: 230px;
+      font-size: 14px;
+    }
+  }
+
+  .dropdown-toggle .caret {
+    margin-left: 6px;
+  }
+
+  .dropdown-menu {
+    .fa-btn {
+      margin-right: 8px;
+    }
+  }
+
 }
+
+body.section-login .mainnav a.is-login,
+body.section-project .mainnav a.is-project,
+body.section-quest .mainnav a.is-quest,
+body.section-sign-up .mainnav a.is-sign-up,
+body.section-user .mainnav a.is-user {
+  background: $ci-light;
+}
+
+// Sub-Navigation
+// -------------------------
+
+.subnav {
+  background: $ci-light;
+  border: 0;
+  // border-bottom: 1px solid #eee;
+  min-height: 50px;
+  margin-bottom: 0;
+  padding-top: 11px;
+  padding-bottom: 10px;
+  border-radius: 0;
+}
+
+.subnav .list-inline--left a {
+  color: #fff;
+  color: transparentize(white, 0.25);
+}
+
+.subnav .list-inline--left a:hover {
+  color: #fff;
+}
+
 .subnav ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .subnav ul .fa {
-    padding-right: 5px;
+  padding-right: 5px;
 }
+
 .subnav ul li .cut {
-    padding-left: 0;
+  padding-left: 0;
 }
+
 .subnav .list-inline--right {
-    float: right;
+  float: right;
 }
+
 .subnav .list-inline--right li {
-    float: left;
-    padding-right: 0;
-    padding-left: 10px;
+  float: left;
+  padding-right: 0;
+  padding-left: 10px;
 }
+
 .subnav .list-inline--left .btn,
 .subnav .list-inline--left .btn:active,
 .subnav .list-inline--left .btn:active:focus,
 .subnav .list-inline--left .btn:focus,
 .subnav .list-inline--left .btn:hover {
-    background: transparent;
-    box-shadow: none;
+  background: transparent;
+  box-shadow: none;
 }
+
+//
+// Sections
+// --------------------------------------------------
+
+// Header-Section
+// -------------------------
+
+.header {
+  background: red;
+}
+
+// Main-Section
+// -------------------------
+
 .main {
-    background: #fff;
-    padding-top: 40px;
-    padding-bottom: 40px;
+  background: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
+
+// Footer-Section
+// -------------------------
+
 .footer {
-    color: #777;
-    font-size: 12px;
-    background-color: #f8f8f8;
-    border-top: 1px solid #e7e7e7;
-    padding-top: 15px;
-    padding-bottom: 15px;
+  color: #777;
+  font-size: 12px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
+
+//
+// Blocks
+// --------------------------------------------------
+
+// Login / Registration
+// -------------------------
+
 .login,
 .registration {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 .login form,
 .regular-registration form {
-    padding-top: 10px;
+  padding-top: 10px;
 }
