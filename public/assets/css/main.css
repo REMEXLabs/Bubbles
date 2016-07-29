@@ -8024,28 +8024,28 @@ h6 {
 
 .bb-btn-primary {
   color: white;
-  background-color: #00c6b1;
-  border-color: #00d5bf; }
+  background-color: #00bca8;
+  border-color: #00cbb6; }
   .bb-btn-primary:focus, .bb-btn-primary.focus {
     color: white;
-    background-color: #009383;
-    border-color: #00564d; }
+    background-color: #00897a;
+    border-color: #004c44; }
   .bb-btn-primary:hover {
     color: white;
-    background-color: #009383;
-    border-color: #009888; }
+    background-color: #00897a;
+    border-color: #008e7f; }
   .bb-btn-primary:active, .bb-btn-primary.active,
   .open > .bb-btn-primary.dropdown-toggle {
     color: white;
-    background-color: #009383;
-    border-color: #009888; }
+    background-color: #00897a;
+    border-color: #008e7f; }
     .bb-btn-primary:active:hover, .bb-btn-primary:active:focus, .bb-btn-primary:active.focus, .bb-btn-primary.active:hover, .bb-btn-primary.active:focus, .bb-btn-primary.active.focus,
     .open > .bb-btn-primary.dropdown-toggle:hover,
     .open > .bb-btn-primary.dropdown-toggle:focus,
     .open > .bb-btn-primary.dropdown-toggle.focus {
       color: white;
-      background-color: #006f63;
-      border-color: #00564d; }
+      background-color: #00655a;
+      border-color: #004c44; }
   .bb-btn-primary:active, .bb-btn-primary.active,
   .open > .bb-btn-primary.dropdown-toggle {
     background-image: none; }
@@ -8053,10 +8053,10 @@ h6 {
   fieldset[disabled] .bb-btn-primary:hover,
   fieldset[disabled] .bb-btn-primary:focus,
   fieldset[disabled] .bb-btn-primary.focus {
-    background-color: #00c6b1;
-    border-color: #00d5bf; }
+    background-color: #00bca8;
+    border-color: #00cbb6; }
   .bb-btn-primary .badge {
-    color: #00c6b1;
+    color: #00bca8;
     background-color: white; }
 
 .mainnav {
@@ -8201,14 +8201,20 @@ body.section-user .mainnav a.is-user {
 .section-welcome .main {
   color: white;
   background: #1985CB;
-  padding-top: 80px;
-  padding-bottom: 40px; }
+  padding-top: 100px;
+  padding-bottom: 50px; }
   .section-welcome .main h1 {
     margin-left: -2px; }
   .section-welcome .main .description {
     padding-top: 0;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
     font-size: 17px; }
+  .section-welcome .main a {
+    padding: 10px 16px;
+    font-size: 16px;
+    line-height: 1.33333;
+    border-radius: 6px;
+    font-weight: normal; }
 
 .section-welcome .aside {
   background: #fff;
