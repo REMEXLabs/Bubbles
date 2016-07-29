@@ -18,6 +18,7 @@ Route::get('register', 'UserController@create');
 
 // -> Controllers:
 Route::get('/', 'BubbleController@index');
+Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
 Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
 

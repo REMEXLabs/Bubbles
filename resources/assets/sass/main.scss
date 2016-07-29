@@ -17,12 +17,42 @@ $ci-lighter: #7DB9E0;
 // --------------------------------------------------
 
 body {
-  font-family: 'Lato';
+  // font-family: 'Lato';
+  // font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300;
   background: #f8f8f8;
+}
+
+//
+// Typography
+// --------------------------------------------------
+
+.navbar-brand,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Arvo', serif;
 }
 
 .fa-btn {
   margin-right: 6px;
+}
+
+//
+// Typography
+// --------------------------------------------------
+
+.bb-btn-primary {
+  //@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant(white, #00c6b1, lighten(#00c6b1, 3%));
+  // &:hover {
+  //   background: darken(#00c6b1, 1%);
+  //   border-color: lighten(#00c6b1, 2%);
+  // }
 }
 
 //
@@ -270,16 +300,46 @@ body.section-user .mainnav a.is-user {
   padding-bottom: 40px;
 }
 
+.section-welcome {
+  .main {
+    color: white;
+    background: $ci-light;
+    padding-top: 80px;
+    padding-bottom: 40px;
+
+    h1 {
+      margin-left: -2px;
+    }
+
+    .description {
+      padding-top: 0;
+      padding-bottom: 25px;
+      font-size: 17px;
+    }
+
+    // a {
+    //   background: darken(#00c6b1, 1%);
+    //   border-color: lighten(#00c6b1, 1%);
+    // }
+  }
+
+  .aside {
+    background: #fff;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
 // Footer-Section
 // -------------------------
 
 .footer {
   color: #777;
-  font-size: 12px;
   background-color: #f8f8f8;
   border-top: 1px solid #e7e7e7;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 14px;
 }
 
 //

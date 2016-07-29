@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use View;
 use App\User;
+use App\Quest;
+use App\project;
 use App\Bubble;
 use App\Http\Requests;
 
@@ -29,7 +31,12 @@ class BubbleController extends Controller
                 'user' => Auth::user()
             ]);
         } else {
-            return view('welcome');
+            View::share('controller', 'welcome');
+            return view('welcome', [
+              'quests' => Quest::all()->count(),
+              'projects' => Project::all()->count(),
+              'users' => User::all()->count(),
+            ]);
         }
     }
 

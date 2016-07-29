@@ -10,7 +10,8 @@
     @else
       <title>Bubbles</title>
     @endif
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/main.css" media="screen">
     @if (trim($__env->yieldContent('css')))
         <style media="screen">
@@ -78,7 +79,14 @@
     @yield('content')
 
     <footer class="footer">
-        <div class="container">© Stuttgart Media University, 2016</div>
+      <div class="container">
+        <p>
+          Built by the Stuttgart Media University
+        </p>
+        <p>
+          <a href="{{ route('imprint') }}">Imprint</a>
+        </p>
+      </div>
     </footer>
     <script src="/assets/js/jquery.min.js" charset="utf-8"></script>
     <script src="/assets/js/bootstrap.min.js" charset="utf-8"></script>

@@ -8006,11 +8006,58 @@ button.close {
   clip: auto; }
 
 body {
-  font-family: 'Lato';
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300;
   background: #f8f8f8; }
+
+.navbar-brand,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Arvo', serif; }
 
 .fa-btn {
   margin-right: 6px; }
+
+.bb-btn-primary {
+  color: white;
+  background-color: #00c6b1;
+  border-color: #00d5bf; }
+  .bb-btn-primary:focus, .bb-btn-primary.focus {
+    color: white;
+    background-color: #009383;
+    border-color: #00564d; }
+  .bb-btn-primary:hover {
+    color: white;
+    background-color: #009383;
+    border-color: #009888; }
+  .bb-btn-primary:active, .bb-btn-primary.active,
+  .open > .bb-btn-primary.dropdown-toggle {
+    color: white;
+    background-color: #009383;
+    border-color: #009888; }
+    .bb-btn-primary:active:hover, .bb-btn-primary:active:focus, .bb-btn-primary:active.focus, .bb-btn-primary.active:hover, .bb-btn-primary.active:focus, .bb-btn-primary.active.focus,
+    .open > .bb-btn-primary.dropdown-toggle:hover,
+    .open > .bb-btn-primary.dropdown-toggle:focus,
+    .open > .bb-btn-primary.dropdown-toggle.focus {
+      color: white;
+      background-color: #006f63;
+      border-color: #00564d; }
+  .bb-btn-primary:active, .bb-btn-primary.active,
+  .open > .bb-btn-primary.dropdown-toggle {
+    background-image: none; }
+  .bb-btn-primary.disabled:hover, .bb-btn-primary.disabled:focus, .bb-btn-primary.disabled.focus, .bb-btn-primary[disabled]:hover, .bb-btn-primary[disabled]:focus, .bb-btn-primary[disabled].focus,
+  fieldset[disabled] .bb-btn-primary:hover,
+  fieldset[disabled] .bb-btn-primary:focus,
+  fieldset[disabled] .bb-btn-primary.focus {
+    background-color: #00c6b1;
+    border-color: #00d5bf; }
+  .bb-btn-primary .badge {
+    color: #00c6b1;
+    background-color: white; }
 
 .mainnav {
   background: #0078C6;
@@ -8151,13 +8198,30 @@ body.section-user .mainnav a.is-user {
   padding-top: 40px;
   padding-bottom: 40px; }
 
+.section-welcome .main {
+  color: white;
+  background: #1985CB;
+  padding-top: 80px;
+  padding-bottom: 40px; }
+  .section-welcome .main h1 {
+    margin-left: -2px; }
+  .section-welcome .main .description {
+    padding-top: 0;
+    padding-bottom: 25px;
+    font-size: 17px; }
+
+.section-welcome .aside {
+  background: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px; }
+
 .footer {
   color: #777;
-  font-size: 12px;
   background-color: #f8f8f8;
   border-top: 1px solid #e7e7e7;
-  padding-top: 15px;
-  padding-bottom: 15px; }
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 14px; }
 
 .login,
 .registration {
