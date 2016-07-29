@@ -49,8 +49,7 @@ var path = {
  */
 
 gulp.task('build:sass', function () {
-  gulp.src(path.src.sass + '/**/*.scss')
-    .pipe(plug.sourcemaps.init())
+  return gulp.src(path.src.sass + '/**/*.scss')
     .pipe(plug.sass({
       includePaths: [
           path.src.bower + '/bootstrap-sass/assets/stylesheets',
@@ -58,18 +57,57 @@ gulp.task('build:sass', function () {
         ]
         // ,outputStyle: production ? 'compressed' : 'expanded'
     }))
-    .pipe(plug.sourcemaps.write('./maps'))
+    .pipe(plug.rename({
+      suffix: ".built"
+    }))
     .pipe(gulp.dest(path.public.css));
 });
 gulp.task('watch:sass', function () {
-  gulp.watch([
+  return gulp.watch([
     path.src.sass + '/**/*.scss'
-  ], [
-    'build:sass',
-    'refresh'
-  ]);
+  ], ['build:sass', 'run:autoprefixer', 'rename']);
+});
+gulp.task('watch:css', function () {
+  return gulp.watch([
+    path.public.css + '/main.css'
+  ], ['refresh']);
 });
 
+gulp.task('rename:css', ['run:autoprefixer'], function () {
+  return gulp.src(path.public.css + '/main.built.prefixed.css')
+    .pipe(plug.rename('main.css'))
+    .pipe(gulp.dest(path.public.css));
+});
+// gulp.task('rename:map', ['run:autoprefixer'], function () {
+//   return gulp.src(path.public.css + '/maps/main.built.prefixed.css.map')
+//     .pipe(plug.rename('main.css.map'))
+//     .pipe(gulp.dest(path.public.css + '/maps'));
+// });
+gulp.task('rename', ['rename:css']);
+// gulp.task('rename', ['rename:css', 'rename:map']);
+
+gulp.task('run:autoprefixer', ['build:sass'], function () {
+  return gulp.src(path.public.css + '/main.built.css')
+    // .pipe(plug.sourcemaps.init())
+    .pipe(plug.autoprefixer({
+      browsers: [
+        "Android 2.3",
+        "Android >= 4",
+        "Chrome >= 20",
+        "Firefox >= 24",
+        "Explorer >= 8",
+        "iOS >= 6",
+        "Opera >= 12",
+        "Safari >= 6"
+      ],
+      cascade: false
+    }))
+    .pipe(plug.rename({
+      suffix: ".prefixed"
+    }))
+    // .pipe(plug.sourcemaps.write('./maps'))
+    .pipe(gulp.dest(path.public.css));
+});
 
 /*
  |--------------------------------------------------------------------------
@@ -141,6 +179,6 @@ gulp.task('refresh', function () {
  |--------------------------------------------------------------------------
  */
 
-gulp.task('default', ['connect']);;
-gulp.task('build', ['copy:js:jquery', 'copy:js:bootstrap', 'copy:fonts', 'copy:icons', 'build:sass']);
-gulp.task('watch', ['connect', 'watch:php', 'watch:sass'])
+gulp.task('default', ['connect']);
+gulp.task('build', ['copy:js:jquery', 'copy:js:bootstrap', 'copy:fonts', 'copy:icons', 'build:sass', 'run:autoprefixer', 'rename']);
+gulp.task('watch', ['connect', 'watch:php', 'watch:sass', 'watch:css'])
