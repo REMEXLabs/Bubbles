@@ -46,14 +46,14 @@ h6 {
 // Typography
 // --------------------------------------------------
 
-.bb-btn-primary {
-  //@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  @include button-variant(#fff, darken(#00c6b1, 2%), lighten(#00c6b1, 1%));
-  // &:hover {
-  //   background: darken(#00c6b1, 1%);
-  //   border-color: lighten(#00c6b1, 2%);
-  // }
-}
+// .bb-btn-primary {
+//   //@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+//   @include button-variant(#fff, darken(#00c6b1, 2%), lighten(#00c6b1, 1%));
+//   // &:hover {
+//   //   background: darken(#00c6b1, 1%);
+//   //   border-color: lighten(#00c6b1, 2%);
+//   // }
+// }
 
 .btn-default {
   @include button-variant(black, white, darken(white, 20%));

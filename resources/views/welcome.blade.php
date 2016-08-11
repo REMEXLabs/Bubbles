@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <h1>Welcome to Bubbles</h1>
                 <p class="description">This is the HdM Bubbles project, a community to get developers connected.</p>
-                <p><a href="{{ route('users.create')}}" class="btn bb-btn-primary">Join the community!</a></p>
+                <p><a href="{{ route('users.create')}}" class="btn btn-success">Join the community!</a></p>
             </div>
         </div>
     </div>
