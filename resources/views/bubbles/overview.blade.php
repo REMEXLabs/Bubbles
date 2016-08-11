@@ -29,6 +29,66 @@
 <main class="main" role="main">
     <div class="container">
         <div class="row">
+            <div class="col-md-6">
+                <div class="bubble">
+                    <header>
+                        <h2>{{ $user->username }}</h2>
+                        <dl>
+                          <dt>Name</dt>
+                          <dd>{{ $user->name }}</dd>
+                        </dl>
+                    </header>
+                </div>
+            </div>
+            @foreach ($user->bubbles as $bubble)
+                @if($bubble->type == 'project')
+                    <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
+                @else
+                    <a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}">
+                @endif
+                    <div class="col-md-6">
+                        <div class="bubble">
+                            @if($bubble->type == 'project')
+                                <header>
+                                    <h2>{{ $bubble->project()->name }}</h2>
+                                    <div class="type">
+                                        <i class="fa fa-code" aria-hidden="true"></i> Project
+                                    </div>
+                                </header>
+                                <dl>
+                                    <dt>Description</dt>
+                                    <dd>{{ $bubble->project()->description }}</dd>
+                                </dl>
+                            @endif
+                            @if($bubble->type == 'quest')
+                                <header>
+                                    <h2>{{ $bubble->quest()->name }}</h2>
+                                    <div class="type">
+                                        <i class="fa fa-bolt" aria-hidden="true"></i> Quest
+                                    </div>
+                                </header>
+                                <main>
+                                    <dl>
+                                        <dt>Description</dt>
+                                        <dd>{{ $bubble->quest()->description }}</dd>
+                                        <dt>State</dt>
+                                        <dd class="state--{{ $bubble->quest()->state }}">{{ ucfirst($bubble->quest()->state) }}</dd>
+                                    </dl>
+                                </main>
+                            @endif
+                            <footer>
+                              <dl>
+                                  <dt>Order</dt>
+                                  <dd>#{{ $bubble->order }}, {{ date_format($bubble->created_at, 'd.m.Y') }}</dd>
+                              </dl>
+                            </footer>
+                        </div>
+                    </div>
+            </a>
+            @endforeach
+        </div>
+
+        {{-- <div class="row">
             <div class="col-md-12">
                 <h3>{{ $user->username }}</h3>
                 <hr>
@@ -59,7 +119,8 @@
                     </table>
                 @endif
             </div>
-        </div>
+        </div> --}}
+
     </div>
 </main>
 @endsection
