@@ -45,7 +45,7 @@
                 {!! Form::close() !!}
                 {{-- <a href="{{ route('resources.show', ['id' => $resource->id]) }}">Back to user profile</a> or <a href="{{ route('resources.index') }}">back to list</a> --}}
                 {!! Form::open(array('method' => 'DELETE', 'route' => array('resources.destroy', $resource->id), 'style' => 'margin-top: 20px; display: inline; float: right;')) !!}
-                    {{ Form::submit('Delete quest', array('class' => 'btn btn-danger btn-sm')) }}
+                    {{ Form::submit('Delete resource', array('class' => 'btn btn-danger btn-sm')) }}
                 {!! Form::close() !!}
             </div>
         </div>
