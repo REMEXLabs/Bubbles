@@ -7,7 +7,7 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $project->user_id)
                         <li>
-                            <a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-primary btn-sm">Update project</a>
+                            <a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-default btn-sm">Update project</a>
                         </li>
                     @endif
                     <li>

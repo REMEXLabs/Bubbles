@@ -48,11 +48,50 @@ h6 {
 
 .bb-btn-primary {
   //@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  @include button-variant(white, darken(#00c6b1, 2%), lighten(#00c6b1, 1%));
+  @include button-variant(#fff, darken(#00c6b1, 2%), lighten(#00c6b1, 1%));
   // &:hover {
   //   background: darken(#00c6b1, 1%);
   //   border-color: lighten(#00c6b1, 2%);
   // }
+}
+
+.btn-default {
+  @include button-variant(black, white, darken(white, 20%));
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: darken(white, 3%);
+    border-color: darken(white, 20%);
+  }
+}
+
+.btn-success {
+  @include button-variant(white, #00c6b1, #00c6b1);
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten(#00c6b1, 1%);
+    border-color: lighten(#00c6b1, 2%);
+  }
+}
+
+.btn-primary {
+  @include button-variant(#fff, darken($ci-color, 1%), lighten($ci-color, 1%));
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten($ci-color, 1%);
+    border-color: lighten($ci-color, 2%);
+  }
 }
 
 //
@@ -278,6 +317,20 @@ body.section-user .mainnav a.is-user {
     background: transparent;
     box-shadow: none;
   }
+
+  .btn-default {
+    @include button-variant(black, darken(white, 5%), darken(white, 5%));
+
+    &:active,
+    &:active:focus,
+    &:active:hover,
+    &:focus,
+    &:hover {
+      background: darken(white, 5%);
+      border-color: darken(white, 3%);
+    }
+  }
+
 }
 
 //

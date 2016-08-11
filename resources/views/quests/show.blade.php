@@ -7,7 +7,7 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $quest->author_id)
                         <li>
-                            <a href="{{ route('quests.edit', ['id' => $quest->id]) }}" class="btn btn-primary btn-sm">Update quest</a>
+                            <a href="{{ route('quests.edit', ['id' => $quest->id]) }}" class="btn btn-default btn-sm">Update quest</a>
                         </li>
                     @endif
                     <li>

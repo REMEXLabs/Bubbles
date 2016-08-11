@@ -7,7 +7,7 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $resource->author_id)
                         <li>
-                            <a href="{{ route('resources.edit', ['id' => $resource->id]) }}" class="btn btn-primary btn-sm">Update resource</a>
+                            <a href="{{ route('resources.edit', ['id' => $resource->id]) }}" class="btn btn-default btn-sm">Update resource</a>
                         </li>
                     @endif
                     <li>

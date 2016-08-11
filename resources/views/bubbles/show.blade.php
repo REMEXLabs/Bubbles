@@ -7,7 +7,7 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $bubble->user_id)
                         <li>
-                            <a href="{{ route('bubbles.edit', ['id' => $bubble->id]) }}" class="btn btn-primary btn-sm">Update bubble</a>
+                            <a href="{{ route('bubbles.edit', ['id' => $bubble->id]) }}" class="btn btn-default btn-sm">Update bubble</a>
                         </li>
                     @endif
                     <li>
