@@ -40,9 +40,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 {{-- Left Sidebar --}}
                 <ul class="nav navbar-nav">
-                    @if (!Auth::guest())
-                        <li><a href="{{ route('quests.index') }}" class="is-quest">Quests</a></li>
-                    @endif
+                    <li><a href="{{ route('quests.index') }}" class="is-quest">Quests</a></li>
                     <li><a href="{{ route('projects.index') }}" class="is-project">Projects</a></li>
                     <li><a href="{{ route('users.index') }}" class="is-user">Users</a></li>
                 </ul>

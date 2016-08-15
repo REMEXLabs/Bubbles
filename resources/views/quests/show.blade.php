@@ -46,9 +46,11 @@
                 <p>
                 @if ($quest->state == 'open')
                     <i>The quest is open.</i>
-                    @if (Auth::user()->id != $quest->author_id)
-                        {{-- TODO: Add link to get the quest. --}}
-                        <strong>Take it now!</strong>
+                    @if (Auth::check())
+                        @if (Auth::user()->id != $quest->author_id)
+                            {{-- TODO: Add link to get the quest. --}}
+                            <strong>Take it now!</strong>
+                        @endif
                     @endif
                 @elseif ($quest->state == 'wip')
                     The quest is running.
@@ -61,8 +63,6 @@
                     @endif
                 @endif
                 </p>
-
-
             </div>
         </div>
     </div>

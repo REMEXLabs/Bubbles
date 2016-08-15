@@ -19,12 +19,13 @@ Route::get('register', 'UserController@create');
 // -> Controllers:
 Route::get('/', 'BubbleController@index');
 Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
-Route::resource('users', 'UserController');
+
+Route::resource('quests', 'QuestController');
 Route::resource('projects', 'ProjectController');
+Route::resource('users', 'UserController');
 
 // Private:
 Route::resource('bubbles', 'BubbleController');
-Route::resource('quests', 'QuestController');
 Route::resource('resources', 'ResourceController');
 
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
