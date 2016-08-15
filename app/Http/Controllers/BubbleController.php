@@ -32,10 +32,55 @@ class BubbleController extends Controller
             ]);
         } else {
             View::share('controller', 'welcome');
+
+            $numQuests = Quest::all()->count();
+            $numProjects = Project::all()->count();
+            $numUsers = User::all()->count();
+
+            $nAll = $numQuests + $numProjects + $numUsers;
+
+            // CSS: width and height:
+            $start = 100;
+            $stop = 300;
+            $cssRadQuests = Bubble::map($numQuests, 0, $nAll, $start, $stop);
+            $cssRadProjects = Bubble::map($numProjects, 0, $nAll, $start, $stop);
+            $cssRadUsers = Bubble::map($numUsers, 0, $nAll, $start, $stop);
+
+            $maxRad = max([$cssRadQuests, $cssRadProjects, $cssRadUsers]);
+            $cssMarQuests = ($maxRad - $cssRadQuests);
+            $cssMarProjects = ($maxRad - $cssRadProjects);
+            $cssMarUsers = ($maxRad - $cssRadUsers);
+
+            // CSS: opacity:
+            $start = 0.2;
+            $stop = 0.6;
+            $cssOpaQuests = Bubble::map($numQuests, 0, $nAll, $start, $stop);
+            $cssOpaProjects = Bubble::map($numProjects, 0, $nAll, $start, $stop);
+            $cssOpaUsers = Bubble::map($numUsers, 0, $nAll, $start, $stop);
+
+            // CSS: font-size:
+            $start = 15;
+            $stop = 27;
+            $cssFntQuests = Bubble::map($numQuests, 0, $nAll, $start, $stop);
+            $cssFntProjects = Bubble::map($numProjects, 0, $nAll, $start, $stop);
+            $cssFntUsers = Bubble::map($numUsers, 0, $nAll, $start, $stop);
+
             return view('welcome', [
-              'quests' => Quest::all()->count(),
-              'projects' => Project::all()->count(),
-              'users' => User::all()->count(),
+            'numQuests'     => $numQuests,
+            'numProjects'   => $numProjects,
+            'numUsers'      => $numUsers,
+            'cssRadQuests'  => $cssRadQuests,
+            'cssRadProjects' => $cssRadProjects,
+            'cssRadUsers'   => $cssRadUsers,
+            'cssOpaQuests'  => $cssOpaQuests,
+            'cssOpaProjects' => $cssOpaProjects,
+            'cssOpaUsers'   => $cssOpaUsers,
+            'cssFntQuests'  => $cssFntQuests,
+            'cssFntProjects' => $cssFntProjects,
+            'cssFntUsers'   => $cssFntUsers,
+            'cssMarQuests'  => $cssMarQuests,
+            'cssMarProjects' => $cssMarProjects,
+            'cssMarUsers'   => $cssMarUsers,
             ]);
         }
     }

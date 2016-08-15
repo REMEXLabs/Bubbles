@@ -8340,8 +8340,21 @@ body.section-user .mainnav a.is-user {
 
 .section-welcome .aside {
   background: #fff;
-  padding-top: 40px;
-  padding-bottom: 40px; }
+  padding-top: 60px;
+  padding-bottom: 60px; }
+
+.section-welcome .bubble {
+  min-height: 120px;
+  min-line-height: 120px;
+  min-width: 120px;
+  margin: 0 auto;
+  border-radius: 100%;
+  text-align: center;
+  border: 1px dashed #9b9b9b;
+  font-weight: bold; }
+  @media (max-width: 992px) {
+    .section-welcome .bubble {
+      margin-top: 5% !important; } }
 
 .section-bubble .bubble {
   color: black;

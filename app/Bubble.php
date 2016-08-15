@@ -51,4 +51,9 @@ class Bubble extends Model
     {
         return $this->belongsTo('App\Quest')->get()->first();
     }
+
+    public static function map($val, $iStart, $iStop, $oStart, $oStop)
+    {
+        return $oStart + ($oStop - $oStart) * (($val - $iStart) / ($iStop - $iStart));
+    }
 }
