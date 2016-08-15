@@ -19,6 +19,7 @@ Route::get('register', 'UserController@create');
 // -> Controllers:
 Route::get('/', 'BubbleController@index');
 Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
+Route::get('terms', ['as' => 'terms', 'uses' => 'BubbleController@index']);
 
 Route::resource('quests', 'QuestController');
 Route::resource('projects', 'ProjectController');

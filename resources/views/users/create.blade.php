@@ -4,7 +4,7 @@
 <main class="main" role="main">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-3">
                 <div class="registration social-registration">
                     <h3>Social connect</h3>
                     <p>
@@ -49,8 +49,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="container col-md-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        {{ Form::checkbox('terms', 0) }} Yes, I accept the <a href="{{ route('terms') }}">terms and conditions</a>.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-md-offset-3 col-md-9">
-                                {{ Form::submit('Sign up', array('class' => 'btn btn-block btn-success')) }}
+                                {{ Form::submit('Sign up', array('class' => 'btn btn-block btn-primary')) }}
                             </div>
                         </div>
                         {{-- {{ Form::token() }} --}}

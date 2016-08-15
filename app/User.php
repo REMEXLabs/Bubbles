@@ -26,6 +26,7 @@ class User extends Authenticatable
             'username'    => 'required|regex:/^[A-Za-z0-9\-_]+$/|unique:users,username|min:3|max:255',
             'email'       => 'required|email|unique:users,email|max:255',
             'password'    => 'required|min:6|max:255|confirmed',
+            'terms'       => 'required'
         );
     }
 
