@@ -96,6 +96,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the created quests by the user.
+     */
+    public function quests()
+    {
+        return $this->hasMany('App\Quest', 'author_id');
+    }
+
+    /**
      * Get the created resources by the user.
      */
     public function resources()
