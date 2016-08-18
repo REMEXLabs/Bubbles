@@ -118,6 +118,7 @@ class UserController extends Controller
         $this->validate($request, User::getValidationRules());
         $input = $request->all();
         $input['email_public'] =((is_null($request->input('email_public')))?0:1);
+        $input['quests_public'] =((is_null($request->input('quests_public')))?0:1);
         $user = User::find($id);
         $user->update($input);
         return redirect()->route('users.show', ['id' => $user->id]);

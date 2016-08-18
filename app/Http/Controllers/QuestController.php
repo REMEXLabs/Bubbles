@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use View;
+use DB;
 use App\User;
 use App\Quest;
 use App\Http\Requests;
@@ -18,23 +19,31 @@ class QuestController extends Controller
         View::share('controller', 'quest');
     }
 
-      /**
-       * Display a listing of the resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
+        $quests = null;
+        if (Auth::check()) {
+            $quests = Quest::orderBy('id', 'DESC')->get();
+        } else {
+            $quests = Quest::orderBy('id', 'DESC')->get()->filter(function ($item) {
+                return $item->author()->quests_public == 1;
+            })->values();
+        }
         return view('quests.index', [
-        'quests' => Quest::orderBy('id', 'DESC')->get()
+            'quests' => $quests
         ]);
     }
 
-      /**
-       * Display a listing of the personal resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Display a listing of the personal resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function overview()
     {
         return view('quests.overview', [
@@ -44,22 +53,22 @@ class QuestController extends Controller
         ]);
     }
 
-      /**
-       * Show the form for creating a new resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('quests.create');
     }
 
-      /**
-       * Store a newly created resource in storage.
-       *
-       * @param  \Illuminate\Http\Request  $request
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $this->validate($request, Quest::getValidationRules());
@@ -76,12 +85,12 @@ class QuestController extends Controller
         return redirect()->route('quests.show', ['id' => $quest->id]);
     }
 
-      /**
-       * Display the specified resource.
-       *
-       * @param  int  $id
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $quest = Quest::find($id);
@@ -95,12 +104,12 @@ class QuestController extends Controller
         );
     }
 
-      /**
-       * Show the form for editing the specified resource.
-       *
-       * @param  int  $id
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         $quest = Quest::find($id);
@@ -110,13 +119,13 @@ class QuestController extends Controller
         return view('quests.edit', ['quest' => $quest ]);
     }
 
-      /**
-       * Update the specified resource in storage.
-       *
-       * @param  \Illuminate\Http\Request  $request
-       * @param  int  $id
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $quest = Quest::find($id);
@@ -131,12 +140,12 @@ class QuestController extends Controller
         );
     }
 
-      /**
-       * Remove the specified resource from storage.
-       *
-       * @param  int  $id
-       * @return \Illuminate\Http\Response
-       */
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $quest = Quest::find($id);

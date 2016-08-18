@@ -32,7 +32,16 @@
                         <div class="container col-md-offset-2">
                             <div class="checkbox">
                                 <label>
-                                    {{ Form::checkbox('email_public', 1, $user->email_public) }} Make your e-mail (<i>{{$user->email}}</i>) public?
+                                    {{ Form::checkbox('quests_public', 1, $user->quests_public) }} Make my created quests public.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="container col-md-offset-2">
+                            <div class="checkbox">
+                                <label>
+                                    {{ Form::checkbox('email_public', 1, $user->email_public) }} Make my private e-mail (<i>{{$user->email}}</i>) public?
                                 </label>
                             </div>
                         </div>

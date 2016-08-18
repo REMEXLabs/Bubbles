@@ -15,6 +15,7 @@ class User extends Authenticatable
         'username',
         'email',
         'email_public',
+        'quests_public',
         'password',
         'name',
         'bio',
