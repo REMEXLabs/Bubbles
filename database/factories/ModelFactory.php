@@ -32,6 +32,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'bio'       => $faker->sentence($nbWords = 20, $variableNbWords = true),
         'password'  => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+        'points'    => $faker->numberBetween($min = 0, $max = 200),
     ];
 });
 

@@ -24,13 +24,25 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Username</th>
+                                <th width="10%">Ranking</th>
+                                <th width="50%">Username</th>
+                                <th width="20%">Resolved Quests</th>
+                                <th width="20%">Points</th>
                             </tr>
                         </thead>
-                        @foreach ($users as $user)
+                        @foreach ($users as $key => $user)
                         <tr>
                             <td>
+                                {{ ++$key }}
+                            </td>
+                            <td>
                                 <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
+                            </td>
+                            <td>
+                                {{ $user->points }}
+                            </td>
+                            <td>
+                              {{ count($user->resolvedQuests) }}
                             </td>
                         </tr>
                         @endforeach
