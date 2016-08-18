@@ -30,7 +30,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h3>{{ count($quests) }} quests</h3>
+            @if(Auth::check())
+              <h3>{{ count($quests) }} quests</h3>
+            @else
+              <h3>{{ count($quests) }} public quests</h3>
+            @endif
             @if(count($quests))
                 <table class="table">
                     <thead>

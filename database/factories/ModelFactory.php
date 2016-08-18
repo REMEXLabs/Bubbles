@@ -28,6 +28,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'username'  => $faker->username,
         'email'     => $faker->safeEmail,
         'email_public' => $faker->boolean($chanceOfGettingTrue = 50),
+        'quests_public' => $faker->boolean($chanceOfGettingTrue = 50),
         'name'      => $faker->firstName($gender = 'male'|'female') . ' ' . $faker->lastName,
         'bio'       => $faker->sentence($nbWords = 20, $variableNbWords = true),
         'password'  => bcrypt(str_random(10)),
