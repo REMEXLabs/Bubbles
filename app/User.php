@@ -19,6 +19,7 @@ class User extends Authenticatable
         'password',
         'name',
         'bio',
+        'theme',
     ];
 
     public static function getRegistrationValidationRules()

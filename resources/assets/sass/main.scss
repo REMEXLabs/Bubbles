@@ -10,7 +10,7 @@
 // --------------------------------------------------
 $ci-color: #0078C6;
 $ci-light: #1985CB;
-$ci-lighter: #7DB9E0;
+$ci-success: #00c6b1;
 
 //
 // Basics
@@ -43,58 +43,6 @@ h6 {
 }
 
 //
-// Typography
-// --------------------------------------------------
-
-// .bb-btn-primary {
-//   //@include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-//   @include button-variant(#fff, darken(#00c6b1, 2%), lighten(#00c6b1, 1%));
-//   // &:hover {
-//   //   background: darken(#00c6b1, 1%);
-//   //   border-color: lighten(#00c6b1, 2%);
-//   // }
-// }
-
-.btn-default {
-  @include button-variant(black, white, darken(white, 20%));
-
-  &:active,
-  &:active:focus,
-  &:active:hover,
-  &:focus,
-  &:hover {
-    background: darken(white, 3%);
-    border-color: darken(white, 20%);
-  }
-}
-
-.btn-success {
-  @include button-variant(white, #00c6b1, #00c6b1);
-
-  &:active,
-  &:active:focus,
-  &:active:hover,
-  &:focus,
-  &:hover {
-    background: lighten(#00c6b1, 1%);
-    border-color: lighten(#00c6b1, 2%);
-  }
-}
-
-.btn-primary {
-  @include button-variant(#fff, darken($ci-color, 1%), lighten($ci-color, 1%));
-
-  &:active,
-  &:active:focus,
-  &:active:hover,
-  &:focus,
-  &:hover {
-    background: lighten($ci-color, 1%);
-    border-color: lighten($ci-color, 2%);
-  }
-}
-
-//
 // Navigation
 // --------------------------------------------------
 
@@ -102,7 +50,6 @@ h6 {
 // -------------------------
 
 .mainnav {
-  background: $ci-color;
   border: 0;
   margin-bottom: 0;
   @media (min-width: $screen-sm) {
@@ -142,13 +89,13 @@ h6 {
     outline-offset: -2px;
   }
 
-  .nav li:hover {
-    background: $ci-light;
-  }
+  // .nav li:hover {
+  //   background: $ci-light;
+  // }
 
   .nav {
     border: 0;
-    border-top: 1px solid #1985CB;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 6px;
   }
   @media (min-width: $screen-sm) {
@@ -172,11 +119,11 @@ h6 {
     }
   }
 
-  .navbar-nav > .open > a,
-  .navbar-nav > .open > a:focus,
-  .navbar-nav > .open > a:hover {
-    background: $ci-color;
-  }
+  // .navbar-nav > .open > a,
+  // .navbar-nav > .open > a:focus,
+  // .navbar-nav > .open > a:hover {
+  //   background: $ci-color;
+  // }
 
   .dropdown-header {
     color: #fff;
@@ -191,7 +138,7 @@ h6 {
 
   .dropdown-menu .divider {
     height: 1px;
-    background-color: $ci-light;
+    // background-color: $ci-light;
     margin: 5px 0;
   }
   @media (min-width: $screen-sm) {
@@ -215,14 +162,14 @@ h6 {
     background: #fff;
     border: 0;
 
-    .icon-bar {
-      background: $ci-color;
-    }
+    // .icon-bar {
+    //   background: $ci-color;
+    // }
   }
 
   .navbar-collapse {
     border: 0;
-    border-color: $ci-light;
+    // border-color: $ci-light;
     box-shadow: none;
   }
 
@@ -232,7 +179,7 @@ h6 {
   }
 
   .navbar-nav > li > .dropdown-menu {
-    background: $ci-color;
+    // background: $ci-color;
     box-shadow: none;
     padding: 10px 0;
     border: 0;
@@ -257,19 +204,19 @@ h6 {
 
 }
 
-body.section-login .mainnav a.is-login,
-body.section-project .mainnav a.is-project,
-body.section-quest .mainnav a.is-quest,
-body.section-sign-up .mainnav a.is-sign-up,
-body.section-user .mainnav a.is-user {
-  background: $ci-light;
-}
+// body.section-login .mainnav a.is-login,
+// body.section-project .mainnav a.is-project,
+// body.section-quest .mainnav a.is-quest,
+// body.section-sign-up .mainnav a.is-sign-up,
+// body.section-user .mainnav a.is-user {
+//   background: $ci-light;
+// }
 
 // Sub-Navigation
 // -------------------------
 
 .subnav {
-  background: $ci-light;
+  // background: $ci-light;
   border: 0;
   // border-bottom: 1px solid #eee;
   min-height: 50px;
@@ -460,7 +407,7 @@ body.section-user .mainnav a.is-user {
 
     .state--open {
       font-weight: bold;
-      color: #00c6b1;
+      color: $ci-success;
     }
 
     footer {
@@ -505,4 +452,70 @@ body.section-user .mainnav a.is-user {
 .login form,
 .regular-registration form {
   padding-top: 10px;
+}
+
+//
+// Theming
+// --------------------------------------------------
+
+// Blue
+// -------------------------
+
+.btn-success {
+  @include button-variant(white, $ci-success, $ci-success);
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten($ci-success, 1%);
+    border-color: lighten($ci-success, 2%);
+  }
+}
+
+.btn-primary {
+  @include button-variant(#fff, darken($ci-color, 1%), lighten($ci-color, 1%));
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten($ci-color, 1%);
+    border-color: lighten($ci-color, 2%);
+  }
+}
+
+.mainnav {
+  background: $ci-color;
+
+  .dropdown-menu .divider,
+  .nav li:hover {
+    background: $ci-light;
+  }
+
+  .navbar-nav > .open > a,
+  .navbar-nav > .open > a:focus,
+  .navbar-nav > .open > a:hover,
+  .navbar-nav > li > .dropdown-menu,
+  .navbar-toggle .icon-bar {
+    background: $ci-color;
+  }
+
+  .navbar-collapse {
+    border-color: $ci-light;
+  }
+}
+
+body.section-login .mainnav a.is-login,
+body.section-project .mainnav a.is-project,
+body.section-quest .mainnav a.is-quest,
+body.section-sign-up .mainnav a.is-sign-up,
+body.section-user .mainnav a.is-user {
+  background: $ci-light;
+}
+
+.subnav {
+  background: $ci-light;
 }

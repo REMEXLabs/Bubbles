@@ -78,12 +78,19 @@ gulp.task('rename:css', ['run:autoprefixer'], function () {
     .pipe(plug.rename('main.css'))
     .pipe(gulp.dest(path.public.css));
 });
+
+gulp.task('rename:theme:css', ['run:autoprefixer'], function () {
+  return gulp.src(path.public.css + '/theme_gray.built.css')
+    .pipe(plug.rename('theme_gray.css'))
+    .pipe(gulp.dest(path.public.css));
+});
+
 // gulp.task('rename:map', ['run:autoprefixer'], function () {
 //   return gulp.src(path.public.css + '/maps/main.built.prefixed.css.map')
 //     .pipe(plug.rename('main.css.map'))
 //     .pipe(gulp.dest(path.public.css + '/maps'));
 // });
-gulp.task('rename', ['rename:css']);
+gulp.task('rename', ['rename:css', 'rename:theme:css']);
 // gulp.task('rename', ['rename:css', 'rename:map']);
 
 gulp.task('run:autoprefixer', ['build:sass'], function () {

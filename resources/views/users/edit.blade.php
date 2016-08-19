@@ -28,6 +28,15 @@
                             {{ Form::textarea('bio', $user->bio, array('class'=>'form-control', 'placeholder'=>'Bio')) }}
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        {{ Form::label('theme', 'Theme:', ['class'=>'col-md-2 control-label']) }}
+                        <div class="col-md-10">
+                            {{ Form::select('theme', array('blue' => 'Blue', 'gray' => 'Gray'), $user->theme, ['class' =>
+                            'form-control']) }}
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="container col-md-offset-2">
                             <div class="checkbox">
