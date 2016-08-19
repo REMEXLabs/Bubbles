@@ -27,6 +27,26 @@ class UsersTableSeeder extends Seeder
                 'updated_at'  => new DateTime,
                 'role'        => 'admin',
             ),
+            array(
+                'username'    => 'darius',
+                'email'       => 'darius@hdm-stuttgart.de',
+                'password'    => Hash::make('pw'),
+                // 'confirmed'   => 1,
+                // 'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at'  => new DateTime,
+                'updated_at'  => new DateTime,
+                'role'        => 'admin',
+            ),
+            array(
+                'username'    => 'anna',
+                'email'       => 'anna@hdm-stuttgart.de',
+                'password'    => Hash::make('pw'),
+                // 'confirmed'   => 1,
+                // 'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at'  => new DateTime,
+                'updated_at'  => new DateTime,
+                'role'        => 'admin',
+            ),
         );
         DB::table('users')->insert($users);
 

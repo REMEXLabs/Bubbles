@@ -26,8 +26,8 @@
                             <tr>
                                 <th width="10%">Ranking</th>
                                 <th width="50%">Username</th>
-                                <th width="20%">Resolved Quests</th>
                                 <th width="20%">Points</th>
+                                <th width="20%">Resolved Quests</th>
                             </tr>
                         </thead>
                         @foreach ($users as $key => $user)

@@ -22,6 +22,11 @@ Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
 Route::get('terms', ['as' => 'terms', 'uses' => 'BubbleController@index']);
 
 Route::resource('quests', 'QuestController');
+Route::get('quests/accept/{id}', ['as' => 'quests.accept', 'uses' => 'QuestController@accept']);
+Route::get('quests/finish/{id}', ['as' => 'quests.finish', 'uses' => 'QuestController@finish']);
+Route::get('quests/close/{id}', ['as' => 'quests.close', 'uses' => 'QuestController@close']);
+Route::get('quests/reopen/{id}', ['as' => 'quests.reopen', 'uses' => 'QuestController@reopen']);
+
 Route::resource('projects', 'ProjectController');
 Route::resource('users', 'UserController');
 

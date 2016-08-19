@@ -45,22 +45,51 @@
                 @endif
                 <p>
                 @if ($quest->state == 'open')
-                    <i>The quest is open.</i>
+                    <p>
+                        The quest is open.
+                    </p>
                     @if (Auth::check())
                         @if (Auth::user()->id != $quest->author_id)
-                            {{-- TODO: Add link to get the quest. --}}
-                            <strong>Take it now!</strong>
+                            <p>
+                                If you solve the quest, you will get <strong>{{ $quest->points }} points</strong>.
+                            </p>
+                            <p>
+                                <a href="{{ route('quests.accept', ['id' => $quest->id]) }}" class="btn btn-primary">Accept the quest!</a>
+                            </p>
                         @endif
                     @endif
                 @elseif ($quest->state == 'wip')
-                    The quest is running.
-                    @if ($quest->editor_id)
-                        The editor is <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>
+                    <p>
+                        The quest is running.
+                    </p>
+                    @if ($quest->editor_id == Auth::user()->id)
+                        <p>
+                            <a href="{{ route('quests.finish', ['id' => $quest->id]) }}" class="btn btn-primary">Mark quest as done!</a>
+                            <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest.</a>
+                        </p>
+                    @else
+                        <p>
+                            The editor is <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
+                        </p>
                     @endif
+                @elseif ($quest->state == 'check')
+                  <p>
+                      The editor <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a> has finished the quest.
+                  </p>
+                  @if ($quest->author_id == Auth::user()->id)
+                      <p>
+                          <a href="{{ route('quests.close', ['id' => $quest->id]) }}" class="btn btn-primary">Mark quest as done!</a>
+                          <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest.</a>
+                      </p>
+                  @else
+                    <p>
+                        Now the quest owner <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a> has to check the result.
+                    </p>
+                  @endif
                 @else
-                    @if ($quest->editor_id)
-                        The quest is closed by <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
-                    @endif
+                    <p>
+                        The quest was successfully resolved by <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
+                    </p>
                 @endif
                 </p>
             </div>

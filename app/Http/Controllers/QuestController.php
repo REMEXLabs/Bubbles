@@ -123,6 +123,103 @@ class QuestController extends Controller
     }
 
     /**
+     * Accept a specific quest.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function accept($id)
+    {
+        $quest = Quest::find($id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.create');
+        }
+        if ($quest->state != 'open') {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        if (Auth::user()->id == $quest->author_id) {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        $quest->editor_id = Auth::user()->id;
+        $quest->state = 'wip';
+        $quest->save();
+        return redirect()->route('quests.show', ['id' => $quest->id]);
+    }
+
+    /**
+     * Finish a specific quest.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function finish($id)
+    {
+        $quest = Quest::find($id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.create');
+        }
+        if ($quest->state != 'wip') {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        if (Auth::user()->id != $quest->editor_id) {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        $quest->state = 'check';
+        $quest->save();
+        return redirect()->route('quests.show', ['id' => $quest->id]);
+    }
+
+    /**
+     * Finish a specific quest.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function close($id)
+    {
+        $quest = Quest::find($id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.create');
+        }
+        if ($quest->state != 'check') {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        if (Auth::user()->id != $quest->author_id) {
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        $quest->state = 'resolved';
+        $quest->save();
+
+        $user = User::find($quest->editor()->id);
+        $user->points = $user->points + $quest->points;
+        $user->save();
+
+        return redirect()->route('quests.show', ['id' => $quest->id]);
+    }
+
+    /**
+     * Reopen a specific quest.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reopen($id)
+    {
+        $quest = Quest::find($id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.create');
+        }
+        $isEditor = $quest->state == 'wip' && Auth::user()->id == $quest->editor_id;
+        $isOwner = $quest->state == 'check' && Auth::user()->id == $quest->author_id;
+        if ($isEditor || $isOwner) {
+            $quest->editor_id = null;
+            $quest->state = 'open';
+            $quest->save();
+        }
+        return redirect()->route('quests.show', ['id' => $quest->id]);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -137,10 +234,7 @@ class QuestController extends Controller
         }
         $this->validate($request, Quest::getValidationRules());
         Quest::find($id)->update($request->all());
-        return redirect()->route(
-            'quests.show',
-            ['id' => $quest->id]
-        );
+        return redirect()->route('quests.show', ['id' => $quest->id]);
     }
 
     /**
