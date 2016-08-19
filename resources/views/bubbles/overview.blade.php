@@ -34,8 +34,14 @@
                     <header>
                         <h2>{{ $user->username }}</h2>
                         <dl>
-                          <dt>Name</dt>
-                          <dd>{{ $user->name }}</dd>
+                            @if($user->name)
+                                <dt>Name</dt>
+                                <dd>{{ $user->name }}</dd>
+                            @endif
+                            <dt>Level</dt>
+                            <dd>{{ $user->level() }}</dd>
+                            <dt>Experience points</dt>
+                            <dd>{{ $user->points }} / {{ $user->pointsToLevelUp() }}</dd>
                         </dl>
                     </header>
                 </div>

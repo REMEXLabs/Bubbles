@@ -49,6 +49,74 @@ class User extends Authenticatable
         'role',
     ];
 
+    function pointsToLevelUp()
+    {
+        $points = $this->points;
+        if ($points > 1250) {
+            $level = (int)$points/250;
+            return ($level + 1) * 250;
+        }
+        if ($points > 1000) {
+            return 1250;
+        }
+        if ($points > 750) {
+            return 1000;
+        }
+        if ($points > 500) {
+            return 750;
+        }
+        if ($points > 300) {
+            return 500;
+        }
+        if ($points > 200) {
+            return 300;
+        }
+        if ($points > 100) {
+            return 200;
+        }
+        if ($points > 50) {
+            return 100;
+        }
+        if ($points > 10) {
+            return 50;
+        }
+        return 10;
+    }
+
+    function level()
+    {
+        $points = $this->points;
+        if ($points > 1250) {
+            $points = $points - 1000;
+            return 10 + (int)($points/250);
+        }
+        if ($points > 1000) {
+            return 9;
+        }
+        if ($points > 750) {
+            return 8;
+        }
+        if ($points > 500) {
+            return 7;
+        }
+        if ($points > 300) {
+            return 6;
+        }
+        if ($points > 200) {
+            return 5;
+        }
+        if ($points > 100) {
+            return 4;
+        }
+        if ($points > 50) {
+            return 3;
+        }
+        if ($points > 10) {
+            return 2;
+        }
+        return 1;
+    }
+
     // /^[\pL\s]+$/u
 
     public function isAnAdmin()

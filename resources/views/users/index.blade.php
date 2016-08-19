@@ -25,9 +25,10 @@
                         <thead>
                             <tr>
                                 <th width="10%">Ranking</th>
-                                <th width="50%">Username</th>
-                                <th width="20%">Points</th>
-                                <th width="20%">Resolved Quests</th>
+                                <th width="70%">Username</th>
+                                <th width="10%">Level</th>
+                                <th width="10%">Points</th>
+                                {{-- <th width="10%">Quests</th> --}}
                             </tr>
                         </thead>
                         @foreach ($users as $key => $user)
@@ -39,11 +40,14 @@
                                 <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
                             </td>
                             <td>
-                                {{ $user->points }}
+                                {{ $user->level() }}
                             </td>
                             <td>
-                              {{ count($user->resolvedQuests) }}
+                                {{ $user->points }}
                             </td>
+                            {{-- <td>
+                              {{ count($user->resolvedQuests) }}
+                            </td> --}}
                         </tr>
                         @endforeach
                     </table>

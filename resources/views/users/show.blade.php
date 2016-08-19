@@ -28,6 +28,12 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>{{ $user->username }}</h2>
+                <p>
+                    <strong>Experience points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}
+                </p>
+                <p>
+                    <strong>Level</strong>: {{ $user->level() }}
+                </p>
                 @if ($user->email_public == 1)
                     <p><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
                 @endif
@@ -36,6 +42,60 @@
                 @endif
                 @if ($user->bio)
                     <p><strong>Biography</strong>: <br> {{ $user->bio }}</p>
+                @endif
+
+                <hr>
+
+                {{-- Resolved quests: --}}
+                <h3>{{ count($user->resolvedQuests) }} resolved quests</h3>
+                @if(count($user->resolvedQuests))
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Language</th>
+                                <th>Level</th>
+                                <th>Points</th>
+                                <th>Created at</th>
+                            </tr>
+                        </thead>
+                        @foreach ($user->resolvedQuests as $quest)
+                            <tr>
+                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                                <td>{{ $quest->language }}</td>
+                                <td>{{ $quest->difficulty }}</td>
+                                <td>{{ $quest->points }}</td>
+                                <td>{{ date_format($quest->created_at, 'd.m.Y') }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                @endif
+
+                <hr>
+
+                {{-- Resolved quests: --}}
+                <h3>{{ count($user->createdQuests) }} created quests</h3>
+                @if(count($user->createdQuests))
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Language</th>
+                                <th>Level</th>
+                                <th>Points</th>
+                                <th>Created at</th>
+                            </tr>
+                        </thead>
+                        @foreach ($user->createdQuests as $quest)
+                            <tr>
+                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                                <td>{{ $quest->language }}</td>
+                                <td>{{ $quest->difficulty }}</td>
+                                <td>{{ $quest->points }}</td>
+                                <td>{{ date_format($quest->created_at, 'd.m.Y') }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
                 @endif
             </div>
         </div>
