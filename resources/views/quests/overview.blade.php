@@ -47,6 +47,33 @@
 
             <hr>
 
+            {{-- Checking quests: --}}
+            <h3>{{ count($checking_quests) }} to be checked quests</h3>
+            @if(count($checking_quests))
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Language</th>
+                            <th>Level</th>
+                            <th>Points</th>
+                            <th>Created at</th>
+                        </tr>
+                    </thead>
+                    @foreach ($checking_quests as $quest)
+                        <tr>
+                            <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                            <td>{{ $quest->language }}</td>
+                            <td>{{ $quest->difficulty }}</td>
+                            <td>{{ $quest->points }}</td>
+                            <td>{{ date_format($quest->created_at, 'd.m.Y') }}</td>
+                        </tr>
+                    @endforeach
+                </table>
+            @endif
+
+            <hr>
+
             {{-- Resolved quests: --}}
             <h3>{{ count($resolved_quests) }} resolved quests</h3>
             @if(count($resolved_quests))

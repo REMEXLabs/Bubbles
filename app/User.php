@@ -134,6 +134,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the finished quests by the user.
+     */
+    public function checkingQuests()
+    {
+        return $this->hasMany('App\Quest', 'editor_id')
+            ->where('state', 'check')
+            ->orderBy('id', 'DESC');
+    }
+
+    /**
      * Get the resolved quests by the user.
      */
     public function resolvedQuests()
