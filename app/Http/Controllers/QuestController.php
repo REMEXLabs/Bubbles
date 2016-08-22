@@ -98,7 +98,7 @@ class QuestController extends Controller
         if (is_null($quest)) {
             return redirect()->route('quests.index');
         }
-        if (!Auth::check() && $quest->author()->public_quests == 0) {
+        if (!Auth::check() && $quest->author()->quests_public == 0) {
             return redirect()->route('quests.index');
         }
         View::share('title', $quest->name);
