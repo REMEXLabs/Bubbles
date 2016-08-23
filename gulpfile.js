@@ -9,6 +9,7 @@
  |
  */
 
+
 /*
  |--------------------------------------------------------------------------
  | Plugins
@@ -33,6 +34,7 @@ var plug = require('gulp-load-plugins')({
 var path = {
   src: {
     sass: 'resources/assets/sass',
+    js: 'resources/assets/js',
     bower: 'resources/assets/bower_components'
   },
   public: {
@@ -42,9 +44,10 @@ var path = {
 };
 // var production = !!plug.util.env.production;
 
+
 /*
  |--------------------------------------------------------------------------
- | Compiling
+ | CSS
  |--------------------------------------------------------------------------
  */
 
@@ -62,37 +65,6 @@ gulp.task('build:sass', function () {
     }))
     .pipe(gulp.dest(path.public.css));
 });
-gulp.task('watch:sass', function () {
-  return gulp.watch([
-    path.src.sass + '/**/*.scss'
-  ], ['build:sass', 'run:autoprefixer', 'rename']);
-});
-gulp.task('watch:css', function () {
-  return gulp.watch([
-    path.public.css + '/main.css'
-  ], ['refresh']);
-});
-
-gulp.task('rename:css', ['run:autoprefixer'], function () {
-  return gulp.src(path.public.css + '/main.built.prefixed.css')
-    .pipe(plug.rename('main.css'))
-    .pipe(gulp.dest(path.public.css));
-});
-
-gulp.task('rename:theme:css', ['run:autoprefixer'], function () {
-  return gulp.src(path.public.css + '/theme_gray.built.css')
-    .pipe(plug.rename('theme_gray.css'))
-    .pipe(gulp.dest(path.public.css));
-});
-
-// gulp.task('rename:map', ['run:autoprefixer'], function () {
-//   return gulp.src(path.public.css + '/maps/main.built.prefixed.css.map')
-//     .pipe(plug.rename('main.css.map'))
-//     .pipe(gulp.dest(path.public.css + '/maps'));
-// });
-gulp.task('rename', ['rename:css', 'rename:theme:css']);
-// gulp.task('rename', ['rename:css', 'rename:map']);
-
 gulp.task('run:autoprefixer', ['build:sass'], function () {
   return gulp.src(path.public.css + '/main.built.css')
     // .pipe(plug.sourcemaps.init())
@@ -116,6 +88,37 @@ gulp.task('run:autoprefixer', ['build:sass'], function () {
     .pipe(gulp.dest(path.public.css));
 });
 
+
+/*
+ |--------------------------------------------------------------------------
+ | JavaScript
+ |--------------------------------------------------------------------------
+ */
+
+gulp.task('compile:js', function () { 
+  return gulp.src(path.src.js + '/main.js')
+    .pipe(plug.rename('main.uglified.js'))
+    .pipe(gulp.dest(path.src.js))
+    .pipe(plug.uglify())
+    .pipe(gulp.dest(path.src.js));
+});
+
+gulp.task('concat:js', ['compile:js'], function () { 
+  return gulp.src([
+      path.src.bower + '/jquery/dist/jquery.min.js',
+      path.src.bower + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+      path.src.js + '/main.uglified.js'
+    ])
+    .pipe(plug.sourcemaps.init())
+    .pipe(plug.concat('main.js', {
+      newLine: ';\n\n'
+    }))
+    .pipe(plug.sourcemaps.write('./maps'))
+    .pipe(gulp.dest(path.public.js));
+});
+gulp.task('build:js', ['compile:js', 'concat:js']);
+
+
 /*
  |--------------------------------------------------------------------------
  | Assets
@@ -130,19 +133,26 @@ gulp.task('copy:icons', function () { 
   return gulp.src(path.src.bower + '/font-awesome/fonts/**.*') 
     .pipe(gulp.dest(path.public.css + '/fonts'));
 });
-gulp.task('copy:js:jquery', function () { 
-  return gulp.src([
-      path.src.bower + '/jquery/dist/jquery.min.js',
-      path.src.bower + '/jquery/dist/jquery.min.map'
-    ])
-    .pipe(gulp.dest(path.public.js));
+gulp.task('copy:assets', ['copy:fonts', 'copy:icons']);
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Renaming
+ |--------------------------------------------------------------------------
+ */
+
+gulp.task('rename:css', ['run:autoprefixer'], function () {
+  return gulp.src(path.public.css + '/main.built.prefixed.css')
+    .pipe(plug.rename('main.css'))
+    .pipe(gulp.dest(path.public.css));
 });
-gulp.task('copy:js:bootstrap', function () { 
-  return gulp.src([
-      path.src.bower + '/bootstrap-sass/assets/javascripts/bootstrap.min.js'
-    ])
-    .pipe(gulp.dest(path.public.js));
+gulp.task('rename:theme:css', ['run:autoprefixer'], function () {
+  return gulp.src(path.public.css + '/theme_gray.built.css')
+    .pipe(plug.rename('theme_gray.css'))
+    .pipe(gulp.dest(path.public.css));
 });
+gulp.task('rename', ['rename:css', 'rename:theme:css']);
 
 
 /*
@@ -167,16 +177,34 @@ gulp.task('connect', function () {
     });
   });
 });
-gulp.task('watch:php', function () {
-  gulp.watch([
-    'app/**/*.php',
-    'resources/views/**/*.php'
-  ], [
-    'refresh'
-  ]);
-});
 gulp.task('refresh', function () {
   sync.reload();
+});
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Upadting
+ |--------------------------------------------------------------------------
+ */
+
+gulp.task('watch:sass', function () {
+  return gulp.watch([
+    path.src.sass + '/**/*.scss'
+  ], ['build:sass', 'run:autoprefixer', 'rename']);
+});
+gulp.task('watch:js', function () {
+  return gulp.watch([
+    path.src.js + '/**/*.js'
+  ], ['compile:js', 'concat:js']);
+});
+gulp.task('watch:changes', function () {
+  return gulp.watch([
+    path.public.css + '/main.css',
+    path.public.js + '/main.js',
+    'app/**/*.php',
+    'resources/views/**/*.php'
+  ], ['refresh']);
 });
 
 
@@ -187,5 +215,5 @@ gulp.task('refresh', function () {
  */
 
 gulp.task('default', ['connect']);
-gulp.task('build', ['copy:js:jquery', 'copy:js:bootstrap', 'copy:fonts', 'copy:icons', 'build:sass', 'run:autoprefixer', 'rename']);
-gulp.task('watch', ['connect', 'watch:php', 'watch:sass', 'watch:css'])
+gulp.task('build', ['build:js', 'build:sass', 'run:autoprefixer', 'rename']);
+gulp.task('watch', ['connect', 'watch:js', 'watch:sass', 'watch:changes']);
