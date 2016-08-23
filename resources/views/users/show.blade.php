@@ -27,24 +27,32 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $user->username }}</h2>
-                <p>
-                    <strong>Experience points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}
-                </p>
-                <p>
-                    <strong>Level</strong>: {{ $user->level() }}
-                </p>
-                @if ($user->email_public == 1)
-                    <p><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
-                @endif
-                @if ($user->name)
-                    <p><strong>Name</strong>: <br> {{ $user->name }}</p>
-                @endif
-                @if ($user->bio)
-                    <p><strong>Biography</strong>: <br> {{ $user->bio }}</p>
-                @endif
 
-                <hr>
+                {{-- Profile: --}}
+                <div class="profile">
+                    <h1>{{ $user->username }}</h2>
+                    <p>
+                        <strong>Experience Points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}
+                    </p>
+                    <p>
+                        <strong>Level</strong>: {{ $user->level() }}
+                    </p>
+                    @if ($user->email_public == 1)
+                        <p>
+                            <strong>E-Mail</strong>: <br> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                        </p>
+                    @endif
+                    @if ($user->name)
+                        <p>
+                            <strong>Name</strong>: <br> {{ $user->name }}
+                        </p>
+                    @endif
+                    @if ($user->bio)
+                        <p>
+                            <strong>Biography</strong>: <br> {{ $user->bio }}
+                        </p>
+                    @endif
+                </div>
 
                 {{-- Resolved quests: --}}
                 <h3>{{ count($user->resolvedQuests) }} resolved quests</h3>

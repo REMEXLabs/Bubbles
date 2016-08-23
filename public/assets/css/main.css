@@ -8314,6 +8314,22 @@ h6 {
     .section-bubble .bubble footer dl {
       margin: 0; }
 
+.section-project h1 {
+  text-align: center;
+  padding: 40px 0 20px; }
+
+.section-quest h1 {
+  text-align: center;
+  padding: 40px 0 20px; }
+
+.section-user .profile {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center; }
+
+.section-user h1 {
+  text-align: center; }
+
 .footer {
   color: #777;
   background-color: #f8f8f8;
