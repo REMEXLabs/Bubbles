@@ -46,11 +46,12 @@ class QuestController extends Controller
      */
     public function overview()
     {
+        $user = Auth::user();
         return view('quests.overview', [
-              'accepted_quests' => Auth::user()->acceptedQuests,
-              'resolved_quests' => Auth::user()->resolvedQuests,
-              'checking_quests' => Auth::user()->checkingQuests,
-              'created_quests' => Auth::user()->createdQuests,
+              'accepted_quests' => $user->acceptedQuests,
+              'resolved_quests' => $user->resolvedQuests,
+              'checking_quests' => $user->checkingQuests,
+              'created_quests' => $user->createdQuests,
         ]);
     }
 

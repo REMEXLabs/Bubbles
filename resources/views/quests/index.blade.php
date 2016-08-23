@@ -47,7 +47,15 @@
                         </tr>
                     </thead>
                     @foreach ($quests as $quest)
-                        <tr>
+                      @if (Auth::check())
+                          @if ($quest->author_id == Auth::user()->id)
+                              <tr class="info">
+                          @elseif ($quest->editor_id == Auth::user()->id)
+                              <tr class="active">
+                          @endif
+                      @else
+                          <tr>
+                      @endif
                             <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
                             <td>{{ $quest->language }}</td>
                             <td>{{ $quest->difficulty }}</td>

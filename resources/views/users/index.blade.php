@@ -32,7 +32,11 @@
                             </tr>
                         </thead>
                         @foreach ($users as $key => $user)
-                        <tr>
+                            @if(Auth::check() && ($user->id == Auth::user()->id))
+                                <tr class="info">
+                            @else
+                                <tr>
+                            @endif
                             <td>
                                 {{ ++$key }}
                             </td>

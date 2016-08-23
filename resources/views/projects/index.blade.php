@@ -39,10 +39,14 @@
                         </tr>
                     </thead>
                     @foreach ($projects as $project)
-                        <tr>
-                            <td>
-                                <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
-                            </td>
+                        @if(Auth::check() && ($project->user_id == Auth::user()->id))
+                            <tr class="info">
+                        @else
+                            <tr>
+                        @endif
+                                <td>
+                                    <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
+                                </td>
                         </tr>
                     @endforeach
                 </table>
