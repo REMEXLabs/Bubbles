@@ -84,8 +84,10 @@
                             @endif
                             <footer>
                               <dl>
-                                  <dt>Order</dt>
-                                  <dd>#{{ $bubble->order }}, {{ date_format($bubble->created_at, 'd.m.Y') }}</dd>
+                                  <dt>Created time</dt>
+                                  <dd>
+                                      <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
+                                  </dd>
                               </dl>
                             </footer>
                         </div>

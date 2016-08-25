@@ -35,10 +35,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Order</th>
-                                <th>Created at</th>
+                                <th width="40%">Name</th>
+                                <th width="20%">Type</th>
+                                <th width="20%">Order</th>
+                                <th width="20%"></th>
                             </tr>
                         </thead>
                         @foreach ($bubbles as $bubble)
@@ -51,7 +51,9 @@
                                 @endif
                                 <td>{{ $bubble->type }}</td>
                                 <td>{{ $bubble->order }}</td>
-                                <td>{{ date_format($bubble->created_at, 'd.m.Y') }}</td>
+                                <td>
+                                    <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

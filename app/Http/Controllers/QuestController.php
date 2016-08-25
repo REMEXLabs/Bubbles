@@ -28,9 +28,9 @@ class QuestController extends Controller
     {
         $quests = null;
         if (Auth::check()) {
-            $quests = Quest::orderBy('id', 'DESC')->get();
+            $quests = Quest::orderBy('created_at', 'DESC')->get();
         } else {
-            $quests = Quest::orderBy('id', 'DESC')->get()->filter(function ($item) {
+            $quests = Quest::orderBy('created_at', 'DESC')->get()->filter(function ($item) {
                 return $item->author()->quests_public == 1;
             })->values();
         }

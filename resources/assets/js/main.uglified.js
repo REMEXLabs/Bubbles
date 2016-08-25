@@ -1,1 +1,1 @@
-$(document).ready(function(){var t=moment(new Date);$(".js_moment").each(function(a){var e=$(this),m=moment(e.data("time"));Math.abs(t.diff(m,"days"))<30&&e.text(moment(e.data("time")).fromNow())})});
+$(document).ready(function(){var t=function(){var t=moment(new Date).tz("Europe/Berlin");$(".js_moment").each(function(e){var n=$(this),a=moment(n.data("time")).tz("Europe/Berlin");Math.abs(t.diff(a,"days"))<60&&n.text(moment(n.data("time")).fromNow())})};t(),setInterval(t,6e4)});

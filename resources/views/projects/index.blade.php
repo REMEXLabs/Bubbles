@@ -35,7 +35,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th width="80%">Name</th>
+                            <th width="20%"></th>
                         </tr>
                     </thead>
                     @foreach ($projects as $project)
@@ -46,6 +47,9 @@
                         @endif
                                 <td>
                                     <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
+                                </td>
+                                <td>
+                                    <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
                                 </td>
                         </tr>
                     @endforeach

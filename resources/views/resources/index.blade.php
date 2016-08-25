@@ -24,10 +24,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Type</th>
-                            <th>Data</th>
-                            <th>Created at</th>
+                            <th width="10%">ID</th>
+                            <th width="20%">Type</th>
+                            <th width="50%">Data</th>
+                            <th width="20%"></th>
                         </tr>
                     </thead>
                     @foreach ($resources as $resource)
@@ -35,7 +35,9 @@
                             <td><a href="{{ route('resources.show', ['id' => $resource->id]) }}">{{ $resource->id }}</a></td>
                             <td>{{ $resource->type }}</td>
                             <td>{{ $resource->data }}</td>
-                            <td>{{ date_format($resource->created_at, 'd.m.Y') }}</td>
+                            <td>
+                                <time class="js_moment" datetime="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}">{{ date_format($resource->created_at, 'd.m.Y') }}</time>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
