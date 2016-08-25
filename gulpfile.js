@@ -107,6 +107,7 @@ gulp.task('concat:js', ['compile:js'], function () { 
   return gulp.src([
       path.src.bower + '/jquery/dist/jquery.min.js',
       path.src.bower + '/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+      path.src.bower + '/moment/min/moment.min.js',
       path.src.js + '/main.uglified.js'
     ])
     .pipe(plug.sourcemaps.init())

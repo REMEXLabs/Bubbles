@@ -43,7 +43,7 @@
                             <th>Language</th>
                             <th>Level</th>
                             <th>Points</th>
-                            <th>Created at</th>
+                            <th></th>
                         </tr>
                     </thead>
                     @foreach ($quests as $quest)
@@ -60,7 +60,7 @@
                             <td>{{ $quest->language }}</td>
                             <td>{{ $quest->difficulty }}</td>
                             <td>{{ $quest->points }}</td>
-                            <td>{{ date_format($quest->created_at, 'd.m.Y') }}</td>
+                            <td><time class="js_moment" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time></td>
                         </tr>
                     @endforeach
                 </table>

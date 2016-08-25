@@ -1,1 +1,1 @@
-$(document).ready(function(){console.log("rdy")});
+$(document).ready(function(){var t=moment(new Date);$(".js_moment").each(function(a){var e=$(this),m=moment(e.data("time"));Math.abs(t.diff(m,"days"))<30&&e.text(moment(e.data("time")).fromNow())})});
