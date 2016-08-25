@@ -140,11 +140,11 @@ gulp.task('copy:icons', function () { 
 gulp.task('copy:google:fonts', function () {
   return gulp.src(path.src.assets + '/fonts.list')
     .pipe(gfonts({
-      fontsDir: 'fonts/',
-      cssDir: './..',
+      fontsDir: './fonts/',
+      cssDir: './',
       cssFilename: 'google_fonts.css'
     }))
-    .pipe(gulp.dest(path.public.css + '/fonts'));
+    .pipe(gulp.dest(path.public.css));
 });
 gulp.task('copy:assets', ['copy:google:fonts', 'copy:fonts', 'copy:icons']);
 
