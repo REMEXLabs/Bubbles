@@ -18,6 +18,7 @@
 
 var gulp = require('gulp');
 var sync = require('browser-sync');
+var gfonts = require('gulp-google-webfonts');
 var plug = require('gulp-load-plugins')({
   rename: {
     'gulp-connect-php': 'connect'
@@ -33,6 +34,7 @@ var plug = require('gulp-load-plugins')({
 
 var path = {
   src: {
+    assets: 'resources/assets',
     sass: 'resources/assets/sass',
     js: 'resources/assets/js',
     bower: 'resources/assets/bower_components'
@@ -135,7 +137,16 @@ gulp.task('copy:icons', function () { 
   return gulp.src(path.src.bower + '/font-awesome/fonts/**.*') 
     .pipe(gulp.dest(path.public.css + '/fonts'));
 });
-gulp.task('copy:assets', ['copy:fonts', 'copy:icons']);
+gulp.task('copy:google:fonts', function () {
+  return gulp.src(path.src.assets + '/fonts.list')
+    .pipe(gfonts({
+      fontsDir: 'fonts/',
+      cssDir: './..',
+      cssFilename: 'google_fonts.css'
+    }))
+    .pipe(gulp.dest(path.public.css + '/fonts'));
+});
+gulp.task('copy:assets', ['copy:google:fonts', 'copy:fonts', 'copy:icons']);
 
 
 /*
@@ -216,6 +227,6 @@ gulp.task('watch:changes', function () {
  |--------------------------------------------------------------------------
  */
 
-gulp.task('default', ['connect']);
-gulp.task('build', ['build:js', 'build:sass', 'run:autoprefixer', 'rename']);
+gulp.task('default', ['build']);
+gulp.task('build', ['copy:assets', 'build:js', 'build:sass', 'run:autoprefixer', 'rename']);
 gulp.task('watch', ['connect', 'watch:js', 'watch:sass', 'watch:changes']);

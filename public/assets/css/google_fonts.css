@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Arvo';
+	font-style: normal;
+	font-weight: 400;
+	src: url(fonts/Arvo-normal-400.woff) format('woff');
+	unicode-range: U+0-10FFFF;
+}
+

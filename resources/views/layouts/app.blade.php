@@ -10,8 +10,7 @@
     @else
       <title>Bubbles</title>
     @endif
-    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> --}}
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/google_fonts.css" media="screen">
     <link rel="stylesheet" href="/assets/css/main.css" media="screen">
     @if (Auth::check() && Auth::user()->theme != 'blue')
         <link rel="stylesheet" href="/assets/css/theme_{{ Auth::user()->theme }}.css" media="screen">
