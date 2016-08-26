@@ -30,7 +30,7 @@
 
                 {{-- Profile: --}}
                 <div class="profile">
-                    <h1>{{ $user->username }}</h2>
+                    <h1 class="avatar">{{ $user->username }}</h2>
                     <p>
                         <strong>Experience Points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}
                     </p>

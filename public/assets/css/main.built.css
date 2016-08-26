@@ -8225,7 +8225,7 @@ time {
 .section-bubble .bubble {
   color: black;
   background-color: #fff;
-  border: 1px dashed #9b9b9b;
+  border: 1px solid #ddd;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 30px;
@@ -8326,7 +8326,7 @@ time {
 .footer {
   color: #777;
   background-color: #f8f8f8;
-  border-top: 1px solid #dadada;
+  border-top: 1px solid #ddd;
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 14px; }

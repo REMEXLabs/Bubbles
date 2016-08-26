@@ -359,7 +359,7 @@ time {
   .bubble {
     color: black;
     background-color: #fff;
-    border: 1px dashed darken(#e7e7e7, 30%);
+    border: 1px solid #ddd;
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 30px;
@@ -512,7 +512,7 @@ time {
   color: #777;
   background-color: #f8f8f8;
   // border-top: 1px solid #e7e7e7;
-  border-top: 1px solid darken(#e7e7e7, 5%);
+  border-top: 1px solid #ddd;
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 14px;
