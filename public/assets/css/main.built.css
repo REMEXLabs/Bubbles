@@ -8255,8 +8255,14 @@ time {
     .section-bubble .bubble .name i,
     .section-bubble .bubble .type i {
       color: #9b9b9b; }
-  .section-bubble .bubble .state--open {
-    font-weight: bold;
+  .section-bubble .bubble .quest-state,
+  .section-bubble .bubble .quest-state--active {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold; }
+  .section-bubble .bubble .quest-state {
+    color: #9b9b9b; }
+  .section-bubble .bubble .quest-state--active {
     color: #00c6b1; }
   .section-bubble .bubble footer {
     font-size: 13px;
@@ -8278,7 +8284,8 @@ time {
 .section-quest .quest-state,
 .section-quest .quest-state--active {
   text-transform: uppercase;
-  font-size: 12px; }
+  font-size: 12px;
+  font-weight: bold; }
 
 .section-quest .quest-state {
   color: #9b9b9b; }

@@ -77,8 +77,12 @@
                                     <dl>
                                         <dt>Description</dt>
                                         <dd>{{ $bubble->quest()->description }}</dd>
-                                        <dt>State</dt>
-                                        <dd class="state--{{ $bubble->quest()->state }}">{{ ucfirst($bubble->quest()->state) }}</dd>
+                                        <dt>Status</dt>
+                                        @if ($bubble->quest()->state != 'open')
+                                            <dd class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></dd>
+                                        @else
+                                            <dd class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></dd>
+                                        @endif
                                     </dl>
                                 </main>
                             @endif

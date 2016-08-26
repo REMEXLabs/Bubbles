@@ -413,8 +413,18 @@ time {
       // }
     }
 
-    .state--open {
+    .quest-state,
+    .quest-state--active {
+      text-transform: uppercase;
+      font-size: 14px;
       font-weight: bold;
+    }
+
+    .quest-state {
+      color: darken(#e7e7e7, 30%);
+    }
+
+    .quest-state--active {
       color: $ci-success;
     }
 
@@ -452,6 +462,7 @@ time {
   .quest-state--active {
     text-transform: uppercase;
     font-size: 12px;
+    font-weight: bold;
   }
 
   .quest-state {
