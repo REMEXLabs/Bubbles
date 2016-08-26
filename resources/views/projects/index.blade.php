@@ -30,9 +30,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+            <div class="stage">
             <h3>{{ count($projects) }} projects</h3>
+            <hr>
+            </div>
             @if(count($projects))
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th width="80%">Name</th>

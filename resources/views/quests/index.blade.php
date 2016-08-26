@@ -30,40 +30,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+            <div class="stage">
             @if(Auth::check())
               <h3>{{ count($quests) }} quests</h3>
             @else
               <h3>{{ count($quests) }} public quests</h3>
             @endif
+            <hr>
+            </div>
             @if(count($quests))
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th width="40%">Name</th>
-                            <th width="20%">Language</th>
+                            <th width="35%">Name</th>
+                            <th width="15%">Language</th>
                             <th width="10%">Level</th>
                             <th width="10%">Points</th>
+                            <th width="10%">Status</th>
                             <th width="20%"></th>
                         </tr>
                     </thead>
                     @foreach ($quests as $quest)
-                      @if (Auth::check())
-                          @if ($quest->author_id == Auth::user()->id)
-                              <tr class="info">
-                          @elseif ($quest->editor_id == Auth::user()->id)
-                              <tr class="active">
-                          @endif
-                      @else
-                          <tr>
-                      @endif
-                            <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                            <td>{{ $quest->language }}</td>
-                            <td>{{ $quest->difficulty }}</td>
-                            <td>{{ $quest->points }}</td>
-                            <td>
-                                <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
-                            </td>
-                        </tr>
+                        @if ($quest->state != 'open')
+                            <tr class="inactive">
+                        @else
+                            <tr>
+                        @endif
+                        <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                        <td>{{ $quest->language }}</td>
+                        <td>{{ $quest->difficulty }}</td>
+                        <td>{{ $quest->points }}</td>
+                        <td>{{ $quest->state }}</td>
+                        <td>
+                            <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                        </td>
+                    </tr>
                     @endforeach
                 </table>
             @endif

@@ -32,7 +32,7 @@
             <div class="col-md-12">
                 <h3>{{ count($bubbles) }} bubbles</h3>
                 @if(count($bubbles))
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th width="40%">Name</th>

@@ -8272,6 +8272,9 @@ time {
   text-align: center;
   padding: 40px 0 20px; }
 
+.section-quest .inactive {
+  color: #9b9b9b; }
+
 .section-user .profile {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -8279,6 +8282,35 @@ time {
 
 .section-user h1 {
   text-align: center; }
+
+.section-project .stage,
+.section-quest .stage,
+.section-user .stage {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 10px; }
+  .section-project .stage h3,
+  .section-quest .stage h3,
+  .section-user .stage h3 {
+    position: relative;
+    float: none;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 3; }
+  .section-project .stage hr,
+  .section-quest .stage hr,
+  .section-user .stage hr {
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    border: solid #ddd 2px;
+    z-index: 2; }
 
 .footer {
   color: #777;

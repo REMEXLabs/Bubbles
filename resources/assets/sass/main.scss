@@ -443,6 +443,10 @@ time {
     text-align: center;
     padding: 40px 0 20px;
   }
+
+  .inactive {
+    color: darken(#e7e7e7, 30%);
+  }
 }
 
 .section-user {
@@ -454,6 +458,36 @@ time {
 
   h1 {
     text-align: center;
+  }
+}
+
+.section-project .stage,
+.section-quest .stage,
+.section-user .stage {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 10px;
+
+  h3 {
+    position: relative;
+    float: none;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 3;
+  }
+
+  hr {
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    border: solid #ddd 2px;
+    z-index: 2;
   }
 }
 

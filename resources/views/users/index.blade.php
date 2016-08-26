@@ -19,9 +19,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>{{ count($users) }} users</h1>
+                <div class="stage">
+                    <h3>{{ count($users) }} users</h3>
+                    <hr>
+                </div>
                 @if(count($users))
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th width="10%">Ranking</th>
