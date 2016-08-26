@@ -42,20 +42,24 @@
                             @else
                                 <tr>
                             @endif
+                            <?php $line = "solid"; ?>
+                            @if ($user->points != $prev_pts)
                             <td>
-                                @if ($user->points != $prev_pts)
-                                    {{ $idx }}
-                                    <?php $idx++; ?>
-                                    <?php $prev_pts = $user->points; ?>
-                                @endif
+                                {{ $idx }}
+                                <?php $idx++; ?>
+                                <?php $prev_pts = $user->points; ?>
                             </td>
-                            <td>
+                            @else
+                                <?php $line = "dashed"; ?>
+                                <td style="border-top-style: {{ $line }};"></td>
+                            @endif
+                            <td style="border-top-style: {{ $line }};">
                                 <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
                             </td>
-                            <td>
+                            <td style="border-top-style: {{ $line }};">
                                 {{ $user->level() }}
                             </td>
-                            <td>
+                            <td style="border-top-style: {{ $line }};">
                                 {{ $user->points }}
                             </td>
                             {{-- <td>
