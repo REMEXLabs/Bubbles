@@ -31,8 +31,8 @@
                                 {{-- <th width="10%">Quests</th> --}}
                             </tr>
                         </thead>
-                        <?php $idx = 1;
-                        $prev_pts = -1; ?>
+                        <?php $idx = 1; ?>
+                        <?php $prev_pts = -1; ?>
                         @foreach ($users as $key => $user)
                             @if(Auth::check() && ($user->id == Auth::user()->id))
                                 <tr class="info">
@@ -42,8 +42,8 @@
                             <td>
                                 @if ($user->points != $prev_pts)
                                     {{ $idx }}
-                                    <?php $idx++;
-                                    $prev_pts = $user->points; ?>
+                                    <?php $idx++; ?>
+                                    <?php $prev_pts = $user->points; ?>
                                 @endif
                             </td>
                             <td>
