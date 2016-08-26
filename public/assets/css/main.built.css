@@ -8175,6 +8175,9 @@ time {
       background: #f2f2f2;
       border-color: #f7f7f7; }
 
+.container {
+  position: relative; }
+
 .header {
   background: transparent; }
 
@@ -8284,6 +8287,14 @@ time {
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 14px; }
+  .footer .info {
+    display: inline-block; }
+    .footer .info a {
+      display: inline-block; }
+  .footer .imprint {
+    position: absolute;
+    right: 15px;
+    bottom: 10px; }
 
 .login,
 .registration {

@@ -80,12 +80,17 @@
 
     <footer class="footer">
       <div class="container">
-        <p>
-          Built by the Stuttgart Media University
-        </p>
-        <p>
-          <a href="{{ route('imprint') }}">Imprint</a>
-        </p>
+        <div class="info">
+          <a href="http://www.prosperity4all.eu/">
+              <img src="/assets/img/p4a-logo.png" alt="Logo of Prosperity 4All" />
+          </a>
+        </div>
+        <div class="info">
+          <a href="https://www.hdm-stuttgart.de/">
+              <img src="/assets/img/hdm-logo.gif" alt="Logo of the Stuttgart Media University" />
+          </a>
+        </div>
+        <a href="{{ route('imprint') }}" class="imprint">Imprint</a>
       </div>
     </footer>
     <script src="/assets/js/main.js" charset="utf-8"></script>
