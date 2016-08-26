@@ -31,6 +31,8 @@
                                 {{-- <th width="10%">Quests</th> --}}
                             </tr>
                         </thead>
+                        <?php $idx = 1;
+                        $prev_pts = -1; ?>
                         @foreach ($users as $key => $user)
                             @if(Auth::check() && ($user->id == Auth::user()->id))
                                 <tr class="info">
@@ -38,7 +40,11 @@
                                 <tr>
                             @endif
                             <td>
-                                {{ ++$key }}
+                                @if ($user->points != $prev_pts)
+                                    {{ $idx }}
+                                    <?php $idx++;
+                                    $prev_pts = $user->points; ?>
+                                @endif
                             </td>
                             <td>
                                 <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
