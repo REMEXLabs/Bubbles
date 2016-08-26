@@ -8272,7 +8272,7 @@ time {
   margin: 0 auto;
   border-radius: 100%;
   text-align: center;
-  border: 1px dashed #9b9b9b;
+  border: 1px solid #ddd;
   font-weight: bold; }
   @media (max-width: 992px) {
     .section-welcome .bubble {
@@ -8328,8 +8328,19 @@ time {
   text-align: center;
   padding: 40px 0 20px; }
 
-.section-quest .inactive {
+.section-quest .quest--inactive {
   color: #9b9b9b; }
+
+.section-quest .quest-state,
+.section-quest .quest-state--active {
+  text-transform: uppercase;
+  font-size: 12px; }
+
+.section-quest .quest-state {
+  color: #9b9b9b; }
+
+.section-quest .quest-state--active {
+  color: #00c6b1; }
 
 .section-user .profile {
   padding-top: 40px;

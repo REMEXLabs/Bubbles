@@ -347,7 +347,7 @@ time {
     margin: 0 auto;
     border-radius: 100%;
     text-align: center;
-    border: 1px dashed #9b9b9b;
+    border: 1px solid #ddd;
     font-weight: bold;
     @media (max-width: $screen-md) {
       margin-top: 5% !important;
@@ -444,8 +444,22 @@ time {
     padding: 40px 0 20px;
   }
 
-  .inactive {
+  .quest--inactive {
     color: darken(#e7e7e7, 30%);
+  }
+
+  .quest-state,
+  .quest-state--active {
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .quest-state {
+    color: darken(#e7e7e7, 30%);
+  }
+
+  .quest-state--active {
+    color: $ci-success;
   }
 }
 

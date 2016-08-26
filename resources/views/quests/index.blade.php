@@ -52,7 +52,7 @@
                     </thead>
                     @foreach ($quests as $quest)
                         @if ($quest->state != 'open')
-                            <tr class="inactive">
+                            <tr class="quest--inactive">
                         @else
                             <tr>
                         @endif
@@ -60,7 +60,11 @@
                         <td>{{ $quest->language }}</td>
                         <td>{{ $quest->difficulty }}</td>
                         <td>{{ $quest->points }}</td>
-                        <td>{{ $quest->state }}</td>
+                        @if ($quest->state != 'open')
+                            <td><span class="quest-state">{{ $quest->state }}</span></td>
+                        @else
+                            <td><span class="quest-state--active">{{ $quest->state }}</span></td>
+                        @endif
                         <td>
                             <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
                         </td>
