@@ -27,6 +27,10 @@ Route::get('quests/finish/{id}', ['as' => 'quests.finish', 'uses' => 'QuestContr
 Route::get('quests/close/{id}', ['as' => 'quests.close', 'uses' => 'QuestController@close']);
 Route::get('quests/reopen/{id}', ['as' => 'quests.reopen', 'uses' => 'QuestController@reopen']);
 
+Route::get('quests/scan/repo', ['as' => 'repo.scan', 'uses' => 'QuestController@scan']);
+Route::post('quests/parse/repo', ['as' => 'repo.parse', 'uses' => 'QuestController@parse']);
+Route::get('quests/parse/repo', ['as' => 'repo.parse', 'uses' => 'QuestController@parse']);
+
 Route::resource('projects', 'ProjectController');
 Route::resource('users', 'UserController');
 

@@ -6,7 +6,10 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success">Create new quest</a>
+                        <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success">Scan GitHub Repository</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success">Create New Quest</a>
                     </li>
                 </ul>
             </div>

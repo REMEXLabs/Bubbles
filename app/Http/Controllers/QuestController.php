@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use View;
 use DB;
+use Validator;
 use App\User;
 use App\Quest;
 use App\Http\Requests;
@@ -63,6 +64,92 @@ class QuestController extends Controller
     public function create()
     {
         return view('quests.create');
+    }
+
+    /**
+     * Show the form for parsing a new GitHub repository.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function scan()
+    {
+        return view('repo.scan');
+    }
+
+    /**
+     * Show the form for parsing a new GitHub repository.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function parse(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+          'repo' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('repo.scan')
+                      ->withErrors($validator)
+                      ->withInput();
+        }
+        // $repo = urlencode($request->get('repo'));
+        $repo = $request->get('repo');
+        $repo = chop($repo, '.git');
+
+        // return $repo;
+        $query = 'http://bubbles-questifier.gpii.eu:3008/repository?url='.$repo;
+        // $query = urlencode($query);
+
+        // return $query;
+        $ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6)
+               AppleWebKit/537.36 (KHTML, like Gecko)
+               Chrome/53.0.2785.89 Safari/537.36';
+        $ua = 'Bubbles';
+
+        $curl_handle = curl_init();
+        curl_setopt($curl_handle, CURLOPT_URL, $query);
+        curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 300);
+        curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl_handle, CURLOPT_USERAGENT, $ua);
+        $query = curl_exec($curl_handle);
+        curl_close($curl_handle);
+
+        $json = json_decode((string)$query);
+
+        if (property_exists($json, 'status')) {
+            if ((int)$json->status === 404) {
+                return redirect()
+                    ->route('repo.scan')
+                    ->withInput();
+            }
+        } elseif (property_exists($json, 'repository')) {
+            if (property_exists($json, 'files') && count($json->files)) {
+                $files = $json->files;
+                $data = array();
+                foreach ($files as $fileKey => $file) {
+                    $path = (string)$file->path;
+                    if (property_exists($file, 'quests') && count($file->quests)) {
+                        $quests = $file->quests;
+                        foreach ($quests as $questKey => $quest) {
+                            $text = $quest->text;
+                            $line = explode("#L", $quest->line);
+                            // Get the last element:
+                            $line = $line[count($line) - 1];
+                            $data[$path][] = array(
+                              'text' => $text,
+                              'line' => $line
+                            );
+                        }
+                    }
+                }
+                return view('repo.selection', [
+                  'repo' => $repo,
+                  'data' => $data]);
+            }
+        } else {
+            return redirect()
+                ->route('repo.scan')
+                ->withInput();
+        }
     }
 
     /**
