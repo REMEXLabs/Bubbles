@@ -29,6 +29,12 @@
 <main class="main" role="main">
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <div class="stage">
+                    <h3>Your Bubbles</h3>
+                    <hr>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="bubble">
                     <header>

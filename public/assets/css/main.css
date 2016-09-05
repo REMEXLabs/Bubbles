@@ -8281,10 +8281,10 @@ time {
 .section-bubble .bubble {
   color: black;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   margin-bottom: 30px;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 15px;
   text-decoration: none; }
   .section-bubble .bubble:hover {
     background-color: #f8f8f8;
@@ -8357,6 +8357,7 @@ time {
 .section-user h1 {
   text-align: center; }
 
+.section-bubble .stage,
 .section-project .stage,
 .section-quest .stage,
 .section-user .stage {
@@ -8364,6 +8365,7 @@ time {
   overflow: hidden;
   display: block;
   padding-bottom: 10px; }
+  .section-bubble .stage h3,
   .section-project .stage h3,
   .section-quest .stage h3,
   .section-user .stage h3 {
@@ -8376,6 +8378,7 @@ time {
     padding-left: 15px;
     padding-right: 15px;
     z-index: 3; }
+  .section-bubble .stage hr,
   .section-project .stage hr,
   .section-quest .stage hr,
   .section-user .stage hr {
@@ -8385,6 +8388,9 @@ time {
     width: 100%;
     border: solid #ddd 2px;
     z-index: 2; }
+
+.section-bubble .stage {
+  margin-bottom: 20px; }
 
 .footer {
   color: #777;

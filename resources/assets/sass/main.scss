@@ -359,10 +359,10 @@ time {
   .bubble {
     color: black;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     margin-bottom: 30px;
     padding: 20px;
-    border-radius: 30px;
+    border-radius: 15px;
     text-decoration: none;
 
     &:hover {
@@ -486,6 +486,7 @@ time {
   }
 }
 
+.section-bubble .stage,
 .section-project .stage,
 .section-quest .stage,
 .section-user .stage {
@@ -514,6 +515,10 @@ time {
     border: solid #ddd 2px;
     z-index: 2;
   }
+}
+
+.section-bubble .stage {
+  margin-bottom: 20px;
 }
 
 // Footer-Section
