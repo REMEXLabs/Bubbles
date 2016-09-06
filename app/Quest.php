@@ -64,6 +64,29 @@ class Quest extends Model
         return $languages;
     }
 
+    public static function getSuffixes()
+    {
+        $languages = array(
+        'js' => 'javascript',
+        'java' => 'java',
+        'rb' => 'ruby',
+        'php' => 'php',
+        'py' => 'python',
+        'css' => 'css',
+        'c' => 'c',
+        'cpp' => 'cpp',
+        'cs' => 'csharp',
+        'html' => 'html',
+        'd' => 'd',
+        'swift' => 'swift',
+        'sql' => 'sql',
+        'r' => 'r',
+        'm' => 'matlab',
+        );
+        ksort($languages);
+        return $languages;
+    }
+
     public static function getDefaultLanguage()
     {
         return 'javascript';

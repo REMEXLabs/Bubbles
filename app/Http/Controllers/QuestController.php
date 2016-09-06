@@ -183,6 +183,12 @@ class QuestController extends Controller
                     case 'line':
                         if ((int)$val > (int)$tmp_line && $quest != null && array_key_exists('save', $quest)) {
                             unset($quest['save']);
+                            $suffix = explode('.', $quest['file']);
+                            $suffix = $suffix[count($suffix) - 1];
+                            if (array_key_exists($suffix, Quest::getSuffixes())) {
+                                $quest['language'] = Quest::getSuffixes()[$suffix];
+                            }
+                            $quest['difficulty'] = 'normal';
                             $quest['author_id'] = $request->user()->id;
                             $quest = Quest::create($quest);
                             $quest->save();
