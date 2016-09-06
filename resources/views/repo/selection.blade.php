@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h3 style="margin-bottom: 30px;">Select Quests:</h3>
-                {!! Form::open(array('route' => 'quests.store', 'role' => 'form', 'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('route' => 'repo.store', 'role' => 'form', 'class'=>'form-horizontal')) !!}
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -25,9 +25,10 @@
                       <div class="form-group">
                           {{ Form::label('file__' . $fileIdx, 'File:', ['class'=>'col-md-2 control-label']) }}
                           <div class="col-md-10">
-                              {{ Form::text('line__' . $fileIdx, $file, array('class'=>'form-control', 'style'=>'font-weight: bold; margin-bottom: 30px;' ,'disabled'=>'disabled', 'placeholder'=>'File')) }}
+                              {{ Form::text('file__' . $fileIdx, $file, array('class'=>'form-control', 'style'=>'font-weight: bold; margin-bottom: 30px;' ,'disabled'=>'disabled', 'placeholder'=>'File')) }}
                           </div>
                       </div>
+                      {{ Form::hidden('file__' . $fileIdx, $file) }}
                         <?php $questIdx = 0; ?>
                       @foreach($quests as $key => $quest)
                         {{-- <p>{{ $questIdx}}: {{ $quest['line'] }}: {{ $quest['text'] }}</p> --}}
@@ -60,7 +61,7 @@
                             <div class="container col-md-offset-2">
                                 <div class="checkbox">
                                     <label>
-                                        {{ Form::checkbox('terms__' . $fileIdx . '_' . $questIdx, 0) }} Save this quest.
+                                        {{ Form::checkbox('save__' . $fileIdx . '_' . $questIdx, 0) }} Save this quest.
                                     </label>
                                 </div>
                             </div>

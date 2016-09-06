@@ -35,9 +35,9 @@ class QuestController extends Controller
                 return $item->author()->quests_public == 1;
             })->values();
         }
-        return view('quests.index', [
+            return view('quests.index', [
             'quests' => $quests
-        ]);
+            ]);
     }
 
     /**
@@ -49,10 +49,10 @@ class QuestController extends Controller
     {
         $user = Auth::user();
         return view('quests.overview', [
-              'accepted_quests' => $user->acceptedQuests,
-              'resolved_quests' => $user->resolvedQuests,
-              'checking_quests' => $user->checkingQuests,
-              'created_quests' => $user->createdQuests,
+          'accepted_quests' => $user->acceptedQuests,
+          'resolved_quests' => $user->resolvedQuests,
+          'checking_quests' => $user->checkingQuests,
+          'created_quests' => $user->createdQuests,
         ]);
     }
 
@@ -88,8 +88,8 @@ class QuestController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()->route('repo.scan')
-                      ->withErrors($validator)
-                      ->withInput();
+                  ->withErrors($validator)
+                  ->withInput();
         }
         // $repo = urlencode($request->get('repo'));
         $repo = $request->get('repo');
@@ -118,8 +118,8 @@ class QuestController extends Controller
         if (property_exists($json, 'status')) {
             if ((int)$json->status === 404) {
                 return redirect()
-                    ->route('repo.scan')
-                    ->withInput();
+                ->route('repo.scan')
+                ->withInput();
             }
         } elseif (property_exists($json, 'repository')) {
             if (property_exists($json, 'files') && count($json->files)) {
@@ -147,9 +147,68 @@ class QuestController extends Controller
             }
         } else {
             return redirect()
-                ->route('repo.scan')
-                ->withInput();
+            ->route('repo.scan')
+            ->withInput();
         }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store_repos(Request $request)
+    {
+        $input = $request->all();
+        // return $input;
+
+        // Data:
+        $repo = $input['repository'];
+
+        $quest = null;
+        $tmp_file = null;
+        $tmp_line = null;
+
+        foreach ($input as $key => $val) {
+            $keys = explode('__', $key);
+            if (count($keys) == 2) {
+                $type = $keys[0];
+                $index = $keys[1];
+
+                switch ($type) {
+                    case 'file':
+                        $tmp_file = (string)$val;
+                        break;
+                    case 'line':
+                        if ((int)$val > (int)$tmp_line && $quest != null && array_key_exists('save', $quest)) {
+                            unset($quest['save']);
+                            $quest['author_id'] = $request->user()->id;
+                            $quest = Quest::create($quest);
+                            $quest->save();
+                            $quest = null;
+                        } else {
+                            $quest = [
+                              'repository' => $repo,
+                              'file' => $tmp_file,
+                              'line' => (int)$val
+                            ];
+                        }
+                        $tmp_line = (int)$val;
+                        break;
+                    case 'save':
+                        $quest['save'] = 1;
+                        break;
+                    case 'name':
+                        $quest['name'] = (string)$val;
+                        break;
+                    case 'description':
+                        $quest['description'] = (string)$val;
+                        break;
+                }
+            }
+        }
+        return redirect()->route('my-quests');
     }
 
     /**
