@@ -11,6 +11,13 @@
             </div>
         </div>
     </div>
+    <div class="water">
+        <div class="bub x1"></div>
+        <div class="bub x2"></div>
+        <div class="bub x3"></div>
+        <div class="bub x4"></div>
+        <div class="bub x5"></div>
+    </div>
 </main>
 <aside class="aside" role="complementary">
     <div class="container">
