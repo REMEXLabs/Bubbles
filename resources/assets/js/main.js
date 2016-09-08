@@ -13,4 +13,20 @@ $(document).ready(function () {
   updateTime();
   setInterval(updateTime, 60000);
 
+  if ($('#bubble_type_selection').length > 0) {
+    var $selection = $('#bubble_type_selection');
+    $selection.on('change', function (e) {
+      var type = $(this).find('option:selected').attr('value');
+      $('.form-control').each(function () {
+        $(this).removeAttr('disabled');
+      });
+      if (type === 'quest') {
+        type = 'project';
+      } else {
+        type = 'quest';
+      }
+      $('#' + type + '_id').attr('disabled', 'disabled');
+    });
+  }
+
 });

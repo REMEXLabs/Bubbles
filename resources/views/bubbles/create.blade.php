@@ -19,8 +19,8 @@
                         <div class="form-group">
                             {{ Form::label('type', 'Type:', ['class'=>'col-md-2 control-label']) }}
                             <div class="col-md-10">
-                                {{ Form::select('type', Bubble::getTypes(), null, ['class' =>
-'form-control']) }}
+                                {{ Form::select('type', Bubble::getTypes(), 'quest', ['class' =>
+'form-control', 'id' => 'bubble_type_selection']) }}
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                             {{ Form::label('project_id', 'Project:', ['class'=>'col-md-2 control-label']) }}
                             <div class="col-md-10">
                                 {{ Form::select('project_id', $projects, null, ['class' =>
-'form-control']) }}
+'form-control', 'disabled'=>'disabled']) }}
                             </div>
                         </div>
 
