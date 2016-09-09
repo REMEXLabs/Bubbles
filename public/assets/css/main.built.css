@@ -9089,6 +9089,18 @@ time {
   100% {
     margin-left: 50px; } }
 
+@keyframes moveclouds {
+  0% {
+    top: 500px; }
+  100% {
+    top: -500px; } }
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0; }
+  100% {
+    margin-left: 50px; } }
+
 @-o-keyframes moveclouds {
   0% {
     top: 500px; }
