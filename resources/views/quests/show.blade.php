@@ -38,10 +38,19 @@
                     <p><strong>Description</strong>: <br> {{ $quest->description }}</p>
                 @endif
                 @if ($quest->language)
-                    <p><strong>Language</strong>: <br> {{ $quest->language }}</p>
+                    <p><strong>Language</strong>: <br> {{ Quest::getLanguage($quest->language) }}</p>
                 @endif
                 @if ($quest->difficulty)
-                    <p><strong>Difficulty</strong>: <br> {{ $quest->difficulty }}</p>
+                    <div>
+                      <p>
+                        <strong>Difficulty</strong>:
+                      </p>
+                      <div class="icon-swords state--{{ $quest->difficulty }}">
+                          <span class="icon-swords-child st"></span>
+                          <span class="icon-swords-child nd"></span>
+                          <span class="icon-swords-child td"></span>
+                      </div>
+                    </div>
                 @endif
                 <p>
                 @if ($quest->state == 'open')

@@ -36,6 +36,21 @@ class Quest extends Model
         );
     }
 
+    // public static function getLevelIcon($level)
+    // {
+    //     switch ($level) {
+    //         case 'easy':
+    //             return 'EEEASY';
+    //         break;
+    //         case 'normal':
+    //             return 'NONNN';
+    //         break;
+    //         case 'hard':
+    //             return 'BOOM';
+    //         break;
+    //     }
+    // }
+
     public static function getDefaultDifficulty()
     {
         return 'normal';
@@ -85,6 +100,28 @@ class Quest extends Model
         );
         ksort($languages);
         return $languages;
+    }
+
+    public static function getLanguage($lang)
+    {
+        $languages = array(
+        'javascript' => 'JavaScript',
+        'java' => 'Java',
+        'ruby' => 'Ruby',
+        'php' => 'PHP',
+        'python' => 'Python',
+        'css' => 'CSS',
+        'c' => 'C',
+        'cpp' => 'C++',
+        'csharp' => 'C#',
+        'html' => 'HTML',
+        'd' => 'D',
+        'swift' => 'Swift',
+        'sql' => 'SQL',
+        'r' => 'R',
+        'matlab' => 'Matlab',
+        );
+        return $languages[$lang];
     }
 
     public static function getDefaultLanguage()

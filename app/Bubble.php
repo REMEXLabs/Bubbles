@@ -24,6 +24,15 @@ class Bubble extends Model
         );
     }
 
+    public static function getType($type)
+    {
+        $types = array(
+          'project' => 'Project',
+          'quest' => 'Quest',
+        );
+        return $types[$type];
+    }
+
     public static function getTypes()
     {
         return array(

@@ -31,7 +31,7 @@
                 {{-- Profile: --}}
                 <div class="profile">
                     @if($user->image_url)
-                        <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 200px; height: 200px;"> 
+                        <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 200px; height: 200px;">
                     @endif
                     <h1 class="avatar">{{ $user->username }}</h2>
                     <p>
@@ -73,8 +73,12 @@
                         @foreach ($user->resolvedQuests as $quest)
                             <tr>
                                 <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
+                                <td>{{ Quest::getLanguage($quest->language) }}</td>
+                                <td class="icon-swords state--{{ $quest->difficulty }}">
+                                    <span class="icon-swords-child st"></span>
+                                    <span class="icon-swords-child nd"></span>
+                                    <span class="icon-swords-child td"></span>
+                                </td>
                                 <td>{{ $quest->points }}</td>
                                 <td>
                                     <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
@@ -102,8 +106,12 @@
                         @foreach ($user->createdQuests as $quest)
                             <tr>
                                 <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
+                                <td>{{ Quest::getLanguage($quest->language) }}</td>
+                                <td class="icon-swords state--{{ $quest->difficulty }}">
+                                    <span class="icon-swords-child st"></span>
+                                    <span class="icon-swords-child nd"></span>
+                                    <span class="icon-swords-child td"></span>
+                                </td>
                                 <td>{{ $quest->points }}</td>
                                 <td>
                                     <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>

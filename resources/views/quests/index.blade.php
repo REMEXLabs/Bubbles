@@ -60,8 +60,12 @@
                             <tr>
                         @endif
                         <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                        <td>{{ $quest->language }}</td>
-                        <td>{{ $quest->difficulty }}</td>
+                        <td>{{ Quest::getLanguage($quest->language) }}</td>
+                        <td class="icon-swords state--{{ $quest->difficulty }}">
+                            <span class="icon-swords-child st"></span>
+                            <span class="icon-swords-child nd"></span>
+                            <span class="icon-swords-child td"></span>
+                        </td>
                         <td>{{ $quest->points }}</td>
                         @if ($quest->state != 'open')
                             <td><span class="quest-state">{{ $quest->state }}</span></td>

@@ -792,3 +792,39 @@ body.section-user .mainnav a.is-user {
 .subnav {
   background: $ci-light;
 }
+
+.icon-swords {
+  display: block;
+  overflow: hidden;
+
+  .icon-swords-child {
+    display: inline-block;
+    background: url('img/icon-swords.png');
+    background-size: 19px;
+    width: 19px;
+    height: 19px;
+    text-indent: -100%;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    bottom: -2px;
+  }
+
+  &.state--easy {
+    .icon-swords-child {
+      &.nd,
+      &.td {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &.state--normal {
+    .icon-swords-child {
+      &.td {
+        opacity: 0.3;
+      }
+    }
+  }
+
+}

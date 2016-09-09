@@ -49,7 +49,7 @@
                                 @if($bubble->type == 'quest')
                                     <td><a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->quest()->name }}</a></td>
                                 @endif
-                                <td>{{ $bubble->type }}</td>
+                                <td>{{ Bubble::getType($bubble->type) }}</td>
                                 <td>{{ $bubble->order }}</td>
                                 <td>
                                     <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>

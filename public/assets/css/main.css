@@ -9394,3 +9394,23 @@ body.section-user .mainnav a.is-user {
 
 .subnav {
   background: #1985CB; }
+
+.icon-swords {
+  display: block;
+  overflow: hidden; }
+  .icon-swords .icon-swords-child {
+    display: inline-block;
+    background: url("img/icon-swords.png");
+    -webkit-background-size: 19px 19px;
+    background-size: 19px;
+    width: 19px;
+    height: 19px;
+    text-indent: -100%;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    bottom: -2px; }
+  .icon-swords.state--easy .icon-swords-child.nd, .icon-swords.state--easy .icon-swords-child.td {
+    opacity: 0.3; }
+  .icon-swords.state--normal .icon-swords-child.td {
+    opacity: 0.3; }
