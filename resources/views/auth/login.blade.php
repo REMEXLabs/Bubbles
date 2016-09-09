@@ -4,11 +4,18 @@
 <main class="main" role="main">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="registration social-registration">
+                    <h3>Social Login</h3>
+                    <p>
+                        <a class="btn btn-block btn-social btn-github" href="{{ route('github.authorize') }}">
+                            <span class="fa fa-github"></span> Login with GitHub
+                        </a>
+                    </p>
+                </div>
+                <hr>
                 <div class="login">
-
-                    <h3>Login</h3>
-
+                    <h3>Regular Login</h3>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

@@ -3,6 +3,7 @@
 // --------------------------------------------------
 @import "variables";
 @import "bootstrap"; // @import "bootstrap/theme";
+@import "bootstrap-social.scss";
 @import "font-awesome"; // outline: 5px auto -webkit-focus-ring-color;
 
 //
@@ -531,10 +532,14 @@ time {
       padding: 10px 0 0;
     }
 
+    img {
+      margin-bottom: 25px;
+    }
+
     h2 {
-      font-size: 24px;
+      font-size: 28px;
       margin-top: 0;
-      margin-bottom: 4px;
+      margin-bottom: 15px;
     }
 
     dl {

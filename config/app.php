@@ -159,6 +159,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
@@ -220,6 +221,8 @@ return [
         // Debugging:
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
+        // Social logins:
+        'SocialAuth' => AdamWathan\EloquentOAuth\Facades\OAuth::class,
     ],
 
 ];

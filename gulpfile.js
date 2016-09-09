@@ -59,6 +59,7 @@ gulp.task('build:sass', function () {
       includePaths: [
           path.src.bower + '/bootstrap-sass/assets/stylesheets',
           path.src.bower + '/font-awesome/scss',
+          path.src.bower + '/bootstrap-social'
         ]
         // ,outputStyle: production ? 'compressed' : 'expanded'
     }))

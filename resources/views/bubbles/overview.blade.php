@@ -35,23 +35,26 @@
                     <hr>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="bubble">
-                    <header>
-                        <h2>{{ $user->username }}</h2>
-                        <dl>
-                            @if($user->name)
-                                <dt>Name</dt>
-                                <dd>{{ $user->name }}</dd>
-                            @endif
-                            <dt>Level</dt>
-                            <dd>{{ $user->level() }}</dd>
-                            <dt>Experience points</dt>
-                            <dd>{{ $user->points }} / {{ $user->pointsToLevelUp() }}</dd>
-                        </dl>
-                    </header>
+            <a href="{{ route('users.show', ['id' => $user->id]) }}">
+                <div class="col-md-6">
+                    <div class="bubble">
+                        <header>
+                            <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                            <h2>{{ $user->username }}</h2>
+                            <dl>
+                                {{-- @if($user->name)
+                                    <dt>Name</dt>
+                                    <dd>{{ $user->name }}</dd>
+                                @endif --}}
+                                <dt>Level</dt>
+                                <dd>{{ $user->level() }}</dd>
+                                <dt>Experience points</dt>
+                                <dd>{{ $user->points }} / {{ $user->pointsToLevelUp() }}</dd>
+                            </dl>
+                        </header>
+                    </div>
                 </div>
-            </div>
+            </a>
             @foreach ($user->bubbles as $bubble)
                 @if($bubble->type == 'project')
                     <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
@@ -67,10 +70,12 @@
                                         <i class="fa fa-code" aria-hidden="true"></i> Project
                                     </div>
                                 </header>
-                                <dl>
-                                    <dt>Description</dt>
-                                    <dd>{{ $bubble->project()->description }}</dd>
-                                </dl>
+                                @if($bubble->project()->description)
+                                    <dl>
+                                        <dt>Description</dt>
+                                        <dd>{{ $bubble->project()->description }}</dd>
+                                    </dl>
+                                @endif
                             @endif
                             @if($bubble->type == 'quest')
                                 <header>

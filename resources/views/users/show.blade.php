@@ -30,6 +30,9 @@
 
                 {{-- Profile: --}}
                 <div class="profile">
+                    @if($user->image_url)
+                        <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 200px; height: 200px;"> 
+                    @endif
                     <h1 class="avatar">{{ $user->username }}</h2>
                     <p>
                         <strong>Experience Points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}

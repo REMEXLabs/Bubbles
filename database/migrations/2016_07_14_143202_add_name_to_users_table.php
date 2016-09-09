@@ -14,6 +14,7 @@ class AddNameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable();
+            $table->string('image_url')->nullable();
         });
     }
 
@@ -26,6 +27,7 @@ class AddNameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
+            $table->dropColumn('image_url')->nullable();
         });
     }
 }

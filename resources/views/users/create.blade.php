@@ -5,15 +5,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <div class="registration social-registration">
-                    <h3>Social connect</h3>
+                <div class="registration social-registration" style="overflow: hidden;">
+                    <h3>Social Connect</h3>
                     <p>
-                        Sign up with your <strong>Google Plus</strong>, <strong>Github</strong> or <strong>Stack Overflow</strong> acount.
+                        <a class="btn btn-block btn-social btn-github" href="{{ route('github.authorize') }}">
+                            <span class="fa fa-github"></span> Sign up with GitHub
+                        </a>
                     </p>
                 </div>
                 <hr>
                 <div class="registration regular-registration">
-                    <h3>Regular registration</h3>
+                    <h3>Regular Registration</h3>
                     {!! Form::open(array('route' => 'users.store', 'role'=>'form', 'class'=>'form-horizontal')) !!}
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
@@ -58,9 +60,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-offset-3 col-md-9">
+                            {{-- <div class="col-md-offset-3 col-md-9"> --}}
                                 {{ Form::submit('Sign up', array('class' => 'btn btn-block btn-primary')) }}
-                            </div>
+                            {{-- </div> --}}
                         </div>
                         {{-- {{ Form::token() }} --}}
                     {!! Form::close() !!}

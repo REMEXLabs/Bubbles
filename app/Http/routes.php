@@ -16,8 +16,11 @@
 Route::auth();
 Route::get('register', 'UserController@create');
 
+Route::get('github/authorize', ['as' => 'github.authorize', 'uses' => 'SocialController@github_authorize']);
+Route::get('github/login', ['as' => 'github.login', 'uses' => 'SocialController@github_login']);
+
 // -> Controllers:
-Route::get('/', 'BubbleController@index');
+Route::get('/', ['as' => 'welcome', 'uses' => 'BubbleController@index']);
 Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
 Route::get('terms', ['as' => 'terms', 'uses' => 'BubbleController@index']);
 
