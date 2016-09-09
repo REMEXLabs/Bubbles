@@ -49,3 +49,25 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
     Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
     Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
 });
+
+Route::group(['prefix' => 'api'], function () {
+    Route::get('quests', ['as' => 'api.quests', function () {
+        // $fields = ['quests.name', 'quests.author_id'];
+        $data = Quest::orderBy('created_at', 'DESC')->get()->filter(function ($item) {
+            return $item->author()->quests_public == 1;
+        })->values();
+        return response()->json($data);
+    }]);
+    Route::get('projects', ['as' => 'api.projects', function () {
+        // $fields = [];
+        $data = Project::orderBy('created_at', 'DESC')->get();
+        return response()->json($data);
+    }]);
+    Route::get('users', ['as' => 'api.users', function () {
+        // $fields = [];
+        $data = User::orderBy('points', 'DESC')->get()->filter(function ($user) {
+            return $user->points > 1;
+        })->values();
+        return response()->json($data);
+    }]);
+});

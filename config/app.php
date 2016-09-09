@@ -215,6 +215,8 @@ return [
 
         // Application:
         'Quest' => App\Quest::class,
+        'User' => App\User::class,
+        'Project' => App\Project::class,
         'Resource' => App\Resource::class,
         'Bubble' => App\Bubble::class,
 
