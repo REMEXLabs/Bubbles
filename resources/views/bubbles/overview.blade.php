@@ -39,7 +39,9 @@
                 <div class="col-md-6">
                     <div class="bubble">
                         <header>
-                            <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                            @if($user->image_url)
+                                <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                            @endif
                             <h2>{{ $user->username }}</h2>
                             <dl>
                                 {{-- @if($user->name)
