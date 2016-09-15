@@ -7,7 +7,7 @@ use Auth;
 use View;
 use App\User;
 use App\Quest;
-use App\project;
+use App\Project;
 use App\Bubble;
 use App\Http\Requests;
 
