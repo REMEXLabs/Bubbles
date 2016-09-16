@@ -15,6 +15,15 @@ The research leading to these results has received funding from the European Uni
 - Clean Dashboard Design (Bubbles)
 
 
+## Server Configuration
+
+```
+composer install --ignore-platform-reqs
+sudo chmod 755 -R bubbles.gpii.eu/
+sudo chmod -R o+w bubbles.gpii.eu/storage
+sudo chmod -R o+w bubbles.gpii.eu/bootstrap/cache/
+```
+
 ## Contributing
 
 Thank you for considering contributing to the project! You can build und test the website by running the `gulp built` or `gulp watch` task. After that you can send your changes as pull request to the repository.
