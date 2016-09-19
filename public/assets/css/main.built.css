@@ -9127,32 +9127,112 @@ time {
   .section-bubble .bubble header {
     text-align: center;
     padding: 10px 0 0; }
-  .section-bubble .bubble img {
-    margin-bottom: 25px; }
+  .section-bubble .bubble .info {
+    margin-bottom: 20px;
+    overflow: hidden; }
+    .section-bubble .bubble .info:last-child {
+      margin-bottom: 0; }
+  .section-bubble .bubble .subline {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 11px; }
   .section-bubble .bubble h2 {
     font-size: 28px;
     margin-top: 0;
-    margin-bottom: 15px; }
-  .section-bubble .bubble dl {
-    margin-bottom: 6px; }
-    .section-bubble .bubble dl dd:last-child {
-      margin-bottom: 0; }
-  .section-bubble .bubble dd {
-    margin-bottom: 3px; }
-  .section-bubble .bubble .name,
-  .section-bubble .bubble .type {
-    font-size: 15px;
+    margin-bottom: 0; }
+  .section-bubble .bubble .user-avatar {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 75px;
+    margin: 0 auto;
+    background: #ddd;
+    margin-bottom: 10px; }
+    .section-bubble .bubble .user-avatar img {
+      width: 150px;
+      height: 150px; }
+    .section-bubble .bubble .user-avatar .fa-user {
+      font-size: 70px;
+      line-height: 145px; }
+  .section-bubble .bubble .user-level {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 0 auto;
+    background: #ddd;
+    font-weight: bold; }
+  .section-bubble .bubble .user-bar {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    width: 100%;
+    background: #ddd;
+    height: 25px; }
+  .section-bubble .bubble .user-bar-text {
+    position: relative;
     font-weight: bold;
-    margin: 0 0 5px;
-    color: #b4b4b4; }
-    .section-bubble .bubble .name i,
-    .section-bubble .bubble .type i {
-      color: #9b9b9b; }
+    z-index: 30;
+    height: 25px;
+    line-height: 25px; }
+  .section-bubble .bubble .user-bar-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #00c6b1;
+    z-index: 20;
+    height: 25px; }
+  .section-bubble .bubble .type-icon {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 35px;
+    text-align: center;
+    margin: 0 auto;
+    background: #ddd;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 30px; }
+  .section-bubble .bubble .type-subline {
+    margin-bottom: 17px;
+    text-transform: uppercase;
+    font-weight: bold; }
+  .section-bubble .bubble .type-description {
+    text-align: center; }
+  .section-bubble .bubble .type-points {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold; }
+  .section-bubble .bubble .quest-state,
+  .section-bubble .bubble .quest-state--active {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 1px;
+    width: 70px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    display: block;
+    border-radius: 35px;
+    margin: 0 auto;
+    padding: 0; }
+  .section-bubble .bubble .quest-state {
+    color: #9b9b9b;
+    border-color: #9b9b9b; }
+  .section-bubble .bubble .quest-state--active {
+    color: #00c6b1;
+    border-color: #00c6b1; }
   .section-bubble .bubble footer {
-    font-size: 13px;
-    color: #9b9b9b; }
-    .section-bubble .bubble footer dl {
-      margin: 0; }
+    text-align: right;
+    font-size: 14px; }
 
 .section-project h1 {
   text-align: center;

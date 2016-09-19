@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success">Create new bubble</a>
+                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success">Create New Bubble</a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="stage">
-                    <h3>Your Bubbles</h3>
+                    <h3>Dashboard</h3>
                     <hr>
                 </div>
             </div>
@@ -39,20 +39,30 @@
                 <div class="col-md-6">
                     <div class="bubble">
                         <header>
-                            @if($user->image_url)
-                                <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
-                            @endif
-                            <h2>{{ $user->username }}</h2>
-                            <dl>
-                                {{-- @if($user->name)
-                                    <dt>Name</dt>
-                                    <dd>{{ $user->name }}</dd>
-                                @endif --}}
-                                <dt>Level</dt>
-                                <dd>{{ $user->level() }}</dd>
-                                <dt>Experience points</dt>
-                                <dd>{{ $user->points }} / {{ $user->pointsToLevelUp() }}</dd>
-                            </dl>
+                            <div class="info">
+                                <div class="user-avatar">
+                                  @if($user->image_url)
+                                      <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                                  @else
+                                      <i class="fa fa-user" aria-hidden="true"></i>
+                                  @endif
+                                </div>
+                                <h2>{{ $user->username }}</h2>
+                            </div>
+                            <div class="info">
+                              <div class="user-level">
+                                {{ $user->level() }}
+                              </div>
+                              <h3 class="subline">Level</h3>
+                            </div>
+                            <div class="info">
+                              <div class="user-bar">
+                                  <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }}</span>
+                                  <?php $percent = (($user->points == 0) ? 0 : intval($user->pointsToLevelUp() / $user->points * 100)); ?>
+                                  <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                              </div>
+                              <h3 class="subline">Experience Points</h3>
+                            </div>
                         </header>
                     </div>
                 </div>
@@ -66,46 +76,47 @@
                     <div class="col-md-6">
                         <div class="bubble">
                             @if($bubble->type == 'project')
-                                <header>
-                                    <h2>{{ $bubble->project()->name }}</h2>
-                                    <div class="type">
-                                        <i class="fa fa-code" aria-hidden="true"></i> Project
+                                <header class="info">
+                                    <div class="type-icon">
+                                        <i class="fa fa-code" aria-hidden="true"></i>
                                     </div>
+                                    <div class="type-subline">
+                                        Project
+                                    </div>
+                                    <h2>{{ $bubble->project()->name }}</h2>
                                 </header>
                                 @if($bubble->project()->description)
-                                    <dl>
-                                        <dt>Description</dt>
-                                        <dd>{{ $bubble->project()->description }}</dd>
-                                    </dl>
+                                   <div class="info type-description">
+                                      {{ $bubble->project()->description }}
+                                   </div>
                                 @endif
                             @endif
                             @if($bubble->type == 'quest')
-                                <header>
-                                    <h2>{{ $bubble->quest()->name }}</h2>
-                                    <div class="type">
-                                        <i class="fa fa-bolt" aria-hidden="true"></i> Quest
+                                <header class="info">
+                                    <div class="type-icon">
+                                        <i class="fa fa-bolt" aria-hidden="true"></i>
                                     </div>
+                                    <div class="type-subline">
+                                        {{ $bubble->quest()->points }} <i class="fa fa-star" aria-hidden="true"></i> Quest
+                                    </div>
+                                    <h2>{{ $bubble->quest()->name }}</h2>
                                 </header>
-                                <main>
-                                    <dl>
-                                        <dt>Description</dt>
-                                        <dd>{{ $bubble->quest()->description }}</dd>
-                                        <dt>Status</dt>
-                                        @if ($bubble->quest()->state != 'open')
-                                            <dd class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></dd>
-                                        @else
-                                            <dd class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></dd>
-                                        @endif
-                                    </dl>
-                                </main>
+                                <div class="info">
+                                  @if ($bubble->quest()->state != 'open')
+                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></div>
+                                  @else
+                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></div>
+                                  @endif
+                                </div>
+                                @if($bubble->quest()->description)
+                                   <div class="info type-description">
+                                      {{ $bubble->quest()->description }}
+                                   </div>
+                                @endif
+
                             @endif
                             <footer>
-                              <dl>
-                                  <dt>Created at</dt>
-                                  <dd>
-                                      <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
-                                  </dd>
-                              </dl>
+                                <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
                             </footer>
                         </div>
                     </div>
