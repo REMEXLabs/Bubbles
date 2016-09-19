@@ -1,5 +1,6 @@
 # Bubbles
 
+<img src="/screenshots/preview.png?raw=tru" width="240" align="right" style="margin-left: 20px;">
 
 ## Funding Acknowledgement
 
