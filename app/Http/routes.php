@@ -21,7 +21,7 @@ Route::get('github/login', ['as' => 'github.login', 'uses' => 'SocialController@
 
 // -> Controllers:
 Route::get('/', ['as' => 'welcome', 'uses' => 'BubbleController@index']);
-Route::get('imprint', ['as' => 'imprint', 'uses' => 'BubbleController@index']);
+Route::get('imprint', ['as' => 'imprint', 'uses' => 'HomeController@imprint']);
 Route::get('terms', ['as' => 'terms', 'uses' => 'BubbleController@index']);
 
 Route::resource('quests', 'QuestController');

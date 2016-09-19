@@ -55,7 +55,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 @if (Auth::user()->image_url)
-                                    <img src="{{ Auth::user()->image_url }}" class="profile-image img-circle" style="width: 38px; height: 38px; margin-right: 7px;"> 
+                                    <img src="{{ Auth::user()->image_url }}" class="profile-image img-circle" style="width: 38px; height: 38px; margin-right: 7px;">
                                 @endif
                                 {{ Auth::user()->username }} <span class="caret" aria-hidden="true"></span>
                             </a>
