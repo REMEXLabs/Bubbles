@@ -29,8 +29,8 @@
                             <tr>
                                 <th width="10%">Ranking</th>
                                 <th width="70%">Username</th>
-                                <th width="10%">Level</th>
-                                <th width="10%">Points</th>
+                                <th class="text-center" width="10%">Level</th>
+                                <th class="text-center" width="10%">Points</th>
                                 {{-- <th width="10%">Quests</th> --}}
                             </tr>
                         </thead>
@@ -45,7 +45,7 @@
                             <?php $line = "solid"; ?>
                             @if ($user->points != $prev_pts)
                             <td>
-                                {{ $idx }}
+                                {{ $idx }}.
                                 <?php $idx++; ?>
                                 <?php $prev_pts = $user->points; ?>
                             </td>
@@ -56,11 +56,11 @@
                             <td style="border-top-style: {{ $line }};">
                                 <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
                             </td>
-                            <td style="border-top-style: {{ $line }};">
+                            <td class="text-center" style="border-top-style: {{ $line }};">
                                 {{ $user->level() }}
                             </td>
-                            <td style="border-top-style: {{ $line }};">
-                                {{ $user->points }}
+                            <td class="text-center" style="border-top-style: {{ $line }};">
+                                <strong>{{ $user->points }}</strong>
                             </td>
                             {{-- <td>
                               {{ count($user->resolvedQuests) }}

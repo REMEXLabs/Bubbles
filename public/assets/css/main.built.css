@@ -9148,15 +9148,6 @@ time {
     .section-bubble .bubble .name i,
     .section-bubble .bubble .type i {
       color: #9b9b9b; }
-  .section-bubble .bubble .quest-state,
-  .section-bubble .bubble .quest-state--active {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: bold; }
-  .section-bubble .bubble .quest-state {
-    color: #9b9b9b; }
-  .section-bubble .bubble .quest-state--active {
-    color: #00c6b1; }
   .section-bubble .bubble footer {
     font-size: 13px;
     color: #9b9b9b; }
@@ -9170,21 +9161,6 @@ time {
 .section-quest h1 {
   text-align: center;
   padding: 40px 0 20px; }
-
-.section-quest .quest--inactive {
-  color: #9b9b9b; }
-
-.section-quest .quest-state,
-.section-quest .quest-state--active {
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold; }
-
-.section-quest .quest-state {
-  color: #9b9b9b; }
-
-.section-quest .quest-state--active {
-  color: #00c6b1; }
 
 .section-user .profile {
   padding-top: 40px;
@@ -9289,6 +9265,24 @@ time {
     color: #198CE7; }
   .language.matlab {
     color: #bb92ac; }
+
+.quest-state,
+.quest-state--active {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 2px 5px; }
+
+.quest-state {
+  color: #9b9b9b;
+  border-color: rgba(155, 155, 155, 0.7); }
+
+.quest-state--active {
+  color: #00c6b1;
+  border-color: rgba(0, 198, 177, 0.7); }
 
 .btn-success {
   color: white;

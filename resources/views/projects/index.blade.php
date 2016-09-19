@@ -51,7 +51,7 @@
                                 <td>
                                     <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
                                 </td>
                         </tr>

@@ -66,7 +66,9 @@
                             <span class="icon-swords-child nd"></span>
                             <span class="icon-swords-child td"></span>
                         </td>
-                        <td class="text-center">{{ $quest->points }}</td>
+                        <td class="text-center">
+                          <strong>{{ $quest->points }}</strong>
+                        </td>
                         @if ($quest->state != 'open')
                             <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
                         @else
