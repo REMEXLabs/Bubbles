@@ -745,6 +745,74 @@ time {
   padding-top: 10px;
 }
 
+.language {
+  text-align: left;
+
+  &::before {
+    content: '•';
+  }
+
+  &.javascript {
+    color: #f1e05a;
+  }
+
+  &.java {
+    color: #b07219;
+  }
+
+  &.ruby {
+    color: #701516;
+  }
+
+  &.php {
+    color: #4F5D95;
+  }
+
+  &.python {
+    color: #3572A5;
+  }
+
+  &.css {
+    color: #563d7c;
+  }
+
+  &.c {
+    color: #555555;
+  }
+
+  &.cpp {
+    color: #f34b7d;
+  }
+
+  &.csharp {
+    color: #178600;
+  }
+
+  &.html {
+    color: #e44b23;
+  }
+
+  &.d {
+    color: #ba595e;
+  }
+
+  &.swift {
+    color: #ffac45;
+  }
+
+  &.sql {
+    color: #ccc;
+  }
+
+  &.r {
+    color: #198CE7;
+  }
+
+  &.matlab {
+    color: #bb92ac;
+  }
+}
+
 //
 // Theming
 // --------------------------------------------------

@@ -48,9 +48,9 @@
                             <th width="35%">Name</th>
                             <th width="15%">Language</th>
                             <th width="10%">Level</th>
-                            <th width="10%">Points</th>
-                            <th width="10%">Status</th>
-                            <th width="20%"></th>
+                            <th class="text-center" width="10%">Points</th>
+                            <th class="text-center" width="10%">Status</th>
+                            <th class="text-right" width="20%"></th>
                         </tr>
                     </thead>
                     @foreach ($quests as $quest)
@@ -60,19 +60,19 @@
                             <tr>
                         @endif
                         <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                        <td>{{ Quest::getLanguage($quest->language) }}</td>
+                        <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
                         <td class="icon-swords state--{{ $quest->difficulty }}">
                             <span class="icon-swords-child st"></span>
                             <span class="icon-swords-child nd"></span>
                             <span class="icon-swords-child td"></span>
                         </td>
-                        <td>{{ $quest->points }}</td>
+                        <td class="text-center">{{ $quest->points }}</td>
                         @if ($quest->state != 'open')
-                            <td><span class="quest-state">{{ $quest->state }}</span></td>
+                            <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
                         @else
-                            <td><span class="quest-state--active">{{ $quest->state }}</span></td>
+                            <td class="text-center"><span class="quest-state--active">{{ $quest->state }}</span></td>
                         @endif
-                        <td>
+                        <td class="text-right">
                             <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
                         </td>
                     </tr>

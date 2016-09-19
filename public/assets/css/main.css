@@ -9304,6 +9304,41 @@ time {
 .regular-registration form {
   padding-top: 10px; }
 
+.language {
+  text-align: left; }
+  .language::before {
+    content: '•'; }
+  .language.javascript {
+    color: #f1e05a; }
+  .language.java {
+    color: #b07219; }
+  .language.ruby {
+    color: #701516; }
+  .language.php {
+    color: #4F5D95; }
+  .language.python {
+    color: #3572A5; }
+  .language.css {
+    color: #563d7c; }
+  .language.c {
+    color: #555555; }
+  .language.cpp {
+    color: #f34b7d; }
+  .language.csharp {
+    color: #178600; }
+  .language.html {
+    color: #e44b23; }
+  .language.d {
+    color: #ba595e; }
+  .language.swift {
+    color: #ffac45; }
+  .language.sql {
+    color: #ccc; }
+  .language.r {
+    color: #198CE7; }
+  .language.matlab {
+    color: #bb92ac; }
+
 .btn-success {
   color: white;
   background-color: #00c6b1;
