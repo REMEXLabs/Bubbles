@@ -167,8 +167,8 @@ time {
   border: 0;
   @media (min-width: $screen-sm) {
     margin-top: 0;
-    height: 70px;
     width: auto;
+    height: 70px;
     padding: 17px 0 0 20px;
   }
   @media (min-width: $screen-md) {
@@ -191,6 +191,9 @@ time {
 
     width: 70%;
     @media (min-width: $screen-sm) {
+      width: 120px;
+    }
+    @media (min-width: $screen-md) {
       width: auto;
     }
   }

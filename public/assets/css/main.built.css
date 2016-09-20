@@ -8819,8 +8819,8 @@ h6 {
     line-height: 41px;
     height: 70px; }
   .mainnav .navbar-nav > li > a {
-    padding-left: 10px;
-    padding-right: 10px; }
+    padding-left: 15px;
+    padding-right: 15px; }
     @media (min-width: 768px) {
       .mainnav .navbar-nav > li > a {
         line-height: 41px;
@@ -9078,8 +9078,8 @@ time {
   @media (min-width: 768px) {
     .search_form {
       margin-top: 0;
-      height: 70px;
       width: auto;
+      height: 70px;
       padding: 17px 0 0 20px; } }
   @media (min-width: 992px) {
     .search_form {
@@ -9097,6 +9097,9 @@ time {
     font-size: 14px;
     width: 70%; }
     @media (min-width: 768px) {
+      .search_form .form-control {
+        width: 120px; } }
+    @media (min-width: 992px) {
       .search_form .form-control {
         width: auto; } }
   .search_form .btn {
