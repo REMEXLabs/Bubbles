@@ -9156,10 +9156,20 @@ time {
   border-radius: 100%;
   text-align: center;
   border: 2px solid #ddd;
-  font-weight: bold; }
+  font-weight: bold;
+  position: relative; }
   @media (max-width: 992px) {
     .section-welcome .bubble {
       margin-top: 5% !important; } }
+  .section-welcome .bubble i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 44px;
+    z-index: 10; }
+  .section-welcome .bubble span {
+    position: relative;
+    z-index: 30; }
 
 .section-welcome .water {
   height: 100%;

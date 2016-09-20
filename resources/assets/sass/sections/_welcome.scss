@@ -49,6 +49,22 @@
     @media (max-width: $screen-md) {
       margin-top: 5% !important;
     }
+
+    position: relative;
+
+    i {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 44px;
+      z-index: 10;
+    }
+
+    span {
+      position: relative;
+      z-index: 30;
+    }
+
   }
 
   .water {
