@@ -17,6 +17,22 @@ class Quest extends Model
       'points',
     ];
 
+    public static $public = [
+      'id',
+      'name',
+      'description',
+      'author_id',
+      'editor_id',
+      'repository',
+      'file',
+      'line',
+      'language',
+      'difficulty',
+      'state',
+      'created_at',
+      'updated_at'
+    ];
+
     public static function getValidationRules()
     {
         return array(

@@ -22,6 +22,16 @@ class User extends Authenticatable
         'theme',
     ];
 
+    public static $public = [
+      'id',
+      'username',
+      'name',
+      'bio',
+      'points',
+      'created_at',
+      'updated_at'
+    ];
+
     public static function getRegistrationValidationRules()
     {
         return array(

@@ -14,6 +14,9 @@ class Bubble extends Model
       'order',
     ];
 
+    // public static $public = [
+    // ];
+
     public static function getValidationRules()
     {
         return array(

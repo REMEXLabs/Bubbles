@@ -11,14 +11,23 @@ class Project extends Model
    *
    * @var array
    */
-  protected $fillable = [
+    protected $fillable = [
       'name',
       'description',
       'user_id'
-  ];
+    ];
 
-  public function user() {
-      return $this->belongsTo('App\User')->get()->first();
-  }
+    public static $public = [
+    'id',
+    'name',
+    'description',
+    'user_id',
+    'created_at',
+    'updated_at'
+    ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User')->get()->first();
+    }
 }

@@ -61,20 +61,17 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
 // Public API
 Route::group(['prefix' => 'api'], function () {
     Route::get('quests', ['as' => 'api.quests', function () {
-        // $fields = ['quests.name', 'quests.author_id'];
-        $data = Quest::orderBy('created_at', 'DESC')->get()->filter(function ($item) {
+        $data = Quest::orderBy('created_at', 'DESC')->get(Quest::$public)->filter(function ($item) {
             return $item->author()->quests_public == 1;
         })->values();
         return response()->json($data);
     }]);
     Route::get('projects', ['as' => 'api.projects', function () {
-        // $fields = [];
-        $data = Project::orderBy('created_at', 'DESC')->get();
+        $data = Project::orderBy('created_at', 'DESC')->get(Project::$public);
         return response()->json($data);
     }]);
     Route::get('users', ['as' => 'api.users', function () {
-        // $fields = [];
-        $data = User::orderBy('points', 'DESC')->get()->filter(function ($user) {
+        $data = User::orderBy('points', 'DESC')->get(User::$public)->filter(function ($user) {
             return $user->points > 1;
         })->values();
         return response()->json($data);
