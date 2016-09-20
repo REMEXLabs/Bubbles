@@ -6,6 +6,9 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
+                        <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success">Scan GitHub Repository</a>
+                    </li>
+                    <li>
                         <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success">Create New Bubble</a>
                     </li>
                 </ul>
@@ -36,7 +39,7 @@
                 </div>
             </div>
             <a href="{{ route('users.show', ['id' => $user->id]) }}">
-                <div class="col-md-6">
+                <div class="col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="bubble">
                         <header>
                             <div class="info">
@@ -57,8 +60,8 @@
                             </div>
                             <div class="info">
                               <div class="user-bar">
-                                  <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }}</span>
-                                  <?php $percent = (($user->points == 0) ? 0 : intval($user->pointsToLevelUp() / $user->points * 100)); ?>
+                                  <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
+                                  <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
                                   <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
                               </div>
                               <h3 class="subline">Experience Points</h3>
@@ -73,7 +76,7 @@
                 @else
                     <a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}">
                 @endif
-                    <div class="col-md-6">
+                    <div class="col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                         <div class="bubble">
                             @if($bubble->type == 'project')
                                 <header class="info">
