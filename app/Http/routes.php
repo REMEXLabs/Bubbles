@@ -21,9 +21,16 @@ Route::get('github/login', ['as' => 'github.login', 'uses' => 'SocialController@
 
 // -> Controllers:
 Route::get('/', ['as' => 'welcome', 'uses' => 'BubbleController@index']);
-Route::get('imprint', ['as' => 'imprint', 'uses' => 'HomeController@imprint']);
-Route::get('terms', ['as' => 'terms', 'uses' => 'BubbleController@index']);
 
+// -> Static Sites:
+Route::get('imprint', ['as' => 'imprint', function () {
+    return view('home.imprint');
+}]);
+Route::get('terms', ['as' => 'terms', function () {
+    return view('home.terms');
+}]);
+
+// -> Public Resources:
 Route::resource('quests', 'QuestController');
 Route::get('quests/accept/{id}', ['as' => 'quests.accept', 'uses' => 'QuestController@accept']);
 Route::get('quests/finish/{id}', ['as' => 'quests.finish', 'uses' => 'QuestController@finish']);
@@ -38,10 +45,11 @@ Route::post('quests/store/repo', ['as' => 'repo.store', 'uses' => 'QuestControll
 Route::resource('projects', 'ProjectController');
 Route::resource('users', 'UserController');
 
-// Private:
+// Private Resources:
 Route::resource('bubbles', 'BubbleController');
 Route::resource('resources', 'ResourceController');
 
+// Private Settings:
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
     Route::get('quests', ['as' => 'my-quests', 'uses' => 'QuestController@overview']);
     Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'BubbleController@overview']);
@@ -50,6 +58,7 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
     Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
 });
 
+// Public API
 Route::group(['prefix' => 'api'], function () {
     Route::get('quests', ['as' => 'api.quests', function () {
         // $fields = ['quests.name', 'quests.author_id'];

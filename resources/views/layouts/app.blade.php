@@ -50,7 +50,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}" class="is-login"><i class="fa fa-btn fa-sign-in"></i>Login</a></li>
-                        <li><a href="{{ url('/register') }}" class="is-sign-up"><i class="fa fa-btn fa-user"></i>Sign up</a></li>
+                        <li><a href="{{ url('/register') }}" class="is-sign-up"><i class="fa fa-btn fa-user"></i>Sign Up</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
