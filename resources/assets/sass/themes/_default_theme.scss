@@ -1,0 +1,96 @@
+@import "variables";
+
+.btn-success {
+  @include button-variant(white, $ci-success, $ci-success);
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten($ci-success, 1%);
+    border-color: lighten($ci-success, 2%);
+  }
+}
+
+.btn-primary {
+  @include button-variant(#fff, darken($ci-color, 1%), lighten($ci-color, 1%));
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    background: lighten($ci-color, 1%);
+    border-color: lighten($ci-color, 2%);
+  }
+}
+
+.mainnav {
+  background: $ci-color;
+
+  .dropdown-menu .divider,
+  .nav li:hover {
+    background: $ci-light;
+  }
+
+  .navbar-nav > .open > a,
+  .navbar-nav > .open > a:focus,
+  .navbar-nav > .open > a:hover,
+  .navbar-nav > li > .dropdown-menu,
+  .navbar-toggle .icon-bar {
+    background: $ci-color;
+  }
+
+  .navbar-collapse {
+    border-color: $ci-light;
+  }
+}
+
+body.section-login .mainnav a.is-login,
+body.section-project .mainnav a.is-project,
+body.section-quest .mainnav a.is-quest,
+body.section-sign-up .mainnav a.is-sign-up,
+body.section-user .mainnav a.is-user {
+  background: $ci-light;
+}
+
+.subnav {
+  background: $ci-light;
+}
+
+.icon-swords {
+  display: block;
+  overflow: hidden;
+
+  .icon-swords-child {
+    display: inline-block;
+    background: url('img/icon-swords.png');
+    background-size: 19px;
+    width: 19px;
+    height: 19px;
+    text-indent: -100%;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    bottom: -2px;
+  }
+
+  &.state--easy {
+    .icon-swords-child {
+      &.nd,
+      &.td {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &.state--normal {
+    .icon-swords-child {
+      &.td {
+        opacity: 0.3;
+      }
+    }
+  }
+
+}

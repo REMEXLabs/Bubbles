@@ -1,0 +1,63 @@
+@import "variables";
+
+//
+// Basics
+// --------------------------------------------------
+
+body {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300;
+  background: #f8f8f8;
+}
+
+//
+// Sections
+// --------------------------------------------------
+
+.container {
+  position: relative;
+}
+
+// Header-Section
+// -------------------------
+
+.site_header {
+  background: transparent;
+}
+
+// Main-Section
+// -------------------------
+
+.site_main {
+  background: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+// Footer-Section
+// -------------------------
+
+.site_footer {
+  color: #777;
+  background-color: #f8f8f8;
+  // border-top: 1px solid #e7e7e7;
+  border-top: 1px solid #ddd;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 14px;
+
+  .info {
+    display: inline-block;
+
+    a {
+      display: inline-block;
+    }
+  }
+
+  .imprint {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    color: black;
+  }
+}

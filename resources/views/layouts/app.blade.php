@@ -81,7 +81,7 @@
     @yield('subnav')
     @yield('content')
 
-    <footer class="footer">
+    <footer class="site_footer">
       <div class="container">
         <div class="info">
           <a href="http://www.prosperity4all.eu/">

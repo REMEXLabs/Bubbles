@@ -15,7 +15,7 @@
 @endsection --}}
 
 @section('content')
-<main class="main" role="main">
+<main class="site_main" role="main">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -54,13 +54,17 @@
                                 <td style="border-top-style: {{ $line }};"></td>
                             @endif
                             <td style="border-top-style: {{ $line }};">
-                                <a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a>
+                                @if ($user->image_url)
+                                    <a href="{{ route('users.show', ['id' => $user->id]) }}"><img src="{{ $user->image_url }}" width="22px" height="22px" style="float: left; margin: 0 6px 0 0; border-radius: 2px;"/> {{ $user->username }}</a>
+                                @else
+                                    <a href="{{ route('users.show', ['id' => $user->id]) }}"><span style="width: 22px; height: 22px; float: left; margin: 0 6px 0 0; border-radius: 2px; background: #ddd; text-align:center; line-height: 22px; color: black; font-size: 13px;"><i class="fa fa-user" aria-hidden="true"></i></span> {{ $user->username }}</a>
+                                @endif
                             </td>
                             <td class="text-center" style="border-top-style: {{ $line }};">
                                 {{ $user->level() }}
                             </td>
                             <td class="text-center" style="border-top-style: {{ $line }};">
-                                <strong>{{ $user->points }}</strong>
+                                <strong>{{ $user->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
                             </td>
                             {{-- <td>
                               {{ count($user->resolvedQuests) }}

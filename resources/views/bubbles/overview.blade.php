@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-<main class="main" role="main">
+<main class="site_main" role="main">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -115,7 +115,7 @@
                                 @endif
 
                             @endif
-                            <footer>
+                            <footer class="footer">
                                 <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
                             </footer>
                         </div>

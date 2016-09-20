@@ -29,7 +29,7 @@
 @endsection
 
 @section('content')
-<main class="main" role="main">
+<main class="site_main" role="main">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

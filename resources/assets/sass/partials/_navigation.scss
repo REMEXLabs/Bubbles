@@ -1,0 +1,234 @@
+@import "variables";
+
+//
+// Navigation
+// --------------------------------------------------
+
+// 1. Main-Navigation
+// 2. Sub-Navigation
+
+// 1. Main-Navigation
+// -------------------------
+
+.mainnav {
+  border: 0;
+  margin-bottom: 0;
+  @media (min-width: $screen-sm) {
+    .navbar-header {
+      margin-right: 25px;
+    }
+  }
+
+  .navbar-brand {
+    line-height: 41px;
+    height: 70px;
+  }
+
+  .navbar-nav > li > a {
+    // line-height: 41px;
+  }
+  @media (min-width: $screen-sm) {
+    .navbar-nav > li > a {
+      line-height: 41px;
+    }
+  }
+
+  a {
+    color: #fff !important;
+  }
+
+  .navbar-nav > .open > a:focus,
+  a:active:focus,
+  a:hover:focus {
+    outline: none;
+  }
+
+  a:focus {
+    outline-style: dotted;
+    outline-color: #fff;
+    outline-width: 2px;
+    outline-offset: -2px;
+  }
+
+  // .nav li:hover {
+  //   background: $ci-light;
+  // }
+
+  .nav {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 6px;
+  }
+  @media (min-width: $screen-sm) {
+    .nav {
+      padding-top: 0;
+      border: 0;
+    }
+  }
+
+  .nav li.dropdown:hover {
+    background: transparent;
+  }
+
+  // http://stackoverflow.com/questions/8878033/how-to-make-twitter-bootstrap-menu-dropdown-on-hover-rather-than-click
+  // ul.nav li.dropdown:hover > ul.dropdown-menu {
+  //   display: block;
+  // }
+  @media (min-width: $screen-sm) {
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+      display: block;
+    }
+  }
+
+  // .navbar-nav > .open > a,
+  // .navbar-nav > .open > a:focus,
+  // .navbar-nav > .open > a:hover {
+  //   background: $ci-color;
+  // }
+
+  .dropdown-header {
+    color: #fff;
+    color: transparentize(#fff, 0.5);
+    padding: 5px 20px 4px;
+    font-weight: normal;
+  }
+
+  .nav .dropdown-header:hover {
+    background: transparent;
+  }
+
+  .dropdown-menu .divider {
+    height: 1px;
+    // background-color: $ci-light;
+    margin: 5px 0;
+  }
+  @media (min-width: $screen-sm) {
+    .dropdown-menu .divider {
+      margin: 10px 0;
+    }
+  }
+
+  .dropdown-menu > li > a {
+    min-height: 28px;
+  }
+
+  .dropdown-menu > li > a:focus,
+  .dropdown-menu > li > a:hover {
+    background: transparent;
+  }
+
+  .navbar-toggle {
+    margin-top: 19.5px;
+    padding: 9px 7px 8px;
+    background: #fff;
+    border: 0;
+
+    // .icon-bar {
+    //   background: $ci-color;
+    // }
+  }
+
+  .navbar-collapse {
+    border: 0;
+    // border-color: $ci-light;
+    box-shadow: none;
+  }
+
+  .dropdown-toggle:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+
+  .navbar-nav > li > .dropdown-menu {
+    // background: $ci-color;
+    box-shadow: none;
+    padding: 10px 0;
+    border: 0;
+    font-size: 15px;
+  }
+  @media (min-width: $screen-sm) {
+    .navbar-nav > li > .dropdown-menu {
+      min-width: 230px;
+      font-size: 14px;
+    }
+  }
+
+  .dropdown-toggle .caret {
+    margin-left: 6px;
+  }
+
+  .dropdown-menu {
+    .fa-btn {
+      margin-right: 8px;
+    }
+  }
+
+}
+
+// 2. Sub-Navigation
+// -------------------------
+
+.subnav {
+  // background: $ci-light;
+  border: 0;
+  // border-bottom: 1px solid #eee;
+  min-height: 50px;
+  margin-bottom: 0;
+  padding-top: 11px;
+  padding-bottom: 10px;
+  border-radius: 0;
+
+  .list-inline--left a {
+    color: #fff;
+    color: transparentize(white, 0.25);
+  }
+
+  .list-inline--left a:hover {
+    color: #fff;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  ul .fa {
+    padding-right: 5px;
+  }
+
+  ul li .cut {
+    padding-left: 0;
+  }
+
+  .list-inline--right {
+    float: right;
+  }
+
+  .list-inline--right li {
+    float: left;
+    padding-right: 0;
+    padding-left: 10px;
+  }
+
+  .list-inline--left .btn,
+  .list-inline--left .btn:active,
+  .list-inline--left .btn:active:focus,
+  .list-inline--left .btn:focus,
+  .list-inline--left .btn:hover {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .btn-default {
+    @include button-variant(black, darken(white, 5%), darken(white, 5%));
+
+    &:active,
+    &:active:focus,
+    &:active:hover,
+    &:focus,
+    &:hover {
+      background: darken(white, 5%);
+      border-color: darken(white, 3%);
+    }
+  }
+
+}

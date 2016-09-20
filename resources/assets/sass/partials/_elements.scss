@@ -1,0 +1,154 @@
+//
+// Elements
+// --------------------------------------------------
+
+// 1. Time Element
+// 2. Horizontal Headline
+// 3. Login / Registration
+// 4. Programming-Language
+// 5. Quest-Status
+
+// 1. Time Element
+// -------------------------
+time {
+  color: darken(#e7e7e7, 30%);
+}
+
+// 2. Horizontal Headline
+// -------------------------
+.section-bubble .stage,
+.section-project .stage,
+.section-quest .stage,
+.section-user .stage {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding-bottom: 10px;
+
+  h3 {
+    position: relative;
+    float: none;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 3;
+  }
+
+  hr {
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    border: solid #ddd 2px;
+    z-index: 2;
+  }
+}
+
+// 3. Login / Registration
+// -------------------------
+.login,
+.registration {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login form,
+.regular-registration form {
+  padding-top: 10px;
+}
+
+// 4. Programming-Language
+// -------------------------
+.language {
+  text-align: left;
+
+  &::before {
+    content: '•';
+  }
+
+  &.javascript {
+    color: #f1e05a;
+  }
+
+  &.java {
+    color: #b07219;
+  }
+
+  &.ruby {
+    color: #701516;
+  }
+
+  &.php {
+    color: #4F5D95;
+  }
+
+  &.python {
+    color: #3572A5;
+  }
+
+  &.css {
+    color: #563d7c;
+  }
+
+  &.c {
+    color: #555555;
+  }
+
+  &.cpp {
+    color: #f34b7d;
+  }
+
+  &.csharp {
+    color: #178600;
+  }
+
+  &.html {
+    color: #e44b23;
+  }
+
+  &.d {
+    color: #ba595e;
+  }
+
+  &.swift {
+    color: #ffac45;
+  }
+
+  &.sql {
+    color: #ccc;
+  }
+
+  &.r {
+    color: #198CE7;
+  }
+
+  &.matlab {
+    color: #bb92ac;
+  }
+}
+
+// 5. Quest-Status
+// -------------------------
+.quest-state,
+.quest-state--active {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  padding: 2px 5px;
+}
+
+.quest-state {
+  color: darken(#e7e7e7, 30%);
+  border-color: rgba(darken(#e7e7e7, 30%), 0.7);
+}
+
+.quest-state--active {
+  color: $ci-success;
+  border-color: rgba($ci-success, 0.7);
+}
