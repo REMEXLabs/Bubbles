@@ -159,27 +159,48 @@ time {
 .search_form {
   display: inline-block;
   height: 70px;
-  margin: 0;
-  padding: 17px 0 0 44px;
+  margin: 10px 0 0;
+  padding: 0;
   float: left;
   overflow: hidden;
+  width: 100%;
+  border: 0;
+  @media (min-width: $screen-sm) {
+    margin-top: 0;
+    height: 70px;
+    width: auto;
+    padding: 17px 0 0 20px;
+  }
+  @media (min-width: $screen-md) {
+    padding: 17px 0 0 44px;
+  }
+
+  .form-group {
+    margin: 0;
+  }
 
   .form-control {
     height: 35px;
-    float: right;
+    float: left;
     border-color: #fff;
     border-radius: 0;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
     box-shadow: none;
+    font-size: 14px;
+
+    width: 70%;
+    @media (min-width: $screen-sm) {
+      width: auto;
+    }
   }
 
   .btn {
     height: 35px;
     border: 1px solid #ddd;
     border-radius: 0;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
     border-left-width: 0;
     box-shadow: none;
     font-size: 13px;
@@ -189,5 +210,10 @@ time {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 11px;
+
+    width: 30%;
+    @media (min-width: $screen-sm) {
+      width: auto;
+    }
   }
 }

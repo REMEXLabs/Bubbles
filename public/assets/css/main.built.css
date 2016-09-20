@@ -8807,15 +8807,29 @@ h6 {
 .mainnav {
   border: 0;
   margin-bottom: 0; }
-  @media (min-width: 768px) {
-    .mainnav .navbar-header {
-      margin-right: 25px; } }
+  .mainnav .navbar-header {
+    margin-right: 0; }
+    @media (min-width: 768px) {
+      .mainnav .navbar-header {
+        margin-right: 12px; } }
+    @media (min-width: 992px) {
+      .mainnav .navbar-header {
+        margin-right: 25px; } }
   .mainnav .navbar-brand {
     line-height: 41px;
     height: 70px; }
-  @media (min-width: 768px) {
-    .mainnav .navbar-nav > li > a {
-      line-height: 41px; } }
+  .mainnav .navbar-nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px; }
+    @media (min-width: 768px) {
+      .mainnav .navbar-nav > li > a {
+        line-height: 41px;
+        padding-left: 10px;
+        padding-right: 10px; } }
+    @media (min-width: 992px) {
+      .mainnav .navbar-nav > li > a {
+        padding-left: 15px;
+        padding-right: 15px; } }
   .mainnav a {
     color: #fff !important; }
   .mainnav .navbar-nav > .open > a:focus,
@@ -8860,6 +8874,7 @@ h6 {
     background: transparent; }
   .mainnav .navbar-toggle {
     margin-top: 19.5px;
+    margin-right: 0;
     padding: 9px 7px 8px;
     background: #fff;
     border: 0; }
@@ -9054,24 +9069,42 @@ time {
 .search_form {
   display: inline-block;
   height: 70px;
-  margin: 0;
-  padding: 17px 0 0 44px;
+  margin: 10px 0 0;
+  padding: 0;
   float: left;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%;
+  border: 0; }
+  @media (min-width: 768px) {
+    .search_form {
+      margin-top: 0;
+      height: 70px;
+      width: auto;
+      padding: 17px 0 0 20px; } }
+  @media (min-width: 992px) {
+    .search_form {
+      padding: 17px 0 0 44px; } }
+  .search_form .form-group {
+    margin: 0; }
   .search_form .form-control {
     height: 35px;
-    float: right;
+    float: left;
     border-color: #fff;
     border-radius: 0;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    box-shadow: none; }
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-shadow: none;
+    font-size: 14px;
+    width: 70%; }
+    @media (min-width: 768px) {
+      .search_form .form-control {
+        width: auto; } }
   .search_form .btn {
     height: 35px;
     border: 1px solid #ddd;
     border-radius: 0;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
     border-left-width: 0;
     box-shadow: none;
     font-size: 13px;
@@ -9080,7 +9113,11 @@ time {
     background: #ddd;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 11px; }
+    font-size: 11px;
+    width: 30%; }
+    @media (min-width: 768px) {
+      .search_form .btn {
+        width: auto; } }
 
 .section-welcome .site_main {
   color: white;

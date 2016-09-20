@@ -13,8 +13,13 @@
 .mainnav {
   border: 0;
   margin-bottom: 0;
-  @media (min-width: $screen-sm) {
-    .navbar-header {
+
+  .navbar-header {
+    margin-right: 0;
+    @media (min-width: $screen-sm) {
+      margin-right: 12px;
+    }
+    @media (min-width: $screen-md) {
       margin-right: 25px;
     }
   }
@@ -25,11 +30,17 @@
   }
 
   .navbar-nav > li > a {
-    // line-height: 41px;
-  }
-  @media (min-width: $screen-sm) {
-    .navbar-nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    @media (min-width: $screen-sm) {
       line-height: 41px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    @media (min-width: $screen-md) {
+      padding-left: 15px;
+      padding-right: 15px;
+
     }
   }
 
@@ -49,10 +60,6 @@
     outline-width: 2px;
     outline-offset: -2px;
   }
-
-  // .nav li:hover {
-  //   background: $ci-light;
-  // }
 
   .nav {
     border: 0;
@@ -80,12 +87,6 @@
     }
   }
 
-  // .navbar-nav > .open > a,
-  // .navbar-nav > .open > a:focus,
-  // .navbar-nav > .open > a:hover {
-  //   background: $ci-color;
-  // }
-
   .dropdown-header {
     color: #fff;
     color: transparentize(#fff, 0.5);
@@ -99,7 +100,6 @@
 
   .dropdown-menu .divider {
     height: 1px;
-    // background-color: $ci-light;
     margin: 5px 0;
   }
   @media (min-width: $screen-sm) {
@@ -119,13 +119,10 @@
 
   .navbar-toggle {
     margin-top: 19.5px;
+    margin-right: 0;
     padding: 9px 7px 8px;
     background: #fff;
     border: 0;
-
-    // .icon-bar {
-    //   background: $ci-color;
-    // }
   }
 
   .navbar-collapse {
