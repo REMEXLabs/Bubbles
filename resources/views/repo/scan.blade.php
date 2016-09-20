@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                <h3>Scan repository</h3>
+                <h3>Scan Repository</h3>
                     {!! Form::open(array('route' => 'repo.parse', 'role' => 'form', 'class'=>'form-horizontal')) !!}
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">

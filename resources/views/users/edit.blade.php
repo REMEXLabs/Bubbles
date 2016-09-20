@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Update profile</h3>
+                <h3>Update Profile</h3>
                 {!! Form::model($user, array('method' => 'PATCH', 'route' => array('users.update', $user->id), 'class'=>'form-horizontal')) !!}
                     @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <ul class="list-inline">
-                                <li>{{ Form::submit('Update profile', array('class' => 'btn btn-primary')) }}</li>
+                                <li>{{ Form::submit('Update Profile', array('class' => 'btn btn-primary')) }}</li>
                                 <li><a class="btn btn-default btn-close" href="{{ route('users.show', $user->id) }}">Cancel</a></li>
                             </ul>
                         </div>
@@ -66,7 +66,7 @@
                 {!! Form::close() !!}
                 {{-- <a href="{{ route('users.show', ['id' => $user->id]) }}">Back to user profile</a> or <a href="{{ route('users.index') }}">back to list</a> --}}
                 {!! Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id), 'style' => 'margin-top: 20px; display: inline; float: right;')) !!}
-                    {{ Form::submit('Delete account', array('class' => 'btn btn-default btn-sm btn-danger')) }}
+                    {{ Form::submit('Delete Account', array('class' => 'btn btn-default btn-sm btn-danger')) }}
                 {!! Form::close() !!}
             </div>
         </div>

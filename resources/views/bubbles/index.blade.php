@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success">Create new bubble</a>
+                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
                     </li>
                 </ul>
             </div>
@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>{{ count($bubbles) }} bubbles</h3>
+                <h3>{{ count($bubbles) }} Bubbles</h3>
                 @if(count($bubbles))
                     <table class="table table-hover">
                         <thead>
@@ -57,6 +57,8 @@
                             </tr>
                         @endforeach
                     </table>
+                @else
+                    <br><a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
                 @endif
             </div>
         </div>

@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="stage">
-                    <h3>{{ count($users) }} users</h3>
+                    <h3>{{ count($users) }} Users</h3>
                     <hr>
                 </div>
                 @if(count($users))

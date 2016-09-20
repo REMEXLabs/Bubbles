@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Create a new resource</h3>
+                <h3>Create a new Resource</h3>
                     {!! Form::open(array('route' => 'resources.store', 'role' => 'form', 'class'=>'form-horizontal')) !!}
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">

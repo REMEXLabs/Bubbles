@@ -7,16 +7,16 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $bubble->user_id)
                         <li>
-                            <a href="{{ route('bubbles.edit', ['id' => $bubble->id]) }}" class="btn btn-default btn-sm">Update bubble</a>
+                            <a href="{{ route('bubbles.edit', ['id' => $bubble->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Update Bubble</a>
                         </li>
                     @endif
                     <li>
-                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success">Create new bubble</a>
+                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
                     </li>
                 </ul>
                 <ul class="list-inline list-inline--left">
                     <li>
-                        <a href="{{ route('bubbles.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all bubbles</a>
+                        <a href="{{ route('bubbles.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Bubbles</a>
                     </li>
                 </ul>
             </div>

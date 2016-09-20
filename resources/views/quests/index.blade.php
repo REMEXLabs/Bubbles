@@ -6,10 +6,10 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success">Scan GitHub Repository</a>
+                        <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success"><i class="fa fa-search" aria-hidden="true"></i> Scan GitHub Repository</a>
                     </li>
                     <li>
-                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success">Create New Quest</a>
+                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
                     </li>
                 </ul>
             </div>
@@ -35,9 +35,9 @@
             <div class="col-md-12">
             <div class="stage">
             @if(Auth::check())
-              <h3>{{ count($quests) }} quests</h3>
+              <h3>{{ count($quests) }} Quests</h3>
             @else
-              <h3>{{ count($quests) }} public quests</h3>
+              <h3>{{ count($quests) }} public Quests</h3>
             @endif
             <hr>
             </div>
@@ -67,7 +67,7 @@
                             <span class="icon-swords-child td"></span>
                         </td>
                         <td class="text-center">
-                          <strong>{{ $quest->points }}</strong>
+                          <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
                         </td>
                         @if ($quest->state != 'open')
                             <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
@@ -80,6 +80,8 @@
                     </tr>
                     @endforeach
                 </table>
+            @else
+                <br><a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
             @endif
         </div>
     </div>

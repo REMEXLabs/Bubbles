@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success">Create new quest</a>
+                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
                     </li>
                 </ul>
             </div>
@@ -21,7 +21,7 @@
             <div class="col-md-12">
 
             {{-- Accepted quests: --}}
-            <h3>{{ count($accepted_quests) }} accepted quests</h3>
+            <h3>{{ count($accepted_quests) }} accepted Quests</h3>
             @if(count($accepted_quests))
                 <table class="table">
                     <thead>
@@ -50,7 +50,7 @@
             <hr>
 
             {{-- Checking quests: --}}
-            <h3>{{ count($checking_quests) }} to be checked quests</h3>
+            <h3>{{ count($checking_quests) }} to be checked Quests</h3>
             @if(count($checking_quests))
                 <table class="table">
                     <thead>
@@ -79,7 +79,7 @@
             <hr>
 
             {{-- Resolved quests: --}}
-            <h3>{{ count($resolved_quests) }} resolved quests</h3>
+            <h3>{{ count($resolved_quests) }} resolved Quests</h3>
             @if(count($resolved_quests))
                 <table class="table">
                     <thead>
@@ -108,7 +108,7 @@
             <hr>
 
             {{-- Created quests: --}}
-            <h3>{{ count($created_quests) }} created quests</h3>
+            <h3>{{ count($created_quests) }} created Quests</h3>
             @if(count($created_quests))
                 <table class="table">
                     <thead>

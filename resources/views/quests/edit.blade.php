@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Update project</h3>
+                <h3>Update Quest</h3>
                 {!! Form::model($quest, array('method' => 'PATCH', 'route' => array('quests.update', $quest->id), 'class'=>'form-horizontal')) !!}
                     @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <ul class="list-inline">
-                                <li>{{ Form::submit('Update quest', array('class' => 'btn btn-primary')) }}</li>
+                                <li>{{ Form::submit('Update Quest', array('class' => 'btn btn-primary')) }}</li>
                                 <li><a class="btn btn-default btn-close" href="{{ route('quests.show', $quest->id) }}">Cancel</a></li>
                             </ul>
                         </div>
@@ -54,7 +54,7 @@
                 {!! Form::close() !!}
                 {{-- <a href="{{ route('quests.show', ['id' => $quest->id]) }}">Back to user profile</a> or <a href="{{ route('quests.index') }}">back to list</a> --}}
                 {!! Form::open(array('method' => 'DELETE', 'route' => array('quests.destroy', $quest->id), 'style' => 'margin-top: 20px; display: inline; float: right;')) !!}
-                    {{ Form::submit('Delete quest', array('class' => 'btn btn-danger btn-sm')) }}
+                    {{ Form::submit('Delete Quest', array('class' => 'btn btn-danger btn-sm')) }}
                 {!! Form::close() !!}
             </div>
         </div>

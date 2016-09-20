@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Update project</h3>
+                <h3>Update Project</h3>
                 {!! Form::model($project, array('method' => 'PATCH', 'route' => array('projects.update', $project->id), 'class'=>'form-horizontal')) !!}
                     @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <ul class="list-inline">
-                                <li>{{ Form::submit('Update project', array('class' => 'btn btn-primary')) }}</li>
+                                <li>{{ Form::submit('Update Project', array('class' => 'btn btn-primary')) }}</li>
                                 <li><a class="btn btn-default btn-close" href="{{ route('projects.show', $project->id) }}">Cancel</a></li>
                             </ul>
                         </div>
@@ -39,7 +39,7 @@
                 {!! Form::close() !!}
                 {{-- <a href="{{ route('projects.show', ['id' => $project->id]) }}">Back to user profile</a> or <a href="{{ route('projects.index') }}">back to list</a> --}}
                 {!! Form::open(array('method' => 'DELETE', 'route' => array('projects.destroy', $project->id), 'style' => 'margin-top: 20px; display: inline; float: right;')) !!}
-                    {{ Form::submit('Delete project', array('class' => 'btn btn-danger btn-sm')) }}
+                    {{ Form::submit('Delete Project', array('class' => 'btn btn-danger btn-sm')) }}
                 {!! Form::close() !!}
             </div>
         </div>

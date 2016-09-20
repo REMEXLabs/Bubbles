@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Create new project</h3>
+                <h3>Create new Project</h3>
                     {!! Form::open(array('route' => 'projects.store', 'role' => 'form', 'class'=>'form-horizontal')) !!}
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <ul class="list-inline">
-                                    <li>{{ Form::submit('Create project', array('class' => 'btn btn-primary')) }}</li>
+                                    <li>{{ Form::submit('Create Project', array('class' => 'btn btn-primary')) }}</li>
                                     <li><a class="btn btn-default btn-close" href="{{ route('projects.index') }}">Cancel</a></li>
                                 </ul>
                             </div>

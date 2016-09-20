@@ -7,13 +7,13 @@
                 @if (Auth::user()->id == $user->id)
                     <ul class="list-inline list-inline--right">
                         <li>
-                            <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-default btn-sm">Update profile</a>
+                            <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a>
                         </li>
                     </ul>
                 @endif
                 <ul class="list-inline list-inline--left">
                     <li>
-                        <a href="{{ route('users.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all users</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all Users</a>
                         {{-- <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a> --}}
                     </li>
                 </ul>

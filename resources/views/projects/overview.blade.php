@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success">Create new project</a>
+                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
                     </li>
                 </ul>
             </div>
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h3>{{ count($projects) }} projects</h3>
+            <h3>{{ count($projects) }} Projects</h3>
             @if(count($projects))
                 <table class="table">
                     <thead>

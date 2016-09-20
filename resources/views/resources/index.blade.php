@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('resources.create')}}" class="btn btn-sm btn-success">Create new resource</a>
+                        <a href="{{ route('resources.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Resource</a>
                     </li>
                 </ul>
             </div>
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h3>{{ count($resources) }} resources</h3>
+            <h3>{{ count($resources) }} Resources</h3>
             @if(count($resources))
                 <table class="table">
                     <thead>
@@ -41,6 +41,8 @@
                         </tr>
                     @endforeach
                 </table>
+            @else
+                <br><a href="{{ route('resources.create')}}" class="btn btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Resource</a>
             @endif
         </div>
     </div>

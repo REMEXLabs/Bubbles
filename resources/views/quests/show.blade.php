@@ -7,16 +7,16 @@
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $quest->author_id)
                         <li>
-                            <a href="{{ route('quests.edit', ['id' => $quest->id]) }}" class="btn btn-default btn-sm">Update quest</a>
+                            <a href="{{ route('quests.edit', ['id' => $quest->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Update Quest</a>
                         </li>
                     @endif
                     <li>
-                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success">Create new quest</a>
+                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
                     </li>
                 </ul>
                 <ul class="list-inline list-inline--left">
                     <li>
-                        <a href="{{ route('quests.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all quests</a>
+                        <a href="{{ route('quests.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Quests</a>
                         {{-- <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a> --}}
                     </li>
                 </ul>

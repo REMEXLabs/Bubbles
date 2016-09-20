@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
-                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success">Create new project</a>
+                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
             <div class="stage">
-            <h3>{{ count($projects) }} projects</h3>
+            <h3>{{ count($projects) }} Projects</h3>
             <hr>
             </div>
             @if(count($projects))
@@ -57,6 +57,8 @@
                         </tr>
                     @endforeach
                 </table>
+            @else
+                <br><a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
             @endif
         </div>
     </div>
