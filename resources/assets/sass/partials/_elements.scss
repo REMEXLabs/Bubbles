@@ -7,6 +7,7 @@
 // 3. Login / Registration
 // 4. Programming-Language
 // 5. Quest-Status
+// 6. Search-Form
 
 // 1. Time Element
 // -------------------------
@@ -151,4 +152,42 @@ time {
 .quest-state--active {
   color: $ci-success;
   border-color: rgba($ci-success, 0.7);
+}
+
+// 6. Search-Form
+// -------------------------
+.search_form {
+  display: inline-block;
+  height: 70px;
+  margin: 0;
+  padding: 17px 0 0 44px;
+  float: left;
+  overflow: hidden;
+
+  .form-control {
+    height: 35px;
+    float: right;
+    border-color: #fff;
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: none;
+  }
+
+  .btn {
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left-width: 0;
+    box-shadow: none;
+    font-size: 13px;
+    margin: 0;
+    float: right;
+    background: #ddd;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+  }
 }

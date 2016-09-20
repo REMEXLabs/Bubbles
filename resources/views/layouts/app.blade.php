@@ -46,6 +46,7 @@
                     <li><a href="{{ route('projects.index') }}" class="is-project">Projects</a></li>
                     <li><a href="{{ route('users.index') }}" class="is-user">Users</a></li>
                 </ul>
+
                 {{-- Right Sidebar --}}
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
@@ -74,6 +75,12 @@
                         </li>
                     @endif
                 </ul>
+                {!! Form::open(array('route' => 'search', 'role' => 'search', 'class'=>'navbar-form navbar search_form')) !!}
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Searchword">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </nav>

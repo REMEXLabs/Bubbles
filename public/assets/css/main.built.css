@@ -9051,6 +9051,37 @@ time {
   color: #00c6b1;
   border-color: rgba(0, 198, 177, 0.7); }
 
+.search_form {
+  display: inline-block;
+  height: 70px;
+  margin: 0;
+  padding: 17px 0 0 44px;
+  float: left;
+  overflow: hidden; }
+  .search_form .form-control {
+    height: 35px;
+    float: right;
+    border-color: #fff;
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: none; }
+  .search_form .btn {
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left-width: 0;
+    box-shadow: none;
+    font-size: 13px;
+    margin: 0;
+    float: right;
+    background: #ddd;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px; }
+
 .section-welcome .site_main {
   color: white;
   background: #1985CB;
