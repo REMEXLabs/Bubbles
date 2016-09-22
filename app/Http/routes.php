@@ -63,7 +63,7 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
 // Sharing:
 Route::group(['prefix' => 'embed'], function () {
     Route::get('profile/{id}', ['as' => 'embed-profile', 'uses' => 'SharingController@profile']);
-    Route::get('bubble/{id}', ['as' => 'embed-bubble', 'uses' => 'SharingController@profile']);
+    Route::get('bubble/{id}', ['as' => 'embed-bubble', 'uses' => 'SharingController@bubble']);
 });
 
 // Public API

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Bubble;
 use App\User;
 use Illuminate\Http\Request;
 use View;
@@ -21,6 +22,11 @@ class SharingController extends Controller
 
     public function bubble($id)
     {
-        return view('sharing.bubble');
+        $bubble = Bubble::find($id);
+        if (is_null($bubble)) {
+            return redirect()->route('bubbles.index');
+        }
+        View::share('title', $bubble->name);
+        return view('sharing.bubble', ['bubble' => $bubble]);
     }
 }

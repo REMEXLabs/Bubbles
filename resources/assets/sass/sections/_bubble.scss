@@ -174,4 +174,22 @@
     margin-bottom: 20px;
   }
 
+  .single {
+    .section {
+      border: 2px solid #ddd;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .sharing {
+      margin-bottom: 0;
+    }
+
+    iframe {
+      margin-bottom: 21px;
+    }
+
+  }
+
 }

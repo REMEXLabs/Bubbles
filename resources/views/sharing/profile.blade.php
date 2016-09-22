@@ -52,21 +52,21 @@
       .smaller {
         font-size: 12px;
       }
-.avatar {
-  width: 58px;
-  height: 58px;
-  float: left;
-  margin-right: 5px;
-}
+      .avatar {
+        width: 58px;
+        height: 58px;
+        float: left;
+        margin-right: 5px;
+      }
     </style>
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
       if (window==window.top) {
         window.location.replace("{{ route('users.show', ['id' => $user->id]) }}");
       }
-    </script> --}}
+    </script>
   </head>
   <body>
-    <a href="{{ route('users.show', ['id' => $user->id]) }}" target="bubbles_{{ $user->id }}">
+    <a href="{{ route('users.show', ['id' => $user->id]) }}" target="user_{{ $user->id }}">
       <div class="frame">
         @if($user->image_url)
             <img class="avatar" src="{{ $user->image_url }}">

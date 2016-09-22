@@ -3,7 +3,7 @@
 @section('subnav')
     @if (Auth::check())
         <nav class="navbar subnav" role="navigation">
-            <div class="container">                
+            <div class="container">
                 <ul class="list-inline list-inline--right">
                     @if (Auth::user()->id == $user->id)
                     <li>
@@ -33,7 +33,7 @@
             <div class="col-md-12">
 
                 {{-- Profile: --}}
-                <section class="profile">
+                <section class="section profile">
                     @if($user->image_url)
                         <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 200px; height: 200px;">
                     @endif
@@ -61,7 +61,7 @@
                     @endif
                 </section>
 
-                <section class="profile_sharing">
+                <section class="section profile_sharing">
                   <h3>Profile Sharing</h3>
                   <p>Share your profile by using the following iframe on your site:</p>
                   <p>
@@ -75,8 +75,7 @@
                   </div>
                 </section>
 
-
-                <section class="quests">
+                <section class="section quests">
                   <h3>Quests</h3>
 
                   {{-- Resolved quests: --}}

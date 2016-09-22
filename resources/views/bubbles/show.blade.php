@@ -33,17 +33,40 @@
 <main class="site_main" role="main">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 single">
                 @if($bubble->type == 'project')
                     <h1>{{ $bubble->project()->name }}</h1>
-                    <p><a href="{{ route('projects.show', ['id' => $bubble->project()->id ]) }}">Go to project details</a>.</p>
                 @endif
                 @if($bubble->type == 'quest')
                     <h1>{{ $bubble->quest()->name }}</h1>
-                    <p><a href="{{ route('quests.show', ['id' => $bubble->quest()->id ]) }}">Go to quest details</a>.</p>
                 @endif
-                <p><strong>Type</strong>: <br> {{ Bubble::getTypes()[$bubble->type] }}</p>
-                <p><strong>Order</strong>: <br> {{ $bubble->order }}</p>
+
+                <section class="section">
+                    <h3>Details</h3>
+                    @if($bubble->type == 'project')
+                        <p><a href="{{ route('projects.show', ['id' => $bubble->project()->id ]) }}">Open Project Details</a>.</p>
+                    @endif
+                    @if($bubble->type == 'quest')
+                        <p><a href="{{ route('quests.show', ['id' => $bubble->quest()->id ]) }}">Open Quest Details</a>.</p>
+                    @endif
+                    <p><strong>Type</strong>: <br> {{ Bubble::getTypes()[$bubble->type] }}</p>
+                    <p><strong>Order</strong>: <br> {{ $bubble->order }}</p>
+                </section>
+
+                <section class="section sharing">
+                  <h3>Bubble Sharing</h3>
+                  <p>Share your bubble by using the following iframe on your site:</p>
+                  <p>
+                    <textarea class="form-control" name="name" rows="1" cols="150" style="overflow:hidden; resize:none;">
+<iframe src="{{ route('embed-bubble', ['id' => $bubble->id]) }}" width="208" height="58" frameborder="0"></iframe>
+                    </textarea>
+                  </p>
+                  <p>The result looks like that:</p>
+                  <div class="embedding">
+                      <iframe src="{{ route('embed-bubble', ['id' => $bubble->id]) }}" width="208" height="58" frameborder="0"></iframe>
+                  </div>
+                </section>
+
             </div>
         </div>
     </div>
