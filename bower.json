@@ -17,6 +17,7 @@
     "font-awesome": "fontawesome#^4.6.3",
     "moment": "^2.14.1",
     "moment-timezone": "^0.5.5",
-    "bootstrap-social": "^5.0.0"
+    "bootstrap-social": "^5.0.0",
+    "masonry": "^4.1.1"
   }
 }
