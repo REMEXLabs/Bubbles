@@ -9488,10 +9488,22 @@ time {
   text-align: center;
   padding: 40px 0 20px; }
 
+.section-user .profile,
+.section-user .profile_sharing,
+.section-user .quests {
+  padding-bottom: 30px;
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px; }
+
 .section-user .profile {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 50px;
   text-align: center; }
+
+.section-user .profile_sharing iframe {
+  margin-bottom: 21px; }
 
 .section-user h1 {
   text-align: center; }
