@@ -9308,6 +9308,13 @@ time {
   100% {
     margin-left: 50px; } }
 
+.section-search .section {
+  margin-bottom: 30px; }
+  .section-search .section:last-child {
+    margin-bottom: 0; }
+    .section-search .section:last-child table {
+      margin-bottom: 0; }
+
 .section-bubble .bubble {
   color: black;
   background-color: #fff;

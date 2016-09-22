@@ -77,10 +77,10 @@
                 </ul>
 
                 {{-- Search Bar --}}
-                @if (!Auth::guest())
+                @if (Auth::check())
                     {!! Form::open(array('route' => 'search', 'role' => 'search', 'class'=>'navbar-form navbar search_form')) !!}
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Searchword">
+                            {{ Form::text('search', Request::input('search', ''), array('class'=>'form-control', 'placeholder'=>'Searchword')) }}
                         </div>
                         <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
                     {!! Form::close() !!}
