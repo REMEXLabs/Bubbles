@@ -45,7 +45,8 @@ Route::post('quests/store/repo', ['as' => 'repo.store', 'uses' => 'QuestControll
 Route::resource('projects', 'ProjectController');
 Route::resource('users', 'UserController');
 
-Route::post('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
+Route::post('search', ['as' => 'search', 'uses' => 'SearchController@search']);
 
 // Private Resources:
 Route::resource('bubbles', 'BubbleController');

@@ -18,12 +18,24 @@ class SearchController extends Controller
         View::share('controller', 'search');
     }
 
+    public function index(Request $request)
+    {
+        return view('search.index', [
+        'projects'    => [],
+        'n_projects'  => 0,
+        'quests'      => [],
+        'n_quests'    => 0,
+        'users'       => [],
+        'n_users'     => 0
+        ]);
+    }
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function index(Request $request)
+    public function search(Request $request)
     {
         $fields = $input = $request->all();
         $search = trim($fields['search']);
