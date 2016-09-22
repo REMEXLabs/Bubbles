@@ -8,6 +8,9 @@
                     <li>
                         <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
                     </li>
+                    <li>
+                        <a href="{{ route('projects.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Projects</a>
+                    </li>
                 </ul>
             </div>
         </nav>

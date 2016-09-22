@@ -13,13 +13,17 @@
                     <li>
                         <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
                     </li>
+                    <li>
+                        <a href="{{ route('projects.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Projects</a>
+                    </li>
                 </ul>
+                {{--
                 <ul class="list-inline list-inline--left">
                     <li>
                         <a href="{{ route('projects.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Projects</a>
-                        {{-- <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a> --}}
                     </li>
                 </ul>
+                --}}
             </div>
         </nav>
     @endif

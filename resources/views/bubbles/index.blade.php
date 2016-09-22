@@ -6,7 +6,13 @@
             <div class="container">
                 <ul class="list-inline list-inline--right">
                     <li>
+                        <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success"><i class="fa fa-search" aria-hidden="true"></i> Scan GitHub Repository</a>
+                    </li>
+                    <li>
                         <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-th" aria-hidden="true"></i> Dashboard Bubbles</a>
                     </li>
                 </ul>
             </div>

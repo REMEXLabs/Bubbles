@@ -13,13 +13,19 @@
                     <li>
                         <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('quests.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Quests</a>
+                    </li>
+
                 </ul>
+                {{--
                 <ul class="list-inline list-inline--left">
                     <li>
-                        <a href="{{ route('quests.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Quests</a>
-                        {{-- <a href="{{ URL::previous() }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back</a> --}}
+                        <a href="{{ route('quests.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>All Quests</a>
                     </li>
                 </ul>
+                --}}
             </div>
         </nav>
     @endif

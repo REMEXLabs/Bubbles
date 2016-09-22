@@ -11,6 +11,9 @@
                     <li>
                         <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
                     </li>
+                    <li>
+                        <a href="{{ route('my-quests')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> My Quests</a>
+                    </li>
                 </ul>
             </div>
         </nav>

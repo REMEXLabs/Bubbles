@@ -13,12 +13,17 @@
                     <li>
                         <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
                     </li>
+                    <li>
+                        <a href="{{ route('my-bubbles')}}" class="btn btn-sm btn-success"><i class="fa fa-list" aria-hidden="true"></i> List Bubbles</a>
+                    </li>
                 </ul>
+                {{--
                 <ul class="list-inline list-inline--left">
                     <li>
                         <a href="{{ route('bubbles.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Bubbles</a>
                     </li>
                 </ul>
+                --}}
             </div>
         </nav>
     @endif

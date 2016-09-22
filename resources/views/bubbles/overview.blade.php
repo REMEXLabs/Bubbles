@@ -11,6 +11,9 @@
                     <li>
                         <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
                     </li>
+                    <li>
+                        <a href="{{ route('my-bubbles')}}" class="btn btn-sm btn-success"><i class="fa fa-list" aria-hidden="true"></i> List Bubbles</a>
+                    </li>
                 </ul>
             </div>
         </nav>
