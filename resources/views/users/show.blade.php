@@ -13,14 +13,10 @@
                     <li>
                         <a href="{{ route('users.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Users</a>
                     </li>
-                </ul>
-                {{--
-                <ul class="list-inline list-inline--left">
-                    <li>
-                        <a href="{{ route('users.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show all Users</a>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
                     </li>
                 </ul>
-                --}}
             </div>
         </nav>
     @endif

@@ -8,6 +8,9 @@
                     <li>
                         <a href="{{ route('resources.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Resource</a>
                     </li>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>

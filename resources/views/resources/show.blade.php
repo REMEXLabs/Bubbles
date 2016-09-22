@@ -13,10 +13,8 @@
                     <li>
                         <a href="{{ route('resources.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Resource</a>
                     </li>
-                </ul>
-                <ul class="list-inline list-inline--left">
-                    <li>
-                        <a href="{{ route('resources.index') }}" class="btn btn-sm cut"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Show All Resources</a>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>

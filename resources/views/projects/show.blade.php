@@ -16,6 +16,9 @@
                     <li>
                         <a href="{{ route('projects.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Projects</a>
                     </li>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
                 {{--
                 <ul class="list-inline list-inline--left">

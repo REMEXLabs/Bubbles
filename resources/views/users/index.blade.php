@@ -1,18 +1,21 @@
 @extends('layouts.app')
 
-{{-- @section('subnav')
-    @if (Auth::guest())
-        <nav class="navbar subnav" role="navigation">
-            <div class="container">
-                <ul class="list-inline">
-                    <li>
-                        <a href="{{ route('users.create')}}" class="btn btn-success">Join the community!</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    @endif
-@endsection --}}
+@section('subnav')
+<nav class="navbar subnav" role="navigation">
+    <div class="container">
+        <ul class="list-inline list-inline--right">
+            @if (Auth::check())
+                <li>
+                    <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+                </li>
+            @endif
+            <li aria-hidden="true">
+                <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+@endsection
 
 @section('content')
 <main class="site_main" role="main">

@@ -14,6 +14,9 @@
                     <li>
                         <a href="{{ route('my-quests')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> My Quests</a>
                     </li>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -8804,6 +8804,9 @@ h6 {
 .fa-btn {
   margin-right: 6px; }
 
+.subnav ul .fa.fa-home {
+  padding-right: 0; }
+
 .mainnav {
   border: 0;
   margin-bottom: 0; }

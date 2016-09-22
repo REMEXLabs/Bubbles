@@ -14,6 +14,9 @@
                     <li>
                         <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-th" aria-hidden="true"></i> Dashboard Bubbles</a>
                     </li>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>

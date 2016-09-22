@@ -11,6 +11,9 @@
                     <li>
                         <a href="{{ route('my-projects')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-right" aria-hidden="true"></i> My Projects</a>
                     </li>
+                    <li aria-hidden="true">
+                        <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
             </div>
         </nav>
