@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('subnav')
+@if (Auth::check())
 <nav class="navbar subnav" role="navigation">
     <div class="container">
         <ul class="list-inline list-inline--right">
-            @if (Auth::check())
-                <li>
-                    <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+            </li>
             <li aria-hidden="true">
                 <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
             </li>
         </ul>
     </div>
 </nav>
+@endif
 @endsection
 
 @section('content')
