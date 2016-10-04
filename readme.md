@@ -24,7 +24,7 @@ The research leading to these results has received funding from the [European Un
 
 ## Video
 
-- [Gamification and Accessibility](https://www.youtube.com/watch?v=pxjy7wk_6c8)
+- [Gamification and Accessibility](http://events.mi.hdm-stuttgart.de/2015-06-19-acessibility-day/Accessible%20Gamification)
 
 
 ## Server Configuration
