@@ -9,6 +9,9 @@
                         <li>
                             <a href="{{ route('quests.edit', ['id' => $quest->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Update Quest</a>
                         </li>
+                        <li>
+                            <a href="{{ route('quests.add_resource', ['id' => $quest->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
+                        </li>
                     @endif
                     <li>
                         <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
@@ -37,89 +40,112 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>{{ $quest->name }}</h1>
-                @if ($quest->description)
-                    <p><strong>Quest owner</strong>: <br> <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a></p>
-                @endif
-                @if ($quest->description)
-                    <p><strong>Description</strong>: <br> {{ $quest->description }}</p>
-                @endif
-                @if ($quest->language)
-                    <p><strong>Language</strong>: <br> {{ Quest::getLanguage($quest->language) }}</p>
-                @endif
-                @if ($quest->difficulty)
-                    <div>
-                      <p>
-                        <strong>Difficulty</strong>:
-                      </p>
-                      <div class="icon-swords state--{{ $quest->difficulty }}">
-                          <span class="icon-swords-child st"></span>
-                          <span class="icon-swords-child nd"></span>
-                          <span class="icon-swords-child td"></span>
-                      </div>
-                    </div>
-                @endif
-                <p>
-                @if ($quest->state == 'open')
-                    <p>
-                        The quest is open.
-                    </p>
-                    @if (Auth::check())
-                        @if (Auth::user()->id != $quest->author_id)
+                <section class="section">
+                    <h1>{{ $quest->name }}</h1>
+                    @if ($quest->description)
+                        <p><strong>Quest owner</strong>: <br> <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a></p>
+                    @endif
+                    @if ($quest->description)
+                        <p><strong>Description</strong>: <br> {{ $quest->description }}</p>
+                    @endif
+                    @if ($quest->language)
+                        <p><strong>Language</strong>: <br> {{ Quest::getLanguage($quest->language) }}</p>
+                    @endif
+                    @if ($quest->difficulty)
+                        <div>
+                          <p>
+                            <strong>Difficulty</strong>:
+                          </p>
+                          <div class="icon-swords state--{{ $quest->difficulty }}">
+                              <span class="icon-swords-child st"></span>
+                              <span class="icon-swords-child nd"></span>
+                              <span class="icon-swords-child td"></span>
+                          </div>
+                        </div>
+                    @endif
+                </section>
+                <section class="section">
+                    <h3>Resources ({{ count($quest->resources) }})</h3>
+                    @foreach ($quest->resources as $resource)
+                        <p>Type: {{ $resource->type }}</p>
+                        <p>Data: {{ $resource->data }}</p>
+                        <p>Resource ID: {{ $resource->pivot->resourceable_id }}</p>
+                        <p>
+                            {{ $quest->id }}
+                        </p>
+                        <p>
+                            {{ $resource->id }}
+                        </p>
+                        <p>
+                            <a href="{{ route('quests.delete_resource', ['quest_id' => $quest->id, 'resource_id' => $resource->id ]) }}">Remove</a>
+                        </p>
+                    @endforeach
+                    @if (Auth::user()->id == $quest->author_id)
+                        <br><a href="{{ route('quests.add_resource', ['id' => $quest->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
+                    @endif
+                </section>
+                <section class="section">
+                    <h3>Status</h3>
+                    @if ($quest->state == 'open')
+                        <p>
+                            The quest is open.
+                        </p>
+                        @if (Auth::check())
+                            @if (Auth::user()->id != $quest->author_id)
+                                <p>
+                                    If you solve the quest, you will get <strong>{{ $quest->points }} points</strong>.
+                                </p>
+                                <p>
+                                    <a href="{{ route('quests.accept', ['id' => $quest->id]) }}" class="btn btn-success">Accept the quest!</a>
+                                </p>
+                            @endif
+                        @endif
+                    @elseif ($quest->state == 'wip')
+                        <p>
+                            The quest is running.
+                        </p>
+                        @if ($quest->editor_id == Auth::user()->id)
                             <p>
-                                If you solve the quest, you will get <strong>{{ $quest->points }} points</strong>.
+                                <a href="{{ route('quests.finish', ['id' => $quest->id]) }}" class="btn btn-success">Mark quest as done!</a>
+                                <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest.</a>
                             </p>
+                        @else
                             <p>
-                                <a href="{{ route('quests.accept', ['id' => $quest->id]) }}" class="btn btn-primary">Accept the quest!</a>
+                                The editor is <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
+                            </p>
+                        @endif
+                    @elseif ($quest->state == 'check')
+                        @if ($quest->editor_id == Auth::user()->id)
+                            <p>
+                                You have finished the quest.
+                            </p>
+                        @else
+                            <p>
+                                The editor <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a> has finished the quest.
+                            </p>
+                        @endif
+                        @if ($quest->author_id == Auth::user()->id)
+                            <p>
+                                <a href="{{ route('quests.close', ['id' => $quest->id]) }}" class="btn btn-success">Mark quest as done</a>
+                                <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest</a>
+                            </p>
+                        @else
+                            <p>
+                                Now the quest owner <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a> has to check the result.
+                            </p>
+                        @endif
+                    @else
+                        @if ($quest->editor_id == Auth::user()->id)
+                            <p>
+                                You resolved the quest successfully.
+                            </p>
+                        @else
+                            <p>
+                                The quest was successfully resolved by <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
                             </p>
                         @endif
                     @endif
-                @elseif ($quest->state == 'wip')
-                    <p>
-                        The quest is running.
-                    </p>
-                    @if ($quest->editor_id == Auth::user()->id)
-                        <p>
-                            <a href="{{ route('quests.finish', ['id' => $quest->id]) }}" class="btn btn-primary">Mark quest as done!</a>
-                            <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest.</a>
-                        </p>
-                    @else
-                        <p>
-                            The editor is <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
-                        </p>
-                    @endif
-                @elseif ($quest->state == 'check')
-                    @if ($quest->editor_id == Auth::user()->id)
-                        <p>
-                            You have finished the quest.
-                        </p>
-                    @else
-                        <p>
-                            The editor <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a> has finished the quest.
-                        </p>
-                    @endif
-                    @if ($quest->author_id == Auth::user()->id)
-                        <p>
-                            <a href="{{ route('quests.close', ['id' => $quest->id]) }}" class="btn btn-primary">Mark quest as done</a>
-                            <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest</a>
-                        </p>
-                    @else
-                        <p>
-                            Now the quest owner <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a> has to check the result.
-                        </p>
-                    @endif
-                @else
-                    @if ($quest->editor_id == Auth::user()->id)
-                        <p>
-                            You resolved the quest successfully.
-                        </p>
-                    @else
-                        <p>
-                            The quest was successfully resolved by <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a>.
-                        </p>
-                    @endif
-                @endif
-                </p>
+                </section>
             </div>
         </div>
     </div>

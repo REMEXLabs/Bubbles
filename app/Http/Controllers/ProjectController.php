@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use View;
 use App\Project;
+use App\Resource;
 use App\Http\Requests;
 
 class ProjectController extends Controller
@@ -109,6 +110,64 @@ class ProjectController extends Controller
             'projects.edit',
             ['project' => $project ]
         );
+    }
+
+    public function add_resource($id)
+    {
+        $project = Project::find($id);
+        if (is_null($project)) {
+            return redirect()->route('projects.index');
+        }
+        if (Auth::user()->id != $project->user_id) {
+            return redirect()->route('projects.index');
+        }
+        View::share('title', $project->name);
+        return view(
+            'projects.resource',
+            [
+                'project' => $project,
+                'resources' => Auth::user()->resources
+            ]
+        );
+    }
+
+    public function store_resource($project_id, $resource_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('projects.index');
+        }
+        $project = Project::find($project_id);
+        if (is_null($project)) {
+            return redirect()->route('projects.index');
+        }
+        $resource = Resource::find($resource_id);
+        if (is_null($resource)) {
+            return redirect()->route('projects.index');
+        }
+        $is_resource_owner = Auth::user()->id == $resource->author_id;
+        $is_project_owner = Auth::user()->id == $project->user_id;
+        if ($is_resource_owner && $is_project_owner) {
+            $project->resources()->save($resource);
+            return redirect()->route('projects.show', ['id' => $project->id]);
+        }
+        return redirect()->route('projects.index');
+    }
+
+    public function delete_resource($project_id, $resource_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('projects.index');
+        }
+        $project = Project::find($project_id);
+        if (is_null($project)) {
+            return redirect()->route('projects.index');
+        }
+        $is_project_owner = Auth::user()->id == $project->user_id;
+        if ($is_project_owner) {
+            $project->resources()->detach($resource_id);
+            return redirect()->route('projects.show', ['id' => $project->id]);
+        }
+        return redirect()->route('projects.index');
     }
 
     /**

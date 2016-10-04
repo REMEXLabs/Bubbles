@@ -9506,9 +9506,21 @@ time {
   text-align: center;
   padding: 40px 0 20px; }
 
+.section-quest .section {
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px; }
+
 .section-project h1 {
   text-align: center;
   padding: 40px 0 20px; }
+
+.section-project .section {
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px; }
 
 .section-user h1 {
   text-align: center; }

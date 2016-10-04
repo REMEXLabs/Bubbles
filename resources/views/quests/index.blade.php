@@ -63,7 +63,11 @@
                         @if ($quest->state != 'open')
                             <tr class="quest--inactive">
                         @else
-                            <tr>
+                            @if(Auth::check() && ($quest->author_id == Auth::user()->id))
+                                <tr class="info">
+                            @else
+                                <tr>
+                            @endif
                         @endif
                         <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
                         <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>

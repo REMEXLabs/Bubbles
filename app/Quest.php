@@ -181,4 +181,9 @@ class Quest extends Model
     {
         return $this->belongsTo('App\User')->get()->first();
     }
+
+    public function resources()
+    {
+        return $this->morphToMany('App\Resource', 'resourceable');
+    }
 }

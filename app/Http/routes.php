@@ -36,13 +36,19 @@ Route::get('quests/accept/{id}', ['as' => 'quests.accept', 'uses' => 'QuestContr
 Route::get('quests/finish/{id}', ['as' => 'quests.finish', 'uses' => 'QuestController@finish']);
 Route::get('quests/close/{id}', ['as' => 'quests.close', 'uses' => 'QuestController@close']);
 Route::get('quests/reopen/{id}', ['as' => 'quests.reopen', 'uses' => 'QuestController@reopen']);
-
 Route::get('quests/scan/repo', ['as' => 'repo.scan', 'uses' => 'QuestController@scan']);
 Route::get('quests/parse/repo', ['as' => 'repo.parse', 'uses' => 'QuestController@parse']);
 Route::post('quests/parse/repo', ['as' => 'repo.parse', 'uses' => 'QuestController@parse']);
 Route::post('quests/store/repo', ['as' => 'repo.store', 'uses' => 'QuestController@store_repos']);
+Route::get('quests/{id}/add/resource', ['middleware' => 'auth', 'as' => 'quests.add_resource', 'uses' => 'QuestController@add_resource']);
+Route::get('quests/{quest_id}/add/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'quests.store_resource', 'uses' => 'QuestController@store_resource']);
+Route::get('quests/{quest_id}/delete/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'quests.delete_resource', 'uses' => 'QuestController@delete_resource']);
 
 Route::resource('projects', 'ProjectController');
+Route::get('projects/{id}/add/resource', ['middleware' => 'auth', 'as' => 'projects.add_resource', 'uses' => 'ProjectController@add_resource']);
+Route::get('projects/{project_id}/add/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'projects.store_resource', 'uses' => 'ProjectController@store_resource']);
+Route::get('projects/{project_id}/delete/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'projects.delete_resource', 'uses' => 'ProjectController@delete_resource']);
+
 Route::resource('users', 'UserController');
 
 Route::get('search', ['as' => 'search', 'uses' => 'SearchController@index']);
