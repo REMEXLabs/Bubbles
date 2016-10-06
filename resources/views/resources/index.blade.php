@@ -27,18 +27,30 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th width="10%">ID</th>
-                            <th width="20%">Type</th>
-                            <th width="50%">Data</th>
+                            <th width="15%">Type</th>
+                            <th width="45%">Data</th>
+                            <th width="20%"></th>
                             <th width="20%"></th>
                         </tr>
                     </thead>
                     @foreach ($resources as $resource)
                         <tr>
-                            <td><a href="{{ route('resources.show', ['id' => $resource->id]) }}">{{ $resource->id }}</a></td>
-                            <td>{{ $resource->type }}</td>
-                            <td>{{ $resource->data }}</td>
                             <td>
+                                @if ($resource->type == 'img')
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+                                @elseif ($resource->type == 'git')
+                                    <i class="fa fa-git" aria-hidden="true"></i> Repository
+                                @elseif ($resource->type == 'url')
+                                  <i class="fa fa-link" aria-hidden="true"></i> URL
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ $resource->data }}">{{ ((strlen($resource->data) > 40) ? '...' : '') }}{{ substr($resource->data, -40) }}</a>
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('resources.show', ['id' => $resource->id]) }}" class="btn btn-default btn-sm">Open Details</a>
+                            </td>
+                            <td class="text-right">
                                 <time class="js_moment" datetime="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}">{{ date_format($resource->created_at, 'd.m.Y') }}</time>
                             </td>
                         </tr>

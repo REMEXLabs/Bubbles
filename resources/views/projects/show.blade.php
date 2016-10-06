@@ -51,22 +51,43 @@
                 </section>
                 <section class="section">
                     <h3>Resources ({{ count($project->resources) }})</h3>
-                    @foreach ($project->resources as $resource)
-                        <p>Type: {{ $resource->type }}</p>
-                        <p>Data: {{ $resource->data }}</p>
-                        <p>Resource ID: {{ $resource->pivot->resourceable_id }}</p>
-                        <p>
-                            {{ $project->id }}
-                        </p>
-                        <p>
-                            {{ $resource->id }}
-                        </p>
-                        <p>
-                            <a href="{{ route('projects.delete_resource', ['project_id' => $project->id, 'resource_id' => $resource->id ]) }}">Remove</a>
-                        </p>
-                    @endforeach
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="15%">Type</th>
+                                <th width="45%">Data</th>
+                                <th width="20%"></th>
+                                <th width="20%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($project->resources as $resource)
+                                <tr>
+                                    <td>
+                                        @if ($resource->type == 'img')
+                                            <i class="fa fa-picture-o" aria-hidden="true"></i> Image
+                                        @elseif ($resource->type == 'git')
+                                            <i class="fa fa-git" aria-hidden="true"></i> Repository
+                                        @elseif ($resource->type == 'url')
+                                            <i class="fa fa-link" aria-hidden="true"></i> URL
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        <a href="{{ $resource->data }}">{{ ((strlen($resource->data) > 40) ? '...' : '') }}{{ substr($resource->data, -40) }}</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('resources.show', ['id' => $resource->id]) }}" class="btn btn-default btn-sm">Open Details</a> <a href="{{ route('projects.delete_resource', ['project_id' => $project->id, 'resource_id' => $resource->id ]) }}" class="btn btn-warning btn-sm">Remove</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <time class="js_moment" datetime="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}">{{ date_format($resource->created_at, 'd.m.Y') }}</time>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     @if (Auth::user()->id == $project->user_id)
-                        <br><a href="{{ route('projects.add_resource', ['id' => $project->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
+                        <a href="{{ route('projects.add_resource', ['id' => $project->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
                     @endif
                 </section>
             </div>

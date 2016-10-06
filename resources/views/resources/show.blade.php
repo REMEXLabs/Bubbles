@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p><strong>Resource owner</strong>: <br> <a href="{{ route('resources.show', ['id' => $resource->author_id]) }}">{{ $resource->author()->username }}</a></p>
+                <p><strong>Resource Owner</strong>: <br> <a href="{{ route('resources.show', ['id' => $resource->author_id]) }}">{{ $resource->author()->username }}</a></p>
                 @if ($resource->type)
                     <p><strong>Type</strong>: <br> {{ Resource::getTypes()[$resource->type] }}</p>
                 @endif

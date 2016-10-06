@@ -129,7 +129,11 @@
                                           {{ $bubble->quest()->description }}
                                        </div>
                                     @endif
-
+                                    @if($bubble->quest()->language)
+                                       <div class="type-description">
+                                          <span class="language {{$bubble->quest()->language}}"></span> {{ Quest::getLanguage($bubble->quest()->language) }}
+                                       </div>
+                                    @endif
                                 @endif
                                 <footer class="footer">
                                     <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
