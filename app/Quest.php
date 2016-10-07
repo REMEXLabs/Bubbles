@@ -186,4 +186,9 @@ class Quest extends Model
     {
         return $this->morphToMany('App\Resource', 'resourceable');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'tagable');
+    }
 }

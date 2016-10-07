@@ -28,7 +28,10 @@ class BubbleController extends Controller
     {
         if (Auth::check()) {
             return view('bubbles.overview', [
-                'user' => Auth::user()
+                'user' => Auth::user(),
+                'projects' => Auth::user()->projects,
+                'created_quests' => Auth::user()->createdQuests,
+                'accepted_quests' => Auth::user()->acceptedQuests
             ]);
         } else {
             View::share('controller', 'welcome');

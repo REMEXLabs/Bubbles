@@ -8767,6 +8767,16 @@ body {
 .container {
   position: relative; }
 
+.section {
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px; }
+  .section.center {
+    text-align: center; }
+  .section:last-child {
+    margin-bottom: 0; }
+
 .site_header {
   background: transparent; }
 
@@ -9308,12 +9318,11 @@ time {
   100% {
     margin-left: 50px; } }
 
-.section-search .section {
-  margin-bottom: 30px; }
-  .section-search .section:last-child {
-    margin-bottom: 0; }
-    .section-search .section:last-child table {
-      margin-bottom: 0; }
+.section-search .section table {
+  margin-bottom: 0; }
+
+.section-bubble a:hover .bubble {
+  border-color: #00c6b1; }
 
 .section-bubble .bubble {
   color: black;
@@ -9324,7 +9333,6 @@ time {
   border-radius: 15px;
   text-decoration: none; }
   .section-bubble .bubble:hover {
-    background-color: #f8f8f8;
     text-decoration: none; }
   .section-bubble .bubble header {
     text-align: center;
@@ -9439,6 +9447,13 @@ time {
 .section-bubble .stage {
   margin-bottom: 20px; }
 
+.section-bubble .tagcloud {
+  text-align: center; }
+
+.section-bubble .projects h4,
+.section-bubble .quests h4 {
+  text-align: center; }
+
 .section-bubble .single .section {
   border: 2px solid #ddd;
   margin-bottom: 30px;
@@ -9455,43 +9470,27 @@ time {
   text-align: center;
   padding: 40px 0 20px; }
 
-.section-quest .section {
-  border: 2px solid #ddd;
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 15px; }
-
 .section-project h1 {
   text-align: center;
   padding: 40px 0 20px; }
-
-.section-project .section {
-  border: 2px solid #ddd;
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 15px; }
-
-.section-user h1 {
-  text-align: center; }
-
-.section-user .section {
-  border: 2px solid #ddd;
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 15px; }
 
 .section-user .profile {
   padding-top: 60px;
   padding-bottom: 50px;
   text-align: center; }
 
-.section-user .quests {
+.section-user .quests h3 {
+  margin-bottom: 15px; }
+
+.section-user .tags {
   margin-bottom: 0; }
-  .section-user .quests h3 {
-    margin-bottom: 15px; }
 
 .section-user iframe {
   margin-bottom: 21px; }
+
+.section-tag h1 {
+  text-align: center;
+  padding: 40px 0 20px; }
 
 .btn-success {
   color: white;

@@ -7,6 +7,7 @@ use Auth;
 use View;
 use App\Project;
 use App\Resource;
+use App\Tag;
 use App\Http\Requests;
 
 class ProjectController extends Controller
@@ -165,6 +166,45 @@ class ProjectController extends Controller
         $is_project_owner = Auth::user()->id == $project->user_id;
         if ($is_project_owner) {
             $project->resources()->detach($resource_id);
+            return redirect()->route('projects.show', ['id' => $project->id]);
+        }
+        return redirect()->route('projects.index');
+    }
+
+    public function store_tag($project_id, $tag_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('projects.index');
+        }
+        $project = Project::find($project_id);
+        if (is_null($project)) {
+            return redirect()->route('projects.index');
+        }
+        $tag = Tag::find($tag_id);
+        if (is_null($tag)) {
+            return redirect()->route('projects.index');
+        }
+        $is_tag_owner = Auth::user()->id == $tag->author_id;
+        $is_project_owner = Auth::user()->id == $project->user_id;
+        if ($is_tag_owner && $is_project_owner) {
+            $project->tags()->save($tag);
+            return redirect()->route('projects.show', ['id' => $project->id]);
+        }
+        return redirect()->route('projects.index');
+    }
+
+    public function delete_tag($project_id, $tag_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('projects.index');
+        }
+        $project = Project::find($project_id);
+        if (is_null($project)) {
+            return redirect()->route('projects.index');
+        }
+        $is_project_owner = Auth::user()->id == $project->user_id;
+        if ($is_project_owner) {
+            $project->tags()->detach($tag_id);
             return redirect()->route('projects.show', ['id' => $project->id]);
         }
         return redirect()->route('projects.index');

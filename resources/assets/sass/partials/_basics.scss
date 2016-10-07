@@ -18,6 +18,23 @@ body {
   position: relative;
 }
 
+.section {
+  border: 2px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px;
+
+  &.center {
+    text-align: center;
+  }
+
+  &:first-child {}
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 // Header-Section
 // -------------------------
 

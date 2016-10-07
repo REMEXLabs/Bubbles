@@ -13,6 +13,11 @@
                     <li>
                         <a href="{{ route('users.index')}}" class="btn btn-sm btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> All Users</a>
                     </li>
+                    @if (Auth::user()->id != $user->id)
+                        <li>
+                            <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+                        </li>
+                    @endif
                     <li aria-hidden="true">
                         <a href="{{ url('/')}}" class="btn btn-sm btn-success"><i class="fa fa-home" aria-hidden="true"></i></a>
                     </li>
@@ -90,7 +95,7 @@
                           @foreach ($user->resolvedQuests as $quest)
                               <tr>
                                   <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                  <td>{{ Quest::getLanguage($quest->language) }}</td>
+                                  <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
                                   <td class="icon-swords state--{{ $quest->difficulty }}">
                                       <span class="icon-swords-child st"></span>
                                       <span class="icon-swords-child nd"></span>
@@ -116,21 +121,21 @@
                                   <th width="40%">Name</th>
                                   <th width="20%">Language</th>
                                   <th width="10%">Level</th>
-                                  <th width="10%">Points</th>
+                                  <th width="10%" class="text-center">Points</th>
                                   <th width="20%"></th>
                               </tr>
                           </thead>
                           @foreach ($user->createdQuests as $quest)
                               <tr>
                                   <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                  <td>{{ Quest::getLanguage($quest->language) }}</td>
+                                  <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
                                   <td class="icon-swords state--{{ $quest->difficulty }}">
                                       <span class="icon-swords-child st"></span>
                                       <span class="icon-swords-child nd"></span>
                                       <span class="icon-swords-child td"></span>
                                   </td>
-                                  <td>{{ $quest->points }}</td>
-                                  <td>
+                                  <td class="text-center"><strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong></td>
+                                  <td class="text-right">
                                       <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
                                   </td>
                               </tr>
@@ -139,6 +144,15 @@
                   @endif
 
                 </section>
+
+                @if (Auth::user()->id == $user->id)
+                    <section class="section tags">
+                        <h3>Tags ({{ count(Auth::user()->tags) }})</h3>
+                        @foreach (Auth::user()->tags as $user_tag)
+                            <a href="{{ route('tags.show', ['id' => $user_tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user_tag->color }};"></i> {{ $user_tag->name }}</a>
+                        @endforeach
+                    </section>
+                @endif
 
             </div>
         </div>

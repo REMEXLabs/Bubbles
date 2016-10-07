@@ -66,6 +66,7 @@
                 </section>
                 <section class="section">
                     <h3>Resources ({{ count($quest->resources) }})</h3>
+                    @if (count($quest->resources))
                     <table class="table">
                         <thead>
                             <tr>
@@ -100,6 +101,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @endif
                     @if (Auth::user()->id == $quest->author_id)
                         <a href="{{ route('quests.add_resource', ['id' => $quest->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
                     @endif
@@ -166,6 +168,35 @@
                         @endif
                     @endif
                 </section>
+                @if ($quest->author_id == Auth::user()->id)
+                    <section class="section tags">
+                        <h3>Tags ({{ count($quest->tags) }})</h3>
+                        @foreach ($quest->tags as $tag)
+                            <div class="tag--delete" style="padding-right: 8px; display: inline-block;">
+                                <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $tag->color }};"></i> {{ $tag->name }}</a>
+                                <a href="{{ route('quests.delete_tag', ['quest_id' => $quest->id, 'tag_id' => $tag->id]) }}" class="btn btn-default btn-sm" style="margin-left: -1px;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </div>
+                        @endforeach
+                        @if (count(Auth::user()->tags))
+                            <hr>
+                            <p>Add new tag by clicking on one of the following tags:</p>
+                            @foreach (Auth::user()->tags as $user_tag)
+                                <?php
+                                    $show = true;
+                                foreach ($quest->tags as $i => $quest_tag) {
+                                    if ($user_tag->id == $quest_tag->pivot->tag_id) {
+                                        $show = false;
+                                        break;
+                                    }
+                                }
+                                ?>
+                                @if ($show)
+                                    <a href="{{ route('quests.store_tag', ['quest_id' => $quest->id, 'tag_id' => $user_tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user_tag->color }};"></i> {{ $user_tag->name }}</a>
+                                @endif
+                            @endforeach
+                        @endif
+                    </section>
+                @endif
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ use Validator;
 use App\User;
 use App\Quest;
 use App\Resource;
+use App\Tag;
 use App\Http\Requests;
 
 class QuestController extends Controller
@@ -330,6 +331,45 @@ class QuestController extends Controller
         $is_quest_owner = Auth::user()->id == $quest->author_id;
         if ($is_quest_owner) {
             $quest->resources()->detach($resource_id);
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        return redirect()->route('quests.index');
+    }
+
+    public function store_tag($quest_id, $tag_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('quests.index');
+        }
+        $quest = Quest::find($quest_id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.index');
+        }
+        $tag = Tag::find($tag_id);
+        if (is_null($tag)) {
+            return redirect()->route('quests.index');
+        }
+        $is_tag_owner = Auth::user()->id == $tag->author_id;
+        $is_quest_owner = Auth::user()->id == $quest->author_id;
+        if ($is_tag_owner && $is_quest_owner) {
+            $quest->tags()->save($tag);
+            return redirect()->route('quests.show', ['id' => $quest->id]);
+        }
+        return redirect()->route('quests.index');
+    }
+
+    public function delete_tag($quest_id, $tag_id)
+    {
+        if (Auth::guest()) {
+            return redirect()->route('quests.index');
+        }
+        $quest = Quest::find($quest_id);
+        if (is_null($quest)) {
+            return redirect()->route('quests.index');
+        }
+        $is_quest_owner = Auth::user()->id == $quest->author_id;
+        if ($is_quest_owner) {
+            $quest->tags()->detach($tag_id);
             return redirect()->route('quests.show', ['id' => $quest->id]);
         }
         return redirect()->route('quests.index');

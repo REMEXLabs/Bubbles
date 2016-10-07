@@ -43,11 +43,15 @@ Route::post('quests/store/repo', ['as' => 'repo.store', 'uses' => 'QuestControll
 Route::get('quests/{id}/add/resource', ['middleware' => 'auth', 'as' => 'quests.add_resource', 'uses' => 'QuestController@add_resource']);
 Route::get('quests/{quest_id}/add/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'quests.store_resource', 'uses' => 'QuestController@store_resource']);
 Route::get('quests/{quest_id}/delete/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'quests.delete_resource', 'uses' => 'QuestController@delete_resource']);
+Route::get('quests/{quest_id}/add/tag/{tag_id}', ['middleware' => 'auth', 'as' => 'quests.store_tag', 'uses' => 'QuestController@store_tag']);
+Route::get('quests/{quest_id}/delete/tag/{tag_id}', ['middleware' => 'auth', 'as' => 'quests.delete_tag', 'uses' => 'QuestController@delete_tag']);
 
 Route::resource('projects', 'ProjectController');
 Route::get('projects/{id}/add/resource', ['middleware' => 'auth', 'as' => 'projects.add_resource', 'uses' => 'ProjectController@add_resource']);
 Route::get('projects/{project_id}/add/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'projects.store_resource', 'uses' => 'ProjectController@store_resource']);
 Route::get('projects/{project_id}/delete/resource/{resource_id}', ['middleware' => 'auth', 'as' => 'projects.delete_resource', 'uses' => 'ProjectController@delete_resource']);
+Route::get('projects/{project_id}/add/tag/{tag_id}', ['middleware' => 'auth', 'as' => 'projects.store_tag', 'uses' => 'ProjectController@store_tag']);
+Route::get('projects/{project_id}/delete/tag/{tag_id}', ['middleware' => 'auth', 'as' => 'projects.delete_tag', 'uses' => 'ProjectController@delete_tag']);
 
 Route::resource('users', 'UserController');
 
@@ -57,6 +61,7 @@ Route::post('search', ['as' => 'search', 'uses' => 'SearchController@search']);
 // Private Resources:
 Route::resource('bubbles', 'BubbleController');
 Route::resource('resources', 'ResourceController');
+Route::resource('tags', 'TagController');
 
 // Private Settings:
 Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
@@ -64,6 +69,7 @@ Route::group(['prefix' => 'my', 'middleware' => 'auth'], function () {
     Route::get('bubbles', ['as' => 'my-bubbles', 'uses' => 'BubbleController@overview']);
     Route::get('projects', ['as' => 'my-projects', 'uses' => 'ProjectController@overview']);
     Route::get('resources', ['as' => 'my-resources', 'uses' => 'ResourceController@overview']);
+    Route::get('tags', ['as' => 'my-tags', 'uses' => 'TagController@overview']);
     Route::get('profile', ['as' => 'my-profile', 'uses' => 'UserController@profile']);
 });
 

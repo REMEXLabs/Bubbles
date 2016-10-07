@@ -18,12 +18,12 @@ class Project extends Model
     ];
 
     public static $public = [
-    'id',
-    'name',
-    'description',
-    'user_id',
-    'created_at',
-    'updated_at'
+      'id',
+      'name',
+      'description',
+      'user_id',
+      'created_at',
+      'updated_at'
     ];
 
     public function user()
@@ -34,5 +34,10 @@ class Project extends Model
     public function resources()
     {
         return $this->morphToMany('App\Resource', 'resourceable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'tagable');
     }
 }

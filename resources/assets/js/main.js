@@ -30,9 +30,10 @@ $(document).ready(function () {
   }
 
   $('.grid').masonry({
-    itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+    itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
-    percentPosition: true
+    percentPosition: true,
+    transitionDuration: 0
   });
 
 });

@@ -3,6 +3,10 @@
 // --------------------------------------------------
 
 .section-bubble {
+  a:hover .bubble {
+    border-color: $ci-success;
+  }
+
   .bubble {
     color: black;
     background-color: #fff;
@@ -13,7 +17,7 @@
     text-decoration: none;
 
     &:hover {
-      background-color: #f8f8f8;
+      // background-color: #f8f8f8;
       text-decoration: none;
       // border: 1px dashed #e7e7e7;
     }
@@ -172,6 +176,15 @@
 
   .stage {
     margin-bottom: 20px;
+  }
+
+  .tagcloud {
+    text-align: center;
+  }
+
+  .projects h4,
+  .quests h4 {
+    text-align: center;
   }
 
   .single {

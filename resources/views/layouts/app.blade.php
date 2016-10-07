@@ -69,6 +69,7 @@
                                 <li><a href="{{ route('my-quests') }}"><i class="fa fa-btn fa-code" aria-hidden="true"></i>Quests</a></li>
                                 <li><a href="{{ route('my-projects') }}"><i class="fa fa-btn fa-list-ul" aria-hidden="true"></i>Projects</a></li>
                                 <li><a href="{{ route('my-resources') }}"><i class="fa fa-btn fa-file-o" aria-hidden="true"></i>Resources</a></li>
+                                <li><a href="{{ route('my-tags') }}"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                             </ul>

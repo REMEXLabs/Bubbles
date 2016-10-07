@@ -36,10 +36,10 @@
 
 @section('content')
 <main class="site_main" role="main">
-    <div class="container">
-    {{--
-    <div class="container-fluid" style="max-width: 1800px;">
-    --}}
+    {{-- <div class="container"> --}}
+
+    <div class="container-fluid" style="max-width: 1600px;">
+
         <div class="row">
           <div class="col-md-12">
               <div class="stage">
@@ -83,6 +83,106 @@
                         </div>
                     </div>
                 </a>
+                <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="bubble">
+                        <div class="tagcloud">
+                            <h4>Tagcloud</h4>
+                            <p>
+                            @foreach (Auth::user()->tags as $tag)
+                                @if ($tag->color)
+                                    <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $tag->color }};"></i> {{ $tag->name }}</a>
+                                @else
+                                    <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true"></i> {{ $tag->name }}</a>
+                                @endif
+                            @endforeach
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="bubble">
+                        <div class="quests">
+                            <h4>Your created <i class="fa fa-bolt" aria-hidden="true"></i> Quests</h4>
+                            @if(count($created_quests))
+                                <table class="table table-hover">
+                                    @foreach ($created_quests as $quest)
+                                        @if ($quest->state != 'open')
+                                            <tr class="quest--inactive">
+                                        @else
+                                            <tr>
+                                        @endif
+                                        <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                                        <td class="text-center">
+                                          <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            @endif
+                            <footer>
+                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Quests</a>
+                                <a href="{{ route('quests.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="bubble">
+                        <div class="quests">
+                            <h4>Your accepted <i class="fa fa-bolt" aria-hidden="true"></i> Quests</h4>
+                            @if(count($accepted_quests))
+                                <table class="table table-hover">
+                                    @foreach ($accepted_quests as $quest)
+                                        @if ($quest->state != 'open')
+                                            <tr class="quest--inactive">
+                                        @else
+                                            <tr>
+                                        @endif
+                                        <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                                        <td class="text-center">
+                                          <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            @endif
+                            <footer>
+                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Quests</a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    <div class="bubble">
+                        <div class="projects">
+                            <h4>Your created <i class="fa fa-code" aria-hidden="true"></i> Projects</h4>
+                            @if(count($projects))
+                                <table class="table table-hover">
+                                    @foreach ($projects as $project)
+                                        <tr>
+                                            <td>
+                                                <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
+                                            </td>
+                                            <td class="text-right">
+                                                <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            @endif
+                            <footer>
+                                <a href="{{ route('my-projects')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Projects</a>
+                                <a href="{{ route('projects.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
                 @foreach ($user->bubbles as $bubble)
                     @if($bubble->type == 'project')
                         <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
