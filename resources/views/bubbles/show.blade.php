@@ -37,15 +37,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 single">
-                @if($bubble->type == 'project')
-                    <h1>{{ $bubble->project()->name }}</h1>
-                @endif
-                @if($bubble->type == 'quest')
-                    <h1>{{ $bubble->quest()->name }}</h1>
-                @endif
+                <section class="section" tabindex="0">
 
-                <section class="section">
-                    <h3>Details</h3>
+                    @if($bubble->type == 'project')
+                        <h1>{{ $bubble->project()->name }}</h1>
+                    @endif
+                    @if($bubble->type == 'quest')
+                        <h1>{{ $bubble->quest()->name }}</h1>
+                    @endif
                     @if($bubble->type == 'project')
                         <p><a href="{{ route('projects.show', ['id' => $bubble->project()->id ]) }}">Open Project Details</a>.</p>
                     @endif
@@ -56,7 +55,7 @@
                     <p><strong>Order</strong>: <br> {{ $bubble->order }}</p>
                 </section>
 
-                <section class="section sharing">
+                <section class="section sharing" id="sharing" tabindex="0">
                   <h3>Bubble Sharing</h3>
                   <p>Share your bubble by using the following iframe on your site:</p>
                   <p>

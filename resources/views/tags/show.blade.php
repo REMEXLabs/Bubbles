@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <section class="section center">
+                <section class="section center" tabindex="0">
                     <h1>Tag</h1>
                     @if ($tag->color)
                         <h4><i class="fa fa-tag" aria-hidden="true" style="color: {{ $tag->color }};"></i> {{ $tag->name }}</h4>
@@ -35,7 +35,7 @@
                         <h4><i class="fa fa-tag" aria-hidden="true"></i> {{ $tag->name }}</h4>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" id="quests" tabindex="0">
                     <h3>Quests</h3>
                     @if(count($quests))
                         <table class="table table-hover">
@@ -78,7 +78,7 @@
                         </table>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" id="projects" tabindex="0">
                     <h3>Projects</h3>
                     @if(count($projects))
                         <table class="table table-hover">
@@ -101,7 +101,7 @@
                         </table>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h3>All Tags</h3>
                     <p>
                     @foreach (Auth::user()->tags as $user_tag)

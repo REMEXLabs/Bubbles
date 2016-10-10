@@ -21,17 +21,6 @@
             </div>
         </nav>
     @endif
-    {{-- @else
-        <nav class="navbar subnav" role="navigation">
-            <div class="container">
-                <ul class="list-inline">
-                    <li>
-                        <a href="{{ route('users.create')}}" class="btn btn-success">Join the adventure!</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    @endif --}}
 @endsection
 
 @section('content')

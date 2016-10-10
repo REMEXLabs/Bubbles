@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <section class="section quests">
+                <section class="section quests" tabindex="0">
                     <h4>Found {{ $n_quests }} quests</h4>
                     @if($n_quests)
                         <table class="table table-hover">
@@ -50,7 +50,7 @@
                         <p>Found no matches.</p>
                     @endif
                 </section>
-                <section class="section projects">
+                <section class="section projects" tabindex="0">
                     <h4>Found {{ $n_projects }} projects</h4>
                     @if($n_projects)
                       <table class="table table-hover">
@@ -75,7 +75,7 @@
                         <p>Found no matches.</p>
                     @endif
                 </section>
-                <section class="section users">
+                <section class="section users" tabindex="0">
                     <h4>Found {{ $n_users }} users</h4>
                     @if($n_users)
                         <table class="table table-hover">

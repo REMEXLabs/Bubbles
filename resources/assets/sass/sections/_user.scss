@@ -23,4 +23,116 @@
     margin-bottom: 21px;
   }
 
+  .info {
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .subline {
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 11px;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .user-avatar {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    border-radius: 75px;
+    margin: 0 auto;
+    background: #ddd;
+    margin-bottom: 10px;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .fa-user {
+      font-size: 70px;
+      line-height: 145px;
+    }
+
+  }
+
+  .user-level {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 0 auto;
+    background: #ddd;
+    font-weight: bold;
+  }
+
+  .user-bar {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    width: 100%;
+    background: #ddd;
+    height: 25px;
+  }
+
+  .user-bar-text {
+    position: relative;
+    font-weight: bold;
+    z-index: 30;
+    height: 25px;
+    line-height: 25px;
+  }
+
+  .user-bar-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: $ci-success;
+    z-index: 20;
+    height: 25px;
+  }
+
+  .type-icon {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 35px;
+    text-align: center;
+    margin: 0 auto;
+    background: #ddd;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  .type-subline {
+    margin-bottom: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .type-description {
+    text-align: center;
+  }
+
+  .type-points {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
 }

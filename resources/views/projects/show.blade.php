@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h1>{{ $project->name }}</h1>
                     @if ($project->description)
                         <p><strong>Project owner</strong>: <br> <a href="{{ route('users.show', ['id' => $project->user_id]) }}">{{ $project->user()->username }}</a></p>
@@ -49,7 +49,7 @@
                         <p><strong>Description</strong>: <br> {{ $project->description }}</p>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h3>Resources ({{ count($project->resources) }})</h3>
                     @if (count($project->resources))
                     <table class="table">
@@ -93,7 +93,7 @@
                     @endif
                 </section>
                 @if ($project->user_id == Auth::user()->id)
-                    <section class="section tags">
+                    <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count($project->tags) }})</h3>
                         @foreach ($project->tags as $tag)
                             <div class="tag--delete" style="padding-right: 8px; display: inline-block;">

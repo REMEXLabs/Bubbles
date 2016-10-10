@@ -12,6 +12,8 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        background: #b8b8b8;
+        color: #333;
       }
       html, body, h1, p {
         margin: 0;
@@ -28,9 +30,9 @@
         padding: 2px 0 0 4px;
       }
       p {
-        height: 18px;
-        line-height: 18px;
-        font-size: 13px;
+        height: 17px;
+        line-height: 17px;
+        font-size: 12px;
         padding: 0 0 0 4px;
       }
       strong {
@@ -41,13 +43,18 @@
       }
       .frame {
         position: absolute;
-        width: 208px;
-        height: 58px;
+        width: 206px;
+        height: 56px;
         left: 50%;
         top: 50%;
-        margin: -29px 0 0 -104px;
-        background: #ddd;
+        margin: -28px 0 0 -103px;
         overflow: hidden;
+
+        background: #ffffff;
+        background: -moz-linear-gradient(top,  #ffffff 22%, #f2f2f2 100%);
+        background: -webkit-linear-gradient(top,  #ffffff 22%,#f2f2f2 100%);
+        background: linear-gradient(to bottom,  #ffffff 22%,#f2f2f2 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
       }
       .smaller {
         font-size: 12px;
@@ -79,7 +86,7 @@
         @endif
         @if($bubble->type == 'quest')
             <h1>{{ $bubble->quest()->name }}</h1>
-            <p>Type: <strong>Quest</strong></p>
+            <p>Type: <strong>{{ ucfirst($bubble->quest()->difficulty) }} Quest</strong></p>
             <p>Status: <strong>{{ Quest::getStates()[$bubble->quest()->state] }}</strong></p>
         @endif
       </div>

@@ -8772,6 +8772,16 @@ body {
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 15px; }
+  .section:focus {
+    outline-style: dotted;
+    outline-color: #000;
+    outline-width: 2px;
+    outline-offset: -2px; }
+  .section a:focus {
+    outline-style: dotted;
+    outline-color: #000;
+    outline-width: 2px;
+    outline-offset: -2px; }
   .section.center {
     text-align: center; }
   .section:last-child {
@@ -8801,6 +8811,11 @@ body {
     right: 15px;
     bottom: 10px;
     color: black; }
+  .site_footer a:focus {
+    outline-style: dotted;
+    outline-color: #000;
+    outline-width: 2px;
+    outline-offset: -2px; }
 
 .navbar-brand,
 h1,
@@ -8845,9 +8860,8 @@ h6 {
         padding-right: 15px; } }
   .mainnav a {
     color: #fff !important; }
-  .mainnav .navbar-nav > .open > a:focus,
-  .mainnav a:active:focus,
-  .mainnav a:hover:focus {
+  .mainnav a:active,
+  .mainnav a:focus:active {
     outline: none; }
   .mainnav a:focus {
     outline-style: dotted;
@@ -8897,6 +8911,11 @@ h6 {
   .mainnav .dropdown-toggle:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
+  .mainnav .navbar-nav a.dropdown-toggle:focus {
+    outline-style: dotted;
+    outline-color: #fff;
+    outline-width: 2px;
+    outline-offset: -2px; }
   .mainnav .navbar-nav > li > .dropdown-menu {
     box-shadow: none;
     padding: 10px 0;
@@ -8916,8 +8935,13 @@ h6 {
   min-height: 50px;
   margin-bottom: 0;
   padding-top: 11px;
-  padding-bottom: 10px;
+  padding-bottom: 0;
   border-radius: 0; }
+  .subnav a:focus {
+    outline-style: dotted;
+    outline-color: #fff;
+    outline-width: 2px;
+    outline-offset: -2px; }
   .subnav .list-inline--left a {
     color: #fff;
     color: rgba(255, 255, 255, 0.75); }
@@ -8934,7 +8958,8 @@ h6 {
   .subnav .list-inline--right li {
     float: left;
     padding-right: 0;
-    padding-left: 10px; }
+    padding-left: 10px;
+    padding-bottom: 10px; }
   .subnav .list-inline--left .btn,
   .subnav .list-inline--left .btn:active,
   .subnav .list-inline--left .btn:active:focus,
@@ -9080,9 +9105,8 @@ time {
   border-color: rgba(0, 198, 177, 0.7); }
 
 .search_form {
-  display: inline-block;
-  height: 70px;
-  margin: 10px 0 0;
+  display: none;
+  margin: 15px 0 0;
   padding: 0;
   float: left;
   overflow: hidden;
@@ -9093,7 +9117,8 @@ time {
       margin-top: 0;
       width: auto;
       height: 70px;
-      padding: 17px 0 0 20px; } }
+      padding: 17px 0 0 20px;
+      display: inline-block; } }
   @media (min-width: 992px) {
     .search_form {
       padding: 17px 0 0 44px; } }
@@ -9134,6 +9159,16 @@ time {
     @media (min-width: 768px) {
       .search_form .btn {
         width: auto; } }
+  .search_form button:focus {
+    outline-style: dotted;
+    outline-color: #000;
+    outline-width: 2px;
+    outline-offset: -2px; }
+  .search_form input:focus {
+    outline-style: dotted;
+    outline-color: gray;
+    outline-width: 2px;
+    outline-offset: -2px; }
 
 .section-welcome .site_main {
   color: white;
@@ -9321,17 +9356,43 @@ time {
 .section-search .section table {
   margin-bottom: 0; }
 
+.section-bubble h1 {
+  text-align: center;
+  padding: 40px 0 20px; }
+
+.section-bubble a {
+  text-decoration: none; }
+
 .section-bubble a:hover .bubble {
   border-color: #00c6b1; }
+
+.section-bubble .grid > .grid-item > a {
+  display: inline-block;
+  width: 100%; }
+
+.section-bubble .grid a:focus {
+  outline-style: dotted;
+  outline-color: #000;
+  outline-width: 2px;
+  outline-offset: -2px; }
+
+.section-bubble .grid .grid-item {
+  margin-bottom: 30px; }
 
 .section-bubble .bubble {
   color: black;
   background-color: #fff;
   border: 2px solid #ddd;
-  margin-bottom: 30px;
   padding: 20px;
   border-radius: 15px;
   text-decoration: none; }
+  .section-bubble .bubble:focus {
+    outline-style: dotted;
+    outline-color: #000;
+    outline-width: 2px;
+    outline-offset: -2px; }
+  .section-bubble .bubble.fix {
+    border-style: dashed; }
   .section-bubble .bubble:hover {
     text-decoration: none; }
   .section-bubble .bubble header {
@@ -9454,12 +9515,6 @@ time {
 .section-bubble .quests h4 {
   text-align: center; }
 
-.section-bubble .single .section {
-  border: 2px solid #ddd;
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 15px; }
-
 .section-bubble .single .sharing {
   margin-bottom: 0; }
 
@@ -9487,6 +9542,99 @@ time {
 
 .section-user iframe {
   margin-bottom: 21px; }
+
+.section-user .info {
+  margin-bottom: 20px;
+  overflow: hidden; }
+  .section-user .info:last-child {
+    margin-bottom: 0; }
+
+.section-user .subline {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 11px; }
+
+.section-user h2 {
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.section-user .user-avatar {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  border-radius: 75px;
+  margin: 0 auto;
+  background: #ddd;
+  margin-bottom: 10px; }
+  .section-user .user-avatar img {
+    width: 150px;
+    height: 150px; }
+  .section-user .user-avatar .fa-user {
+    font-size: 70px;
+    line-height: 145px; }
+
+.section-user .user-level {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  text-align: center;
+  margin: 0 auto;
+  background: #ddd;
+  font-weight: bold; }
+
+.section-user .user-bar {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 100%;
+  background: #ddd;
+  height: 25px; }
+
+.section-user .user-bar-text {
+  position: relative;
+  font-weight: bold;
+  z-index: 30;
+  height: 25px;
+  line-height: 25px; }
+
+.section-user .user-bar-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #00c6b1;
+  z-index: 20;
+  height: 25px; }
+
+.section-user .type-icon {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 35px;
+  text-align: center;
+  margin: 0 auto;
+  background: #ddd;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 30px; }
+
+.section-user .type-subline {
+  margin-bottom: 17px;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+.section-user .type-description {
+  text-align: center; }
+
+.section-user .type-points {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold; }
 
 .section-tag h1 {
   text-align: center;

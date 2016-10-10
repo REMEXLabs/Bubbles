@@ -34,35 +34,55 @@
             <div class="col-md-12">
 
                 {{-- Profile: --}}
-                <section class="section profile">
-                    @if($user->image_url)
-                        <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 200px; height: 200px;">
-                    @endif
-                    <h1 class="avatar">{{ $user->username }}</h2>
-                    <p>
-                        <strong>Experience Points</strong>: {{ $user->points }} / {{ $user->pointsToLevelUp() }}
-                    </p>
-                    <p>
-                        <strong>Level</strong>: {{ $user->level() }}
-                    </p>
+                <section class="section profile" tabindex="0">
+                    <div class="info">
+                        <div class="user-avatar">
+                          @if($user->image_url)
+                              <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                          @else
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                          @endif
+                        </div>
+                        <h2>{{ $user->username }}</h2>
+                    </div>
+                    <div class="info">
+                      <div class="user-level">
+                        {{ $user->level() }}
+                      </div>
+                      <h3 class="subline">Level</h3>
+                    </div>
+                    <div class="info">
+                      <div class="user-bar">
+                          <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
+                          <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
+                          <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                      </div>
+                      <h3 class="subline">Experience Points</h3>
+                    </div>
                     @if ($user->email_public == 1)
-                        <p>
-                            <strong>E-Mail</strong>: <br> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
-                        </p>
+                        <div class="info">
+                            <p>
+                                <strong>E-Mail</strong>: <br> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+                            </p>
+                        </div>
                     @endif
                     @if ($user->name)
-                        <p>
-                            <strong>Name</strong>: <br> {{ $user->name }}
-                        </p>
+                        <div class="info">
+                            <p>
+                                <strong>Name</strong>: <br> {{ $user->name }}
+                            </p>
+                        </div>
                     @endif
                     @if ($user->bio)
-                        <p>
-                            <strong>Biography</strong>: <br> {{ $user->bio }}
-                        </p>
+                        <div class="info">
+                            <p>
+                                <strong>Biography</strong>: <br> {{ $user->bio }}
+                            </p>
+                        </div>
                     @endif
                 </section>
 
-                <section class="section profile_sharing">
+                <section class="section profile_sharing" tabindex="0">
                   <h3>Profile Sharing</h3>
                   <p>Share your profile by using the following iframe on your site:</p>
                   <p>
@@ -76,7 +96,7 @@
                   </div>
                 </section>
 
-                <section class="section quests">
+                <section class="section quests" tabindex="0">
                   <h3>Quests</h3>
 
                   {{-- Resolved quests: --}}
@@ -146,7 +166,7 @@
                 </section>
 
                 @if (Auth::user()->id == $user->id)
-                    <section class="section tags">
+                    <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count(Auth::user()->tags) }})</h3>
                         @foreach (Auth::user()->tags as $user_tag)
                             <a href="{{ route('tags.show', ['id' => $user_tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user_tag->color }};"></i> {{ $user_tag->name }}</a>

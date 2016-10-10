@@ -25,27 +25,38 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h3>{{ count($projects) }} Projects</h3>
-            @if(count($projects))
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th width="80%">Name</th>
-                            <th width="20%"></th>
-                        </tr>
-                    </thead>
-                    @foreach ($projects as $project)
-                        <tr>
-                            <td>
-                                <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
-                            </td>
-                            <td>
-                                <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
-                            </td>
-                        </tr>
+                <section class="section" tabindex="0">
+                    <h3>All Tags</h3>
+                    <p>
+                    @foreach (Auth::user()->tags as $user)
+                        <a href="{{ route('tags.show', ['id' => $user->id]) }}#projects" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user->color }};"></i> {{ $user->name }}</a>
                     @endforeach
-                </table>
-            @endif
+                    </p>
+                </section>
+                <section class="section" tabindex="0">
+                    <h3>{{ count($projects) }} Projects</h3>
+                    @if(count($projects))
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="80%">Name</th>
+                                    <th width="20%"></th>
+                                </tr>
+                            </thead>
+                            @foreach ($projects as $project)
+                                <tr>
+                                    <td>
+                                        <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
+                                    </td>
+                                    <td>
+                                        <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @endif
+                </section>
+            </div>
         </div>
     </div>
 </main>

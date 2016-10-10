@@ -25,120 +25,195 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <section class="section" tabindex="0">
+                    <h3>All Tags</h3>
+                    <p>
+                    @foreach (Auth::user()->tags as $user)
+                        <a href="{{ route('tags.show', ['id' => $user->id]) }}#quests" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user->color }};"></i> {{ $user->name }}</a>
+                    @endforeach
+                    </p>
+                </section>
 
                 {{-- Created quests: --}}
-                <h3>{{ count($created_quests) }} created Quests</h3>
-                @if(count($created_quests))
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="40%">Name</th>
-                                <th width="20%">Language</th>
-                                <th width="10%">Level</th>
-                                <th width="10%">Points</th>
-                                <th width="20%"></th>
-                            </tr>
-                        </thead>
-                        @foreach ($created_quests as $quest)
-                            <tr>
-                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
-                                <td>{{ $quest->points }}</td>
-                                <td>
-                                    <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                @endif
-
-                <hr>
+                <section class="section" tabindex="0">
+                    <h3>{{ count($created_quests) }} created Quests</h3>
+                    @if(count($created_quests))
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th width="35%">Name</th>
+                                  <th width="15%">Language</th>
+                                  <th width="10%">Level</th>
+                                  <th class="text-center" width="10%">Points</th>
+                                  <th class="text-center" width="10%">Status</th>
+                                  <th class="text-right" width="20%"></th>
+                              </tr>
+                          </thead>
+                          @foreach ($created_quests as $quest)
+                              @if ($quest->state != 'open')
+                                  <tr class="quest--inactive">
+                              @else
+                                  <tr>
+                              @endif
+                              <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                              <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
+                              <td class="icon-swords state--{{ $quest->difficulty }}">
+                                  <span class="icon-swords-child st"></span>
+                                  <span class="icon-swords-child nd"></span>
+                                  <span class="icon-swords-child td"></span>
+                              </td>
+                              <td class="text-center">
+                                <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                              </td>
+                              @if ($quest->state != 'open')
+                                  <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
+                              @else
+                                  <td class="text-center"><span class="quest-state--active">{{ $quest->state }}</span></td>
+                              @endif
+                              <td class="text-right">
+                                  <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                              </td>
+                          </tr>
+                          @endforeach
+                      </table>
+                    @endif
+                </section>
 
                 {{-- Accepted quests: --}}
-                <h3>{{ count($accepted_quests) }} accepted Quests</h3>
-                @if(count($accepted_quests))
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="40%">Name</th>
-                                <th width="20%">Language</th>
-                                <th width="10%">Level</th>
-                                <th width="10%">Points</th>
-                                <th width="20%"></th>
-                            </tr>
-                        </thead>
-                        @foreach ($accepted_quests as $quest)
-                            <tr>
-                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
-                                <td>{{ $quest->points }}</td>
-                                <td>
-                                    <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                @endif
-
-                <hr>
+                <section class="section" tabindex="0">
+                    <h3>{{ count($accepted_quests) }} accepted Quests</h3>
+                    @if(count($accepted_quests))
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th width="35%">Name</th>
+                                  <th width="15%">Language</th>
+                                  <th width="10%">Level</th>
+                                  <th class="text-center" width="10%">Points</th>
+                                  <th class="text-center" width="10%">Status</th>
+                                  <th class="text-right" width="20%"></th>
+                              </tr>
+                          </thead>
+                          @foreach ($accepted_quests as $quest)
+                              @if ($quest->state != 'open')
+                                  <tr class="quest--inactive">
+                              @else
+                                  <tr>
+                              @endif
+                              <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                              <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
+                              <td class="icon-swords state--{{ $quest->difficulty }}">
+                                  <span class="icon-swords-child st"></span>
+                                  <span class="icon-swords-child nd"></span>
+                                  <span class="icon-swords-child td"></span>
+                              </td>
+                              <td class="text-center">
+                                <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                              </td>
+                              @if ($quest->state != 'open')
+                                  <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
+                              @else
+                                  <td class="text-center"><span class="quest-state--active">{{ $quest->state }}</span></td>
+                              @endif
+                              <td class="text-right">
+                                  <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                              </td>
+                          </tr>
+                          @endforeach
+                      </table>
+                    @endif
+                </section>
 
                 {{-- Checking quests: --}}
-                <h3>{{ count($checking_quests) }} to be checked Quests</h3>
-                @if(count($checking_quests))
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="40%">Name</th>
-                                <th width="20%">Language</th>
-                                <th width="10%">Level</th>
-                                <th width="10%">Points</th>
-                                <th width="20%"></th>
-                            </tr>
-                        </thead>
-                        @foreach ($checking_quests as $quest)
-                            <tr>
-                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
-                                <td>{{ $quest->points }}</td>
-                                <td>
-                                    <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                @endif
-
-                <hr>
+                <section class="section" tabindex="0">
+                    <h3>{{ count($checking_quests) }} to be checked Quests</h3>
+                    @if(count($checking_quests))
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th width="35%">Name</th>
+                                  <th width="15%">Language</th>
+                                  <th width="10%">Level</th>
+                                  <th class="text-center" width="10%">Points</th>
+                                  <th class="text-center" width="10%">Status</th>
+                                  <th class="text-right" width="20%"></th>
+                              </tr>
+                          </thead>
+                          @foreach ($checking_quests as $quest)
+                              @if ($quest->state != 'open')
+                                  <tr class="quest--inactive">
+                              @else
+                                  <tr>
+                              @endif
+                              <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                              <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
+                              <td class="icon-swords state--{{ $quest->difficulty }}">
+                                  <span class="icon-swords-child st"></span>
+                                  <span class="icon-swords-child nd"></span>
+                                  <span class="icon-swords-child td"></span>
+                              </td>
+                              <td class="text-center">
+                                <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                              </td>
+                              @if ($quest->state != 'open')
+                                  <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
+                              @else
+                                  <td class="text-center"><span class="quest-state--active">{{ $quest->state }}</span></td>
+                              @endif
+                              <td class="text-right">
+                                  <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                              </td>
+                          </tr>
+                          @endforeach
+                      </table>
+                    @endif
+                </section>
 
                 {{-- Resolved quests: --}}
-                <h3>{{ count($resolved_quests) }} resolved Quests</h3>
-                @if(count($resolved_quests))
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="40%">Name</th>
-                                <th width="20%">Language</th>
-                                <th width="10%">Level</th>
-                                <th width="10%">Points</th>
-                                <th width="20%"></th>
-                            </tr>
-                        </thead>
-                        @foreach ($resolved_quests as $quest)
-                            <tr>
-                                <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
-                                <td>{{ $quest->language }}</td>
-                                <td>{{ $quest->difficulty }}</td>
-                                <td>{{ $quest->points }}</td>
-                                <td>
-                                    <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                @endif
+                <section class="section" tabindex="0">
+                    <h3>{{ count($resolved_quests) }} resolved Quests</h3>
+                    @if(count($resolved_quests))
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th width="35%">Name</th>
+                                  <th width="15%">Language</th>
+                                  <th width="10%">Level</th>
+                                  <th class="text-center" width="10%">Points</th>
+                                  <th class="text-center" width="10%">Status</th>
+                                  <th class="text-right" width="20%"></th>
+                              </tr>
+                          </thead>
+                          @foreach ($resolved_quests as $quest)
+                              @if ($quest->state != 'open')
+                                  <tr class="quest--inactive">
+                              @else
+                                  <tr>
+                              @endif
+                              <td><a href="{{ route('quests.show', ['id' => $quest->id]) }}">{{ $quest->name }}</a></td>
+                              <td><span class="language {{$quest->language}}"></span> {{ Quest::getLanguage($quest->language) }}</td>
+                              <td class="icon-swords state--{{ $quest->difficulty }}">
+                                  <span class="icon-swords-child st"></span>
+                                  <span class="icon-swords-child nd"></span>
+                                  <span class="icon-swords-child td"></span>
+                              </td>
+                              <td class="text-center">
+                                <strong>{{ $quest->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
+                              </td>
+                              @if ($quest->state != 'open')
+                                  <td class="text-center"><span class="quest-state">{{ $quest->state }}</span></td>
+                              @else
+                                  <td class="text-center"><span class="quest-state--active">{{ $quest->state }}</span></td>
+                              @endif
+                              <td class="text-right">
+                                  <time class="js_moment" datetime="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($quest->created_at, 'Y-m-d H:i:s') }}">{{ date_format($quest->created_at, 'd.m.Y') }}</time>
+                              </td>
+                          </tr>
+                          @endforeach
+                      </table>
+                    @endif
+                </section>
+
             </div>
         </div>
     </div>

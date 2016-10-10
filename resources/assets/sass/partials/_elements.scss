@@ -157,9 +157,9 @@ time {
 // 6. Search-Form
 // -------------------------
 .search_form {
-  display: inline-block;
-  height: 70px;
-  margin: 10px 0 0;
+  display: none;
+  // height: 70px;
+  margin: 15px 0 0;
   padding: 0;
   float: left;
   overflow: hidden;
@@ -170,6 +170,7 @@ time {
     width: auto;
     height: 70px;
     padding: 17px 0 0 20px;
+    display: inline-block;
   }
   @media (min-width: $screen-md) {
     padding: 17px 0 0 44px;
@@ -219,4 +220,23 @@ time {
       width: auto;
     }
   }
+
+  button {
+    &:focus {
+      outline-style: dotted;
+      outline-color: #000;
+      outline-width: 2px;
+      outline-offset: -2px;
+    }
+  }
+
+  input {
+    &:focus {
+      outline-style: dotted;
+      outline-color: gray;
+      outline-width: 2px;
+      outline-offset: -2px;
+    }
+  }
+
 }

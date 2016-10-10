@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h1>{{ $quest->name }}</h1>
                     @if ($quest->description)
                         <p><strong>Quest owner</strong>: <br> <a href="{{ route('users.show', ['id' => $quest->author_id]) }}">{{ $quest->author()->username }}</a></p>
@@ -64,7 +64,7 @@
                         </div>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h3>Resources ({{ count($quest->resources) }})</h3>
                     @if (count($quest->resources))
                     <table class="table">
@@ -106,7 +106,7 @@
                         <a href="{{ route('quests.add_resource', ['id' => $quest->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
                     @endif
                 </section>
-                <section class="section">
+                <section class="section" tabindex="0">
                     <h3>Status</h3>
                     @if ($quest->state == 'open')
                         <p>
@@ -169,7 +169,7 @@
                     @endif
                 </section>
                 @if ($quest->author_id == Auth::user()->id)
-                    <section class="section tags">
+                    <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count($quest->tags) }})</h3>
                         @foreach ($quest->tags as $tag)
                             <div class="tag--delete" style="padding-right: 8px; display: inline-block;">

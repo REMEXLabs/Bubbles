@@ -3,18 +3,57 @@
 // --------------------------------------------------
 
 .section-bubble {
+  h1 {
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
   a:hover .bubble {
     border-color: $ci-success;
+  }
+
+  .grid {
+    & > .grid-item > a {
+      display: inline-block;
+      width: 100%;
+    }
+
+    a:focus {
+      outline-style: dotted;
+      outline-color: #000;
+      outline-width: 2px;
+      outline-offset: -2px;
+    }
+
+    .grid-item {
+      margin-bottom: 30px;
+    }
+
   }
 
   .bubble {
     color: black;
     background-color: #fff;
     border: 2px solid #ddd;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     padding: 20px;
     border-radius: 15px;
     text-decoration: none;
+
+    &:focus {
+      outline-style: dotted;
+      outline-color: #000;
+      outline-width: 2px;
+      outline-offset: -2px;
+    }
+
+    &.fix {
+      border-style: dashed;
+    }
 
     &:hover {
       // background-color: #f8f8f8;
@@ -188,13 +227,6 @@
   }
 
   .single {
-    .section {
-      border: 2px solid #ddd;
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 15px;
-    }
-
     .sharing {
       margin-bottom: 0;
     }

@@ -9,7 +9,16 @@
                         <a href="{{ route('repo.scan')}}" class="btn btn-sm btn-success"><i class="fa fa-search" aria-hidden="true"></i> Scan GitHub Repository</a>
                     </li>
                     <li>
-                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Bubble</a>
+                        <a href="{{ route('bubbles.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Bubble</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('quests.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Quest</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Project</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('resources.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Resource</a>
                     </li>
                     <li>
                         <a href="{{ route('my-bubbles')}}" class="btn btn-sm btn-success"><i class="fa fa-list" aria-hidden="true"></i> List Bubbles</a>
@@ -51,40 +60,40 @@
         <div class="row">
             <div class="grid">
                 <div class="grid-sizer col-lg-4 col-md-6 col-sm-12 col-xs-12"></div>
-                <a href="{{ route('users.show', ['id' => $user->id]) }}">
                     <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div class="bubble">
-                            <header>
-                                <div class="info">
-                                    <div class="user-avatar">
-                                      @if($user->image_url)
-                                          <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
-                                      @else
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                      @endif
+                        <a href="{{ route('users.show', ['id' => $user->id]) }}" tabindex="0">
+                            <div class="bubble">
+                                <header>
+                                    <div class="info">
+                                        <div class="user-avatar">
+                                          @if($user->image_url)
+                                              <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                                          @else
+                                              <i class="fa fa-user" aria-hidden="true"></i>
+                                          @endif
+                                        </div>
+                                        <h2>{{ $user->username }}</h2>
                                     </div>
-                                    <h2>{{ $user->username }}</h2>
-                                </div>
-                                <div class="info">
-                                  <div class="user-level">
-                                    {{ $user->level() }}
-                                  </div>
-                                  <h3 class="subline">Level</h3>
-                                </div>
-                                <div class="info">
-                                  <div class="user-bar">
-                                      <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
-                                      <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
-                                      <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
-                                  </div>
-                                  <h3 class="subline">Experience Points</h3>
-                                </div>
-                            </header>
-                        </div>
+                                    <div class="info">
+                                      <div class="user-level">
+                                        {{ $user->level() }}
+                                      </div>
+                                      <h3 class="subline">Level</h3>
+                                    </div>
+                                    <div class="info">
+                                      <div class="user-bar">
+                                          <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
+                                          <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
+                                          <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                                      </div>
+                                      <h3 class="subline">Experience Points</h3>
+                                    </div>
+                                </header>
+                            </div>
+                        </a>
                     </div>
-                </a>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="bubble">
+                    <div class="bubble fix" tabindex="0">
                         <div class="tagcloud">
                             <h4>Tagcloud</h4>
                             <p>
@@ -100,7 +109,7 @@
                     </div>
                 </div>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="bubble">
+                    <div class="bubble fix" tabindex="0">
                         <div class="quests">
                             <h4>Your created <i class="fa fa-bolt" aria-hidden="true"></i> Quests</h4>
                             @if(count($created_quests))
@@ -123,14 +132,14 @@
                                 </table>
                             @endif
                             <footer>
-                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Quests</a>
-                                <a href="{{ route('quests.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Quest</a>
+                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> My Quests</a>
+                                <a href="{{ route('quests.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create Quest</a>
                             </footer>
                         </div>
                     </div>
                 </div>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="bubble">
+                    <div class="bubble fix" tabindex="0">
                         <div class="quests">
                             <h4>Your accepted <i class="fa fa-bolt" aria-hidden="true"></i> Quests</h4>
                             @if(count($accepted_quests))
@@ -153,13 +162,14 @@
                                 </table>
                             @endif
                             <footer>
-                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Quests</a>
+                                <a href="{{ route('my-quests')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> My Quests</a>
+                                <a href="{{ route('quests.index')}}" class="btn btn-sm btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search New Quest</a>
                             </footer>
                         </div>
                     </div>
                 </div>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="bubble">
+                    <div class="bubble fix" tabindex="0">
                         <div class="projects">
                             <h4>Your created <i class="fa fa-code" aria-hidden="true"></i> Projects</h4>
                             @if(count($projects))
@@ -177,108 +187,73 @@
                                 </table>
                             @endif
                             <footer>
-                                <a href="{{ route('my-projects')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> All Projects</a>
-                                <a href="{{ route('projects.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Project</a>
+                                <a href="{{ route('my-projects')}}" class="btn btn-sm btn-default"><i class="fa fa-list" aria-hidden="true"></i> My Projects</a>
+                                <a href="{{ route('projects.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a>
                             </footer>
                         </div>
                     </div>
                 </div>
                 @foreach ($user->bubbles as $bubble)
+                <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     @if($bubble->type == 'project')
-                        <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
+                    <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
                     @else
-                        <a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}">
+                    <a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}">
                     @endif
-                        <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                            <div class="bubble">
-                                @if($bubble->type == 'project')
-                                    <header class="info">
-                                        <div class="type-icon">
-                                            <i class="fa fa-code" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="type-subline">
-                                            Project
-                                        </div>
-                                        <h2>{{ $bubble->project()->name }}</h2>
-                                    </header>
-                                    @if($bubble->project()->description)
-                                       <div class="info type-description">
-                                          {{ $bubble->project()->description }}
-                                       </div>
-                                    @endif
-                                @endif
-                                @if($bubble->type == 'quest')
-                                    <header class="info">
-                                        <div class="type-icon">
-                                            <i class="fa fa-bolt" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="type-subline">
-                                            {{ $bubble->quest()->points }} <i class="fa fa-star" aria-hidden="true"></i> Quest
-                                        </div>
-                                        <h2>{{ $bubble->quest()->name }}</h2>
-                                    </header>
-                                    <div class="info">
-                                      @if ($bubble->quest()->state != 'open')
-                                          <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></div>
-                                      @else
-                                          <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></div>
-                                      @endif
+                        <div class="bubble">
+                            @if($bubble->type == 'project')
+                                <header class="info">
+                                    <div class="type-icon">
+                                        <i class="fa fa-code" aria-hidden="true"></i>
                                     </div>
-                                    @if($bubble->quest()->description)
-                                       <div class="info type-description">
-                                          {{ $bubble->quest()->description }}
-                                       </div>
-                                    @endif
-                                    @if($bubble->quest()->language)
-                                       <div class="type-description">
-                                          <span class="language {{$bubble->quest()->language}}"></span> {{ Quest::getLanguage($bubble->quest()->language) }}
-                                       </div>
-                                    @endif
+                                    <div class="type-subline">
+                                        Project
+                                    </div>
+                                    <h2>{{ $bubble->project()->name }}</h2>
+                                </header>
+                                @if($bubble->project()->description)
+                                   <div class="info type-description">
+                                      {{ $bubble->project()->description }}
+                                   </div>
                                 @endif
-                                <footer class="footer">
-                                    <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
-                                </footer>
-                            </div>
+                            @endif
+                            @if($bubble->type == 'quest')
+                                <header class="info">
+                                    <div class="type-icon">
+                                        <i class="fa fa-bolt" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="type-subline">
+                                        {{ $bubble->quest()->points }} <i class="fa fa-star" aria-hidden="true"></i> Quest
+                                    </div>
+                                    <h2>{{ $bubble->quest()->name }}</h2>
+                                </header>
+                                <div class="info">
+                                  @if ($bubble->quest()->state != 'open')
+                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></div>
+                                  @else
+                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></div>
+                                  @endif
+                                </div>
+                                @if($bubble->quest()->description)
+                                   <div class="info type-description">
+                                      {{ $bubble->quest()->description }}
+                                   </div>
+                                @endif
+                                @if($bubble->quest()->language)
+                                   <div class="type-description">
+                                      <span class="language {{$bubble->quest()->language}}"></span> {{ Quest::getLanguage($bubble->quest()->language) }}
+                                   </div>
+                                @endif
+                            @endif
+                            <footer class="footer">
+                                <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
+                            </footer>
                         </div>
-                </a>
+                    </a>
+                </div>
                 @endforeach
             <div>
         </div>
-
-        {{--
-        <div class="row">
-            <div class="col-md-12">
-                <h3>{{ $user->username }}</h3>
-                <hr>
-                <h3>{{ count($user->bubbles) }} bubbles</h3>
-                @if(count($user->bubbles))
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Order</th>
-                                <th>Created at</th>
-                            </tr>
-                        </thead>
-                        @foreach ($user->bubbles as $bubble)
-                            <tr>
-                                @if($bubble->type == 'project')
-                                    <td><a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->project()->name }}</a></td>
-                                @endif
-                                @if($bubble->type == 'quest')
-                                    <td><a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->quest()->name }}</a></td>
-                                @endif
-                                <td>{{ $bubble->type }}</td>
-                                <td>{{ $bubble->order }}</td>
-                                <td>{{ date_format($bubble->created_at, 'd.m.Y') }}</td>
-                            </tr>
-                        @endforeach
-                    </table>
-                @endif
-            </div>
-        </div>
-        --}}
 
     </div>
 </main>
