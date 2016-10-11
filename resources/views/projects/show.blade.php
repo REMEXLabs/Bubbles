@@ -88,11 +88,11 @@
                         </tbody>
                     </table>
                     @endif
-                    @if (Auth::user()->id == $project->user_id)
+                    @if (Auth::check() && Auth::user()->id == $project->user_id)
                         <a href="{{ route('projects.add_resource', ['id' => $project->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
                     @endif
                 </section>
-                @if ($project->user_id == Auth::user()->id)
+                @if (Auth::check() && $project->user_id == Auth::user()->id)
                     <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count($project->tags) }})</h3>
                         @foreach ($project->tags as $tag)

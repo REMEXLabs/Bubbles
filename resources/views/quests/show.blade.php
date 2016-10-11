@@ -102,7 +102,7 @@
                         </tbody>
                     </table>
                     @endif
-                    @if (Auth::user()->id == $quest->author_id)
+                    @if (Auth::check() && Auth::user()->id == $quest->author_id)
                         <a href="{{ route('quests.add_resource', ['id' => $quest->id]) }}" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add Resource</a>
                     @endif
                 </section>
@@ -126,7 +126,7 @@
                         <p>
                             The quest is running.
                         </p>
-                        @if ($quest->editor_id == Auth::user()->id)
+                        @if (Auth::check() && $quest->editor_id == Auth::user()->id)
                             <p>
                                 <a href="{{ route('quests.finish', ['id' => $quest->id]) }}" class="btn btn-success">Mark quest as done!</a>
                                 <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest.</a>
@@ -137,7 +137,7 @@
                             </p>
                         @endif
                     @elseif ($quest->state == 'check')
-                        @if ($quest->editor_id == Auth::user()->id)
+                        @if (Auth::check() && $quest->editor_id == Auth::user()->id)
                             <p>
                                 You have finished the quest.
                             </p>
@@ -146,7 +146,7 @@
                                 The editor <a href="{{ route('users.show', ['id' => $quest->editor_id]) }}">{{ $quest->editor()->username }}</a> has finished the quest.
                             </p>
                         @endif
-                        @if ($quest->author_id == Auth::user()->id)
+                        @if (Auth::check() && $quest->author_id == Auth::user()->id)
                             <p>
                                 <a href="{{ route('quests.close', ['id' => $quest->id]) }}" class="btn btn-success">Mark quest as done</a>
                                 <a href="{{ route('quests.reopen', ['id' => $quest->id]) }}" class="btn btn-default">Reopen quest</a>
@@ -157,7 +157,7 @@
                             </p>
                         @endif
                     @else
-                        @if ($quest->editor_id == Auth::user()->id)
+                        @if (Auth::check() && $quest->editor_id == Auth::user()->id)
                             <p>
                                 You resolved the quest successfully.
                             </p>
@@ -168,7 +168,7 @@
                         @endif
                     @endif
                 </section>
-                @if ($quest->author_id == Auth::user()->id)
+                @if (Auth::check() && $quest->author_id == Auth::user()->id)
                     <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count($quest->tags) }})</h3>
                         @foreach ($quest->tags as $tag)

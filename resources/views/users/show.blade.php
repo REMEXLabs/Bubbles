@@ -165,7 +165,7 @@
 
                 </section>
 
-                @if (Auth::user()->id == $user->id)
+                @if (Auth::check() && Auth::user()->id == $user->id)
                     <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count(Auth::user()->tags) }})</h3>
                         @foreach (Auth::user()->tags as $user_tag)
