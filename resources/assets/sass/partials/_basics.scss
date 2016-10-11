@@ -24,14 +24,13 @@ body {
   padding: 20px;
   border-radius: 15px;
 
-  &:focus {
-    outline-style: dotted;
-    outline-color: #000;
-    outline-width: 2px;
-    outline-offset: -2px;
-  }
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 22%, #f8f8f8 100%);
+  background: -webkit-linear-gradient(top, #ffffff 22%,#f8f8f8 100%);
+  background: linear-gradient(to bottom, #ffffff 22%,#f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#ffffff', endColorstr='#f8f8f8',GradientType=0 );
 
-  a:focus {
+  &:focus {
     outline-style: dotted;
     outline-color: #000;
     outline-width: 2px;

@@ -19,26 +19,30 @@
                         <div class="form-group">
                             {{ Form::label('type', 'Type:', ['class'=>'col-md-2 control-label']) }}
                             <div class="col-md-10">
-                                {{ Form::select('type', Bubble::getTypes(), 'quest', ['class' =>
+                                {{ Form::select('type', $types, 'quest', ['class' =>
 'form-control', 'id' => 'bubble_type_selection']) }}
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            {{ Form::label('quest_id', 'Quest:', ['class'=>'col-md-2 control-label']) }}
-                            <div class="col-md-10">
-                                {{ Form::select('quest_id', $quests, null, ['class' =>
-'form-control']) }}
+                        @if (count($quests))
+                            <div class="form-group">
+                                {{ Form::label('quest_id', 'Quest:', ['class'=>'col-md-2 control-label']) }}
+                                <div class="col-md-10">
+                                    {{ Form::select('quest_id', $quests, null, ['class' =>
+    'form-control']) }}
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
-                        <div class="form-group">
-                            {{ Form::label('project_id', 'Project:', ['class'=>'col-md-2 control-label']) }}
-                            <div class="col-md-10">
-                                {{ Form::select('project_id', $projects, null, ['class' =>
-'form-control', 'disabled'=>'disabled']) }}
+                        @if (count($projects))
+                            <div class="form-group">
+                                {{ Form::label('project_id', 'Project:', ['class'=>'col-md-2 control-label']) }}
+                                <div class="col-md-10">
+                                    {{ Form::select('project_id', $projects, null, ['class' =>
+    'form-control', 'disabled'=>'disabled']) }}
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="form-group">
                             {{ Form::label('order', 'Order:', ['class'=>'col-md-2 control-label']) }}

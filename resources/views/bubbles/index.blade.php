@@ -54,23 +54,31 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th width="40%">Name</th>
-                                    <th width="20%">Type</th>
-                                    <th width="20%">Order</th>
-                                    <th width="20%"></th>
+                                    <th width="30%">Name</th>
+                                    <th class="text-center" width="20%">Type</th>
+                                    <th class="text-center" width="20%">Order</th>
+                                    <th class="text-center" width="15%"></th>
+                                    <th class="text-right" width="15%"></th>
                                 </tr>
                             </thead>
                             @foreach ($bubbles as $bubble)
                                 <tr>
+                                    <td>
                                     @if($bubble->type == 'project')
-                                        <td><a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->project()->name }}</a></td>
+                                        <a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->project()->name }}</a>
                                     @endif
                                     @if($bubble->type == 'quest')
-                                        <td><a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->quest()->name }}</a></td>
+                                        <a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}">{{ $bubble->quest()->name }}</a>
                                     @endif
-                                    <td>{{ Bubble::getType($bubble->type) }}</td>
-                                    <td>{{ $bubble->order }}</td>
-                                    <td>
+                                    </td>
+                                    <td class="text-center">{{ Bubble::getType($bubble->type) }}</td>
+                                    <td class="text-center">{{ $bubble->order }}</td>
+                                    <td class="text-center">
+                                        {!! Form::open(array('method' => 'DELETE', 'route' => array('bubbles.destroy', $bubble->id))) !!}
+                                            {{ Form::submit('Delete', array('class' => 'btn btn-danger btn-sm', 'style' => 'font-size: 12px; padding: 1px 10px 0;')) }}
+                                        {!! Form::close() !!}
+                                    </td>
+                                    <td class="text-right">
                                         <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
                                     </td>
                                 </tr>

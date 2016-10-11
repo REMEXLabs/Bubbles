@@ -30,25 +30,11 @@
             </div>
         </nav>
     @endif
-    {{-- @else
-        <nav class="navbar subnav" role="navigation">
-            <div class="container">
-                <ul class="list-inline">
-                    <li>
-                        <a href="{{ route('users.create')}}" class="btn btn-success">Join the adventure!</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    @endif --}}
 @endsection
 
 @section('content')
 <main class="site_main" role="main">
-    {{-- <div class="container"> --}}
-
     <div class="container-fluid" style="max-width: 1600px;">
-
         <div class="row">
           <div class="col-md-12">
               <div class="stage">
@@ -61,36 +47,34 @@
             <div class="grid">
                 <div class="grid-sizer col-lg-4 col-md-6 col-sm-12 col-xs-12"></div>
                     <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <a href="{{ route('users.show', ['id' => $user->id]) }}" tabindex="0">
-                            <div class="bubble">
-                                <header>
-                                    <div class="info">
-                                        <div class="user-avatar">
-                                          @if($user->image_url)
-                                              <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
-                                          @else
-                                              <i class="fa fa-user" aria-hidden="true"></i>
-                                          @endif
-                                        </div>
-                                        <h2>{{ $user->username }}</h2>
+                        <div class="bubble" tabindex="0">
+                            <header>
+                                <div class="info">
+                                    <div class="user-avatar">
+                                        @if($user->image_url)
+                                            <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                                        @else
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        @endif
                                     </div>
-                                    <div class="info">
-                                      <div class="user-level">
-                                        {{ $user->level() }}
-                                      </div>
-                                      <h3 class="subline">Level</h3>
-                                    </div>
-                                    <div class="info">
-                                      <div class="user-bar">
-                                          <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
-                                          <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
-                                          <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
-                                      </div>
-                                      <h3 class="subline">Experience Points</h3>
-                                    </div>
-                                </header>
-                            </div>
-                        </a>
+                                    <h2><a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a></h2>
+                                </div>
+                                <div class="info">
+                                  <div class="user-level">
+                                    {{ $user->level() }}
+                                  </div>
+                                  <h3 class="subline">Level</h3>
+                                </div>
+                                <div class="info">
+                                  <div class="user-bar">
+                                      <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
+                                      <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
+                                      <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                                  </div>
+                                  <h3 class="subline">Experience Points</h3>
+                                </div>
+                            </header>
+                        </div>
                     </div>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="bubble fix" tabindex="0">
@@ -196,60 +180,54 @@
                 @foreach ($user->bubbles as $bubble)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     @if($bubble->type == 'project')
-                    <a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}">
+                    <div class="bubble project" tabindex="0">
                     @else
-                    <a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}">
+                    <div class="bubble quest" tabindex="0">
                     @endif
-                        <div class="bubble">
-                            @if($bubble->type == 'project')
-                                <header class="info">
-                                    <div class="type-icon">
-                                        <i class="fa fa-code" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="type-subline">
-                                        Project
-                                    </div>
-                                    <h2>{{ $bubble->project()->name }}</h2>
-                                </header>
-                                @if($bubble->project()->description)
-                                   <div class="info type-description">
-                                      {{ $bubble->project()->description }}
-                                   </div>
-                                @endif
+                        @if($bubble->type == 'project')
+                            <header class="info">
+                                <div class="type-icon"><i class="fa fa-code" aria-hidden="true"></i></div>
+                                <h2><a href="{{ route('projects.show', ['id' => $bubble->project()->id]) }}" tabindex="0">{{ $bubble->project()->name }}</a></h2>
+                                <div class="type-subline">Project</div>
+                            </header>
+                            @if($bubble->project()->description)
+                               <div class="info type-description">{{ $bubble->project()->description }}</div>
                             @endif
+                        @endif
+                        @if($bubble->type == 'quest')
+                            <header class="info">
+                                <div class="type-icon"><i class="fa fa-bolt" aria-hidden="true"></i></div>
+                                <h2><a href="{{ route('quests.show', ['id' => $bubble->quest()->id]) }}" tabindex="0">{{ $bubble->quest()->name }}</a></h2>
+                                <div class="type-subline">{{ $bubble->quest()->points }} <i class="fa fa-star" aria-hidden="true"></i> Quest</div>
+                            </header>
+                            <div class="info">
+                              @if ($bubble->quest()->state != 'open')
+                                  <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></div>
+                              @else
+                                  <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></div>
+                              @endif
+                            </div>
+                            @if($bubble->quest()->description)
+                               <div class="info type-description">
+                                  {{ $bubble->quest()->description }}
+                               </div>
+                            @endif
+                            @if($bubble->quest()->language)
+                               <div class="type-description">
+                                  <span class="language {{$bubble->quest()->language}}"></span> {{ Quest::getLanguage($bubble->quest()->language) }}
+                               </div>
+                            @endif
+                        @endif
+                        <footer class="footer">
                             @if($bubble->type == 'quest')
-                                <header class="info">
-                                    <div class="type-icon">
-                                        <i class="fa fa-bolt" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="type-subline">
-                                        {{ $bubble->quest()->points }} <i class="fa fa-star" aria-hidden="true"></i> Quest
-                                    </div>
-                                    <h2>{{ $bubble->quest()->name }}</h2>
-                                </header>
-                                <div class="info">
-                                  @if ($bubble->quest()->state != 'open')
-                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state">{{ $bubble->quest()->state }}</span></div>
-                                  @else
-                                      <div class="state--{{ $bubble->quest()->state }}"><span class="quest-state--active">{{ $bubble->quest()->state }}</span></div>
-                                  @endif
-                                </div>
-                                @if($bubble->quest()->description)
-                                   <div class="info type-description">
-                                      {{ $bubble->quest()->description }}
-                                   </div>
-                                @endif
-                                @if($bubble->quest()->language)
-                                   <div class="type-description">
-                                      <span class="language {{$bubble->quest()->language}}"></span> {{ Quest::getLanguage($bubble->quest()->language) }}
-                                   </div>
-                                @endif
+                                <a href="{{ route('quests.add_resource', ['id' => $bubble->quest()->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Resource</a>
+                            @else
+                                <a href="{{ route('projects.add_resource', ['id' => $bubble->project()->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Resource</a>
                             @endif
-                            <footer class="footer">
-                                <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
-                            </footer>
-                        </div>
-                    </a>
+                            <a href="{{ route('bubbles.show', ['id' => $bubble->id]) }}#sharing" class="btn btn-default btn-sm"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</a>
+                            <time class="js_moment" datetime="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($bubble->created_at, 'Y-m-d H:i:s') }}">{{ date_format($bubble->created_at, 'd.m.Y') }}</time>
+                        </footer>
+                    </div>
                 </div>
                 @endforeach
             <div>

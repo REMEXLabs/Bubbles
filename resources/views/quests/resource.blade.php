@@ -40,13 +40,13 @@
                         @foreach ($resources as $resource)
                             <tr>
                                 <td><a href="{{ route('resources.show', ['id' => $resource->id]) }}">{{ $resource->id }}</a></td>
-                                <td>{{ $resource->type }}</td>
+                                <td>{{ ucfirst($resource->type) }}</td>
                                 <td>{{ $resource->data }}</td>
                                 <td>
                                     <time class="js_moment" datetime="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($resource->created_at, 'Y-m-d H:i:s') }}">{{ date_format($resource->created_at, 'd.m.Y') }}</time>
                                 </td>
                                 <td>
-                                  <a href="{{ route('quests.store_resource', ['quest_id' => $quest->id, 'resource_id' => $resource->id ]) }}">Add</a>
+                                  <a href="{{ route('quests.store_resource', ['quest_id' => $quest->id, 'resource_id' => $resource->id ]) }}" class="btn btn-default btn-sm" style="font-size: 12px; padding: 1px 10px 0;">Add</a>
                                 </td>
                             </tr>
                         @endforeach

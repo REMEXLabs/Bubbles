@@ -107,17 +107,48 @@ class BubbleController extends Controller
    */
     public function create()
     {
+        // Projects
         $projects = [];
-        foreach (Auth::user()->projects as $key => $project) {
-            $projects[$project->id] = $project->name;
+        $bubbles = Auth::user()->projectBubbles;
+        foreach (Auth::user()->projects as $k => $project) {
+            $save = true;
+            foreach ($bubbles as $j => $bubble) {
+                if ($project->id == $bubble->project_id) {
+                    $save = false;
+                    break;
+                }
+            }
+            if ($save) {
+                $projects[$project->id] = $project->name;
+            }
         }
+        // Quests
         $quests = [];
-        foreach (Auth::user()->createdQuests as $key => $quest) {
-            $quests[$quest->id] = $quest->name;
+        $bubbles = Auth::user()->questBubbles;
+        foreach (Auth::user()->createdQuests as $k => $quest) {
+            $save = true;
+            foreach ($bubbles as $j => $bubble) {
+                if ($quest->id == $bubble->quest_id) {
+                    $save = false;
+                    break;
+                }
+            }
+            if ($save) {
+                $quests[$quest->id] = $quest->name;
+            }
+        }
+        // Types
+        $types = [];
+        if (count($projects)) {
+            $types['project'] = 'Project';
+        }
+        if (count($quests)) {
+            $types['quest'] = 'Quest';
         }
         return view('bubbles.create', [
           'projects' => $projects,
           'quests' => $quests,
+          'types' => $types
         ]);
     }
 

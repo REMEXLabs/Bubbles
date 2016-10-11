@@ -8771,13 +8771,13 @@ body {
   border: 2px solid #ddd;
   margin-bottom: 30px;
   padding: 20px;
-  border-radius: 15px; }
+  border-radius: 15px;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 22%, #f8f8f8 100%);
+  background: -webkit-linear-gradient(top, #ffffff 22%, #f8f8f8 100%);
+  background: linear-gradient(to bottom, #ffffff 22%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#ffffff', endColorstr='#f8f8f8',GradientType=0 ); }
   .section:focus {
-    outline-style: dotted;
-    outline-color: #000;
-    outline-width: 2px;
-    outline-offset: -2px; }
-  .section a:focus {
     outline-style: dotted;
     outline-color: #000;
     outline-width: 2px;
@@ -9381,7 +9381,11 @@ time {
 
 .section-bubble .bubble {
   color: black;
-  background-color: #fff;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 22%, #f8f8f8 100%);
+  background: -webkit-linear-gradient(top, #ffffff 22%, #f8f8f8 100%);
+  background: linear-gradient(to bottom, #ffffff 22%, #f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#ffffff', endColorstr='#f8f8f8',GradientType=0 );
   border: 2px solid #ddd;
   padding: 20px;
   border-radius: 15px;
@@ -9392,15 +9396,14 @@ time {
     outline-width: 2px;
     outline-offset: -2px; }
   .section-bubble .bubble.fix {
-    border-style: dashed; }
+    border-style: dotted; }
   .section-bubble .bubble:hover {
     text-decoration: none; }
   .section-bubble .bubble header {
     text-align: center;
     padding: 10px 0 0; }
   .section-bubble .bubble .info {
-    margin-bottom: 20px;
-    overflow: hidden; }
+    margin-bottom: 20px; }
     .section-bubble .bubble .info:last-child {
       margin-bottom: 0; }
   .section-bubble .bubble .subline {
@@ -9470,7 +9473,8 @@ time {
     margin-bottom: 10px;
     font-size: 30px; }
   .section-bubble .bubble .type-subline {
-    margin-bottom: 17px;
+    margin-top: 5px;
+    margin-bottom: 3px;
     text-transform: uppercase;
     font-weight: bold; }
   .section-bubble .bubble .type-description {
@@ -9502,8 +9506,10 @@ time {
     color: #00c6b1;
     border-color: #00c6b1; }
   .section-bubble .bubble .footer {
-    text-align: right;
+    text-align: left;
     font-size: 14px; }
+    .section-bubble .bubble .footer time {
+      float: right; }
 
 .section-bubble .stage {
   margin-bottom: 20px; }
