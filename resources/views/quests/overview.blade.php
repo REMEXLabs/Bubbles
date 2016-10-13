@@ -32,6 +32,7 @@
                         <a href="{{ route('tags.show', ['id' => $user->id]) }}#quests" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user->color }};"></i> {{ $user->name }}</a>
                     @endforeach
                     </p>
+                    <br><a href="{{ route('tags.create')}}" class="btn btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
                 </section>
 
                 {{-- Created quests: --}}

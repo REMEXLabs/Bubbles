@@ -32,6 +32,7 @@
                         <a href="{{ route('tags.show', ['id' => $user->id]) }}#projects" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user->color }};"></i> {{ $user->name }}</a>
                     @endforeach
                     </p>
+                    <br><a href="{{ route('tags.create')}}" class="btn btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
                 </section>
                 <section class="section" tabindex="0">
                     <h3>{{ count($projects) }} Projects</h3>
@@ -48,7 +49,7 @@
                                     <td>
                                         <a href="{{ route('projects.show', ['id' => $project->id]) }}">{{ $project->name }}</a>
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <time class="js_moment" datetime="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}" data-time="{{ date_format($project->created_at, 'Y-m-d H:i:s') }}">{{ date_format($project->created_at, 'd.m.Y') }}</time>
                                     </td>
                                 </tr>
