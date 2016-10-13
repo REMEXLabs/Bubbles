@@ -89,6 +89,9 @@
                                 @endif
                             @endforeach
                             </p>
+                            <footer style="text-align: left;">
+                                <a href="{{ route('tags.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
+                            </footer>
                         </div>
                     </div>
                 </div>
@@ -180,9 +183,9 @@
                 @foreach ($user->bubbles as $bubble)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     @if($bubble->type == 'project')
-                    <div class="bubble project" tabindex="0">
+                    <div class="bubble project" id="b{{ $bubble->id }}" tabindex="0">
                     @else
-                    <div class="bubble quest" tabindex="0">
+                    <div class="bubble quest" id="b{{ $bubble->id }}" tabindex="0">
                     @endif
                         @if($bubble->type == 'project')
                             <header class="info">

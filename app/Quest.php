@@ -37,7 +37,6 @@ class Quest extends Model
     {
         return array(
         'name' => 'required|max:255',
-        'description' => 'required',
         'difficulty' => 'required|in:'.implode(',', array_keys(Quest::getDifficulties())),
         'language' => 'required|in:'.implode(',', array_keys(Quest::getLanguages())),
         );

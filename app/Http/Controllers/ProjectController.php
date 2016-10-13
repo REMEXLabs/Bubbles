@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use View;
+use App\Bubble;
 use App\Project;
+use App\Quest;
 use App\Resource;
 use App\Tag;
 use App\Http\Requests;
@@ -63,7 +65,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|alpha_num|max:255',
+            'name' => 'required|max:255',
         ]);
         $input = $request->all();
         $project = Project::create([
@@ -72,7 +74,20 @@ class ProjectController extends Controller
             'user_id' => $request->user()->id
         ]);
         $project->save();
-        // return view('projects.show', ['project' => $project]);
+
+        $create_bubble = ((is_null($request->input('create_bubble'))) ? 0 : 1);
+        if ($create_bubble) {
+            $bubble = Bubble::create([
+              'type' => 'project',
+              'project_id' => $project->id,
+              'quest_id' => null,
+              'order' => 0,
+              'user_id' => $request->user()->id,
+            ]);
+            $bubble->save();
+            return redirect()->route('bubbles.index', array('#b' . $bubble->id));
+        }
+
         return redirect()->route('projects.show', ['id' => $project->id]);
     }
 

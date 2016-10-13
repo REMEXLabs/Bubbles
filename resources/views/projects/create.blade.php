@@ -28,18 +28,15 @@
                                 {{ Form::textarea('description', '', array('class'=>'form-control', 'placeholder'=>'Description')) }}
                             </div>
                         </div>
-
-                        {{-- <div class="form-group">
-                            {{ Form::label('name', 'Name:') }}
-                            {{ Form::text('name', '', array('class'=>'form-control', 'placeholder'=>'Name')) }}
-                        </div>
                         <div class="form-group">
-                            {{ Form::label('description', 'Description:') }}
-                            {{ Form::textarea('description', '', array('class'=>'form-control', 'placeholder'=>'Description')) }}
-                        </div> --}}
-                        {{-- <div>
-                            {{ Form::submit('Create new project', array('class' => 'btn btn-primary')) }}
-                        </div> --}}
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="create_bubble" checked> Create Bubble
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <ul class="list-inline">
@@ -49,22 +46,6 @@
                             </div>
                         </div>
                     {!! Form::close() !!}
-
-
-                    {{-- {!! Form::model($user, array('method' => 'PATCH', 'route' => array('users.update', $user->id))) !!}
-                    <div class="form-group">
-                        {{ Form::label('name', 'Name:') }}
-                        {{ Form::text('name', $user->name, array('class'=>'form-control', 'placeholder'=>'Name')) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label('bio', 'Bio:') }}
-                        {{ Form::textarea('bio', $user->bio, array('class'=>'form-control', 'placeholder'=>'Bio')) }}
-                    </div>
-                    <div class="form-group">
-                		    {{ Form::submit('Update profile', array('class' => 'btn btn-info')) }}
-                	</div>
-                    {!! Form::close() !!} --}}
-
             </div>
         </div>
     </div>

@@ -8,6 +8,8 @@ use View;
 use DB;
 use Validator;
 use App\User;
+use App\Bubble;
+use App\Project;
 use App\Quest;
 use App\Resource;
 use App\Tag;
@@ -229,6 +231,7 @@ class QuestController extends Controller
     {
         $this->validate($request, Quest::getValidationRules());
         $input = $request->all();
+
         $quest = Quest::create([
           'name' => $input['name'],
           'description' => $input['description'],
@@ -237,7 +240,20 @@ class QuestController extends Controller
           'author_id' => $request->user()->id,
         ]);
         $quest->save();
-      //     return view('quests.show', ['quest' => $quest]);
+
+        $create_bubble = ((is_null($request->input('create_bubble'))) ? 0 : 1);
+        if ($create_bubble) {
+            $bubble = Bubble::create([
+              'type' => 'quest',
+              'project_id' => null,
+              'quest_id' => $quest->id,
+              'order' => 0,
+              'user_id' => $request->user()->id,
+            ]);
+            $bubble->save();
+            return redirect()->route('bubbles.index', array('#b' . $bubble->id));
+        }
+
         return redirect()->route('quests.show', ['id' => $quest->id]);
     }
 
