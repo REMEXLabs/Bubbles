@@ -8,6 +8,7 @@
 // 4. Programming-Language
 // 5. Quest-Status
 // 6. Search-Form
+// 7. Bubble-Button
 
 // 1. Time Element
 // -------------------------
@@ -239,4 +240,22 @@ time {
     }
   }
 
+}
+
+// 7. Bubble-Button
+// -------------------------
+.btn-bubble {
+  color: #ffffff;
+  background-color: #777;
+  border-color: #777;
+
+  &:active,
+  &:active:focus,
+  &:active:hover,
+  &:focus,
+  &:hover {
+    color: #ffffff;
+    background-color: #888;
+    border-color: #777;
+  }
 }

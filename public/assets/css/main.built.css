@@ -9170,6 +9170,15 @@ time {
     outline-width: 2px;
     outline-offset: -2px; }
 
+.btn-bubble {
+  color: #ffffff;
+  background-color: #777;
+  border-color: #777; }
+  .btn-bubble:active, .btn-bubble:active:focus, .btn-bubble:active:hover, .btn-bubble:focus, .btn-bubble:hover {
+    color: #ffffff;
+    background-color: #888;
+    border-color: #777; }
+
 .section-welcome .site_main {
   color: white;
   background: #1985CB;
