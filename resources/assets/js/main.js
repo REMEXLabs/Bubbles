@@ -36,4 +36,6 @@ $(document).ready(function () {
     transitionDuration: 0
   });
 
+  $('table > thead').parent().DataTable();
+
 });

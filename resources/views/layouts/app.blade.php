@@ -20,6 +20,7 @@
             @yield('css')
         </style>
     @endif
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 </head>
 @if (!empty($controller))
   <body id="app-layout" class="section-{{ $controller }}">
