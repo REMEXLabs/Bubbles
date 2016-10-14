@@ -25,7 +25,7 @@
                     <div class="form-group">
                         {{ Form::label('location', 'Location:', ['class'=>'col-md-2 control-label']) }}
                         <div class="col-md-10">
-                            {{ Form::text('location', $user->name, array('class'=>'form-control', 'placeholder'=>'Germany')) }}
+                            {{ Form::text('location', $user->location, array('class'=>'form-control', 'placeholder'=>'Germany')) }}
                         </div>
                     </div>
                     <div class="form-group">
