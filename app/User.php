@@ -20,16 +20,38 @@ class User extends Authenticatable
         'name',
         'bio',
         'theme',
+        'skills',
+        'location',
+        'dashboard_tagcloud',
+        'dashboard_accepted_quests',
+        'dashboard_created_quests',
+        'dashboard_created_projects',
+        'share_twitter',
+        'share_github',
+        'share_google',
+        'share_stackoverflow',
+        'share_linkedin',
     ];
 
     public static $public = [
-      'id',
-      'username',
-      'name',
-      'bio',
-      'points',
-      'created_at',
-      'updated_at'
+        'id',
+        'username',
+        'name',
+        'bio',
+        'points',
+        'skills',
+        'location',
+        'dashboard_tagcloud',
+        'dashboard_accepted_quests',
+        'dashboard_created_quests',
+        'dashboard_created_projects',
+        'share_twitter',
+        'share_github',
+        'share_google',
+        'share_stackoverflow',
+        'share_linkedin',
+        'created_at',
+        'updated_at'
     ];
 
     public static function getRegistrationValidationRules()

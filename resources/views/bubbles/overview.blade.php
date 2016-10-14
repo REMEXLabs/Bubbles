@@ -46,55 +46,58 @@
         <div class="row">
             <div class="grid">
                 <div class="grid-sizer col-lg-4 col-md-6 col-sm-12 col-xs-12"></div>
-                    <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div class="bubble" tabindex="0">
-                            <header>
-                                <div class="info">
-                                    <div class="user-avatar">
-                                        @if($user->image_url)
-                                            <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
-                                        @else
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                        @endif
-                                    </div>
-                                    <h2><a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a></h2>
-                                </div>
-                                <div class="info">
-                                  <div class="user-level">
-                                    {{ $user->level() }}
-                                  </div>
-                                  <h3 class="subline">Level</h3>
-                                </div>
-                                <div class="info">
-                                  <div class="user-bar">
-                                      <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
-                                      <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
-                                      <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
-                                  </div>
-                                  <h3 class="subline">Experience Points</h3>
-                                </div>
-                            </header>
-                        </div>
-                    </div>
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                    <div class="bubble fix" tabindex="0">
-                        <div class="tagcloud">
-                            <h4>Tagcloud</h4>
-                            <p>
-                            @foreach (Auth::user()->tags as $tag)
-                                @if ($tag->color)
-                                    <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $tag->color }};"></i> {{ $tag->name }}</a>
-                                @else
-                                    <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true"></i> {{ $tag->name }}</a>
-                                @endif
-                            @endforeach
-                            </p>
-                            <footer style="text-align: left;">
-                                <a href="{{ route('tags.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
-                            </footer>
-                        </div>
+                    <div class="bubble" tabindex="0">
+                        <header>
+                            <div class="info">
+                                <div class="user-avatar">
+                                    @if($user->image_url)
+                                        <img src="{{ $user->image_url }}" class="profile-image img-circle" style="width: 150px; height: 150px;">
+                                    @else
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    @endif
+                                </div>
+                                <h2><a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->username }}</a></h2>
+                            </div>
+                            <div class="info">
+                              <div class="user-level">
+                                {{ $user->level() }}
+                              </div>
+                              <h3 class="subline">Level</h3>
+                            </div>
+                            <div class="info">
+                              <div class="user-bar">
+                                  <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
+                                  <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
+                                  <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                              </div>
+                              <h3 class="subline">Experience Points</h3>
+                            </div>
+                        </header>
                     </div>
                 </div>
+                @if (Auth::user()->dashboard_tagcloud)
+                    <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="bubble fix" tabindex="0">
+                            <div class="tagcloud">
+                                <h4>Tagcloud</h4>
+                                <p>
+                                @foreach (Auth::user()->tags as $tag)
+                                    @if ($tag->color)
+                                        <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $tag->color }};"></i> {{ $tag->name }}</a>
+                                    @else
+                                        <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true"></i> {{ $tag->name }}</a>
+                                    @endif
+                                @endforeach
+                                </p>
+                                <footer style="text-align: left;">
+                                    <a href="{{ route('tags.create')}}" class="btn btn-sm btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (Auth::user()->dashboard_created_quests)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="bubble fix" tabindex="0">
                         <div class="quests">
@@ -125,6 +128,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if (Auth::user()->dashboard_accepted_quests)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="bubble fix" tabindex="0">
                         <div class="quests">
@@ -155,6 +160,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if (Auth::user()->dashboard_created_projects)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="bubble fix" tabindex="0">
                         <div class="projects">
@@ -180,6 +187,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @foreach ($user->bubbles as $bubble)
                 <div class="grid-item col col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     @if($bubble->type == 'project')

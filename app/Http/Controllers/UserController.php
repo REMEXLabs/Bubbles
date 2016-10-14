@@ -122,6 +122,10 @@ class UserController extends Controller
         $input = $request->all();
         $input['email_public'] =((is_null($request->input('email_public')))?0:1);
         $input['quests_public'] =((is_null($request->input('quests_public')))?0:1);
+        $input['dashboard_tagcloud'] =((is_null($request->input('dashboard_tagcloud')))?0:1);
+        $input['dashboard_accepted_quests'] =((is_null($request->input('dashboard_accepted_quests')))?0:1);
+        $input['dashboard_created_quests'] =((is_null($request->input('dashboard_created_quests')))?0:1);
+        $input['dashboard_created_projects'] =((is_null($request->input('dashboard_created_projects')))?0:1);
         $user = User::find($id);
         $user->update($input);
         return redirect()->route('users.show', ['id' => $user->id]);

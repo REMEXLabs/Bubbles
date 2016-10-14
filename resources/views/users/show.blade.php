@@ -59,25 +59,60 @@
                       </div>
                       <h3 class="subline">Experience Points</h3>
                     </div>
-                    @if ($user->email_public == 1)
-                        <div class="info">
-                            <p>
-                                <strong>E-Mail</strong>: <br> <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
-                            </p>
-                        </div>
+                    @if ($user->name || $user->location || $user->bio || $user->skills)
+                        <hr>
                     @endif
                     @if ($user->name)
                         <div class="info">
-                            <p>
-                                <strong>Name</strong>: <br> {{ $user->name }}
-                            </p>
+                            <h3 class="subline">Name</h3>
+                            <p>{{ $user->name }}</p>
+                        </div>
+                    @endif
+                    @if ($user->location)
+                        <div class="info">
+                            <h3 class="subline">Location</h3>
+                            <p>from {{ $user->location }}</p>
                         </div>
                     @endif
                     @if ($user->bio)
                         <div class="info">
+                            <h3 class="subline">Biography</h3>
+                            <p>{{ $user->bio }}</p>
+                        </div>
+                    @endif
+                    @if ($user->skills)
+                        <div class="info">
+                            <h3 class="subline">Skills</h3>
+                            <p>{{ $user->skills }}</p>
+                        </div>
+                    @endif
+                    @if ($user->email_public == 1)
+                        <hr>
+                        <div class="info">
+                            <h3 class="subline">E-Mail</h3>
                             <p>
-                                <strong>Biography</strong>: <br> {{ $user->bio }}
+                                <a class="btn btn-default" href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                             </p>
+                        </div>
+                    @endif
+                    @if ($user->share_twitter || $user->share_github || $user->share_google || $user->share_stackoverflow || $user->share_linkedin)
+                        <hr>
+                        <div class="info">
+                            @if ($user->share_twitter)
+                            <a class="btn btn-default" target="_twitter" href="https://twitter.com/{{ $user->share_twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i> {{ $user->share_twitter }}</a>
+                            @endif
+                            @if ($user->share_github)
+                            <a class="btn btn-default" target="_github" href="https://github.com/{{ $user->share_github }}"><i class="fa fa-github" aria-hidden="true"></i> {{ $user->share_github }}</a>
+                            @endif
+                            @if ($user->share_google)
+                            <a class="btn btn-default" target="_google" href="https://plus.google.com/{{ $user->share_google }}"><i class="fa fa-google" aria-hidden="true"></i> {{ $user->share_google }}</a>
+                            @endif
+                            @if ($user->share_stackoverflow)
+                            <a class="btn btn-default" target="_stackoverflow" href="http://stackoverflow.com/users/{{ $user->share_stackoverflow }}"><i class="fa fa-stack-overflow" aria-hidden="true"></i> {{ $user->share_stackoverflow }}</a>
+                            @endif
+                            @if ($user->share_linkedin)
+                            <a class="btn btn-default" target="_linkedin" href="https://www.linkedin.com/in/{{ $user->share_linkedin }}"><i class="fa fa-linkedin" aria-hidden="true"></i> {{ $user->share_linkedin }}</a>
+                            @endif
                         </div>
                     @endif
                 </section>
