@@ -203,9 +203,15 @@
                 @if (Auth::check() && Auth::user()->id == $user->id)
                     <section class="section tags" tabindex="0">
                         <h3>Tags ({{ count(Auth::user()->tags) }})</h3>
-                        @foreach (Auth::user()->tags as $user_tag)
-                            <a href="{{ route('tags.show', ['id' => $user_tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user_tag->color }};"></i> {{ $user_tag->name }}</a>
-                        @endforeach
+                        @if (count(Auth::user()->tags))
+                            <p>
+                            @foreach (Auth::user()->tags as $user_tag)
+                                <a href="{{ route('tags.show', ['id' => $user_tag->id]) }}" class="btn btn-default btn-sm"><i class="fa fa-tag" aria-hidden="true" style="color: {{ $user_tag->color }};"></i> {{ $user_tag->name }}</a>
+                            @endforeach
+                            </p>
+                        @endif
+                        <br>
+                        <a href="{{ route('tags.create')}}" class="btn btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Create New Tag</a>
                     </section>
                 @endif
 
