@@ -59,6 +59,13 @@
                       </div>
                       <h3 class="subline">Experience Points</h3>
                     </div>
+                    <div class="info">
+                      <div class="user-bar">
+                          <span class="user-bar-text">TOP {{ $top_percent }}% USER</span>
+                          <span class="user-bar-bg" style="width: {{ 100 - $top_percent }}%"></span>
+                      </div>
+                      <h3 class="subline">Activity Level</h3>
+                    </div>
                     @if ($user->name || $user->location || $user->bio || $user->skills)
                         <hr>
                     @endif

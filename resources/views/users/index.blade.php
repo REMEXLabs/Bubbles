@@ -38,35 +38,26 @@
                             </tr>
                         </thead>
                         <?php $idx = 1; ?>
-                        <?php $prev_pts = -1; ?>
                         @foreach ($users as $key => $user)
                             @if(Auth::check() && ($user->id == Auth::user()->id))
                                 <tr class="info">
                             @else
                                 <tr>
                             @endif
-                            <?php $line = "solid"; ?>
-                            @if ($user->points != $prev_pts)
                             <td>
-                                {{ $idx }}.
-                                <?php $idx++; ?>
-                                <?php $prev_pts = $user->points; ?>
+                                {{ $idx++ }}.
                             </td>
-                            @else
-                                <?php $line = "dashed"; ?>
-                                <td style="border-top-style: {{ $line }};"></td>
-                            @endif
-                            <td style="border-top-style: {{ $line }};">
+                            <td>
                                 @if ($user->image_url)
                                     <a href="{{ route('users.show', ['id' => $user->id]) }}"><img src="{{ $user->image_url }}" width="22px" height="22px" style="float: left; margin: 0 6px 0 0; border-radius: 2px;"/> {{ $user->username }}</a>
                                 @else
                                     <a href="{{ route('users.show', ['id' => $user->id]) }}"><span style="width: 22px; height: 22px; float: left; margin: 0 6px 0 0; border-radius: 2px; background: #ddd; text-align:center; line-height: 22px; color: black; font-size: 13px;"><i class="fa fa-user" aria-hidden="true"></i></span> {{ $user->username }}</a>
                                 @endif
                             </td>
-                            <td class="text-center" style="border-top-style: {{ $line }};">
+                            <td class="text-center">
                                 {{ $user->level() }}
                             </td>
-                            <td class="text-center" style="border-top-style: {{ $line }};">
+                            <td class="text-center">
                                 <strong>{{ $user->points }} <i class="fa fa-star" aria-hidden="true"></i></strong>
                             </td>
                             {{-- <td>

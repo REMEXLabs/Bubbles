@@ -74,8 +74,28 @@ class UserController extends Controller
         if (is_null($user)) {
             return redirect()->route('users.index');
         }
+
+        $users = User::orderBy('points', 'DESC')->get()->filter(function ($user) {
+            return $user->points > 1;
+        })->values();
+
+        $nUsers = count($users);
+        $counter = 1;
+        foreach ($users as $key => $unknown) {
+            if ($user->id != $unknown->id) {
+                $counter++;
+            } else {
+                break;
+            }
+        }
+        $topPercent = $counter / $nUsers * 100;
+
         View::share('title', $user->username);
-        return view('users.show', ['user' => $user ]);
+        return view('users.show', [
+            'user' => $user,
+            'n_users' => $nUsers,
+            'top_percent' => $topPercent
+        ]);
     }
 
     /**
