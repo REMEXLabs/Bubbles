@@ -49,23 +49,30 @@
                       <div class="user-level">
                         {{ $user->level() }}
                       </div>
-                      <h3 class="subline">Level</h3>
+                      <h3 class="subline">User Level</h3>
                     </div>
                     <div class="info">
                       <div class="user-bar">
                           <span class="user-bar-text">{{ $user->points }} / {{ $user->pointsToLevelUp() }} <i class="fa fa-star" aria-hidden="true"></i></span>
                           <?php $percent = (($user->points == 0) ? 0 : intval($user->points / $user->pointsToLevelUp() * 100)); ?>
-                          <span class="user-bar-bg" style="width: {{ $percent }}%"></span>
+                          <span class="user-bar-bg" style="width: {{ $percent }}%; left: 0;"></span>
                       </div>
                       <h3 class="subline">Experience Points</h3>
                     </div>
                     <div class="info">
+                      <div class="user-level">
+                        {{ $community_rank }}
+                      </div>
+                      <h3 class="subline">Community Rank</h3>
+                    </div>
+                    {{--
+                    <div class="info">
                       <div class="user-bar">
                           <span class="user-bar-text">TOP {{ $top_percent }}% USER</span>
-                          <span class="user-bar-bg" style="width: {{ 100 - $top_percent }}%"></span>
+                          <span class="user-bar-bg" style="width: {{ $top_percent }}%; right: 0;"></span>
                       </div>
-                      <h3 class="subline">Activity Level</h3>
                     </div>
+                    --}}
                     @if ($user->name || $user->location || $user->bio || $user->skills)
                         <hr>
                     @endif

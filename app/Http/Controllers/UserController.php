@@ -90,11 +90,23 @@ class UserController extends Controller
         }
         $topPercent = $counter / $nUsers * 100;
 
+        $communityRank = 'E';
+        if (100 - $topPercent >= 80) {
+            $communityRank = 'A';
+        } elseif (100 - $topPercent >= 60) {
+            $communityRank = 'B';
+        } elseif (100 - $topPercent >= 40) {
+            $communityRank = 'C';
+        } elseif (100 - $topPercent >= 20) {
+            $communityRank = 'D';
+        }
+
         View::share('title', $user->username);
         return view('users.show', [
             'user' => $user,
             'n_users' => $nUsers,
-            'top_percent' => $topPercent
+            'top_percent' => $topPercent,
+            'community_rank' => $communityRank
         ]);
     }
 
