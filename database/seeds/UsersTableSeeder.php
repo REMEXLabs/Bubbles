@@ -51,6 +51,30 @@ class UsersTableSeeder extends Seeder
                 'updated_at'  => new DateTime,
                 'role'        => 'admin',
             ),
+            array(
+                'username'    => 'test_user_1',
+                'email'       => 'test_user_1@example.com',
+                'password'    => Hash::make('pw'),
+                'created_at'  => new DateTime,
+                'updated_at'  => new DateTime,
+                'role'        => 'admin',
+            ),
+            array(
+                'username'    => 'test_user_2',
+                'email'       => 'test_user_2@example.com',
+                'password'    => Hash::make('pw'),
+                'created_at'  => new DateTime,
+                'updated_at'  => new DateTime,
+                'role'        => 'admin',
+            ),
+            array(
+                'username'    => 'test_user_3',
+                'email'       => 'test_user_3@example.com',
+                'password'    => Hash::make('pw'),
+                'created_at'  => new DateTime,
+                'updated_at'  => new DateTime,
+                'role'        => 'admin',
+            ),
         );
         foreach ($users as $key => $user) {
             $user = new App\User($user);
