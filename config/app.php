@@ -160,6 +160,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
+        App\Providers\OAuth2\IamProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 

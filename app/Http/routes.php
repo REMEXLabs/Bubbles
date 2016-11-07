@@ -15,9 +15,12 @@
 // -> Authentication:
 Route::auth();
 Route::get('register', 'UserController@create');
-
+// GitHub:
 Route::get('github/authorize', ['as' => 'github.authorize', 'uses' => 'SocialController@github_authorize']);
 Route::get('github/login', ['as' => 'github.login', 'uses' => 'SocialController@github_login']);
+// IAM:
+Route::get('iam/authorize', ['as' => 'iam.authorize', 'uses' => 'SocialController@iam_authorize']);
+Route::get('iam/login', ['as' => 'iam.login', 'uses' => 'SocialController@iam_login']);
 
 // -> Controllers:
 Route::get('/', ['as' => 'welcome', 'uses' => 'BubbleController@index']);

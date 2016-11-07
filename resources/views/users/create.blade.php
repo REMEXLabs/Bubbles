@@ -12,6 +12,11 @@
                             <span class="fa fa-github"></span> Sign up with GitHub
                         </a>
                     </p>
+                    <p>
+                        <a class="btn btn-block btn-social btn-openid" href="{{ route('iam.authorize') }}">
+                            <span class="fa fa-key"></span> Login with Identity and Access Management (IAM)
+                        </a>
+                    </p>
                 </div>
                 <hr>
                 <div class="registration regular-registration">

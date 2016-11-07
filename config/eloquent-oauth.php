@@ -24,6 +24,13 @@ return [
             'redirect_uri' => 'http://localhost:3000/github/login',
             'scope' => [],
         ],
+        'iam' => [
+            'client_id' => '509e5d69-2397-4e3a-bf58-591fcfe88edb',
+            'client_secret' => '694b93dd-8db1-4beb-88ab-db40a53b6103',
+            'redirect_uri' => 'http://stag.bubbles.gpii.eu/iam/login',
+            'scope' => [],
+            'provider_class' => IamProvider::class
+        ]
         // 'linkedin' => [
         //     'client_id' => '12345678',
         //     'client_secret' => 'y0ur53cr374ppk3y',

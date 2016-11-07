@@ -35,4 +35,31 @@ class SocialController extends Controller
         }
         return redirect()->intended();
     }
+
+    public function iam_authorize()
+    {
+        return SocialAuth::authorize('iam');
+    }
+
+    public function iam_login()
+    {
+        try {
+            SocialAuth::login('iam', function ($user, $details) {
+                $user->username = $details->full_name;
+                // $user->username = $details->nickname;
+                $user->name = $details->full_name;
+                // $user->image_url = $details->avatar;
+                $user->email = $details->email;
+                $user->save();
+            });
+        } catch (ApplicationRejectedException $e) {
+            // User rejected application
+            return redirect('login');
+        } catch (InvalidAuthorizationCodeException $e) {
+            // Authorization was attempted with invalid
+            // code,likely forgery attempt
+            return redirect('login');
+        }
+        return redirect()->intended();
+    }
 }
