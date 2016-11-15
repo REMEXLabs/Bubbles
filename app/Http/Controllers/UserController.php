@@ -80,6 +80,9 @@ class UserController extends Controller
         })->values();
 
         $nUsers = count($users);
+        if ($nUsers == 0) {
+            $nUsers = 1;
+        }
         $counter = 1;
         foreach ($users as $key => $unknown) {
             if ($user->id != $unknown->id) {
