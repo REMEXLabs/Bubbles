@@ -21,7 +21,7 @@ return [
         'github' => [
             'client_id' => 'a694d5eeef704f84272f',
             'client_secret' => '178b05f13405f67b274bd07cbab7f234979ba673',
-            'redirect_uri' => 'http://localhost:3000/github/login',
+            'redirect_uri' => 'https://bubbles.gpii.eu/github/login',
             'scope' => [],
         ],
         // 'linkedin' => [
