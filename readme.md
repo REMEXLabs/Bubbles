@@ -1,10 +1,6 @@
 # Bubbles
 
-<img src="/screenshots/preview.png?raw=tru" width="240" align="right" style="margin-left: 20px;">
-
-## Funding Acknowledgement
-
-The research leading to these results has received funding from the [European Union's Seventh Framework Programme](https://ec.europa.eu/research/fp7/index_en.cfm) (FP7) under grant agreement No.610510 ([Prosperity4All](http://www.prosperity4all.eu/)).
+<img src="/screenshots/preview.png?raw=tru" width="240" align="right" style="margin-left: 20px;" alt="screenshot of Bubbles" />
 
 
 ## Gamification Patterns
@@ -61,6 +57,14 @@ Please don't forget to create a new database and to setup a [local environment](
 Thank you for considering contributing to the project! You can build und test the website by running the `gulp build` or `gulp watch` task. After that you can send your changes as pull request to the repository.
 
 
-## License
+## Licence & Copyright
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). The developed website is open-sourced software licensed under the [Apache license](http://www.apache.org/licenses/LICENSE-2.0).
+Bubbles uses the Laravel framework, which is open-source software licensed under the [MIT license](http://opensource.org/licenses/MIT). 
+
+The developed website is open-source software licensed under the [Apache license](http://www.apache.org/licenses/LICENSE-2.0).
+
+Copyright 2015-2017 Hochschule der Medien (HdM) / Stuttgart Media University ([research group Remex](https://www.hdm-stuttgart.de/remex)).
+
+## Funding Acknowledgement
+
+The research leading to these results has received funding from the [European Union's Seventh Framework Programme](https://ec.europa.eu/research/fp7/index_en.cfm) (FP7) under grant agreement No.610510 ([Prosperity4All](http://www.prosperity4all.eu/)).
