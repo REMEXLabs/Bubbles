@@ -76,7 +76,8 @@ class UserController extends Controller
         }
 
         $users = User::orderBy('points', 'DESC')->get()->filter(function ($user) {
-            return $user->points > 1;
+            return true;
+            // return $user->points > 1;
         })->values();
 
         $nUsers = count($users);
