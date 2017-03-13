@@ -32,6 +32,9 @@ class SocialController extends Controller
             // Authorization was attempted with invalid
             // code,likely forgery attempt
             return redirect('login');
+        } catch (Illuminate\Database\QueryException $e) {
+		    return view('users.social_name_taken', [
+		    ]);
         }
         return redirect()->intended();
     }
