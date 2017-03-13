@@ -39,7 +39,7 @@
                                 {{ Form::label('project_id', 'Project:', ['class'=>'col-md-2 control-label']) }}
                                 <div class="col-md-10">
                                     {{ Form::select('project_id', $projects, null, ['class' =>
-    'form-control', 'disabled'=>'disabled']) }}
+    'form-control']) }}
                                 </div>
                             </div>
                         @endif
