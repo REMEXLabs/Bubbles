@@ -40,4 +40,9 @@ class Project extends Model
     {
         return $this->morphToMany('App\Tag', 'tagable');
     }
+    
+    public function bubbles()
+    {
+    	return $this->hasMany('App\Bubble');
+    }
 }

@@ -260,7 +260,9 @@ class ProjectController extends Controller
         if (is_null($project) || (Auth::user()->id != $project->user_id)) {
             return redirect()->route('projects.create');
         }
-        Project::find($id)->delete();
+        
+        $project->bubbles()->delete();
+        $project->delete();
         return redirect()->route('projects.index');
     }
 }
