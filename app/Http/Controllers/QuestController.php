@@ -518,7 +518,8 @@ class QuestController extends Controller
         if (is_null($quest) || (Auth::user()->id != $quest->author_id)) {
             return redirect()->route('quests.create');
         }
-        Quest::find($id)->delete();
+        $quest->bubbles()->delete();
+        $quest->delete();
         return redirect()->route('quests.index');
     }
 }
