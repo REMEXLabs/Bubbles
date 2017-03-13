@@ -24,7 +24,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('points', 'DESC')->get()->filter(function ($user) {
-            return $user->points > 1;
+            return true;
+            // return $user->points > 1;
         })->values();
         return view('users.index', [
           'users' => $users
