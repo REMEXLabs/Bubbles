@@ -51,6 +51,7 @@ var path = {
   src: {
     assets: 'resources/assets',
     sass: 'resources/assets/sass',
+    css: 'resources/assets/css',
     js: 'resources/assets/js',
     bower: 'resources/assets/bower_components'
   },
@@ -83,6 +84,12 @@ gulp.task('build:sass', function () {
     }))
     .pipe(gulp.dest(path.public.css));
 });
+
+gulp.task('build:css', function () {
+  return gulp.src(path.src.css + '/**/*.css')
+    .pipe(gulp.dest(path.public.css));
+});
+
 gulp.task('run:autoprefixer', ['build:sass'], function () {
   return gulp.src(path.public.css + '/main.built.css')
     // .pipe(plug.sourcemaps.init())
@@ -216,7 +223,7 @@ gulp.task('refresh', function () {
 
 /*
  |--------------------------------------------------------------------------
- | Upadting
+ | Updating
  |--------------------------------------------------------------------------
  */
 
@@ -224,6 +231,11 @@ gulp.task('watch:sass', function () {
   return gulp.watch([
     path.src.sass + '/**/*.scss'
   ], ['build:sass', 'run:autoprefixer', 'rename']);
+});
+gulp.task('watch:css', function () {
+  return gulp.watch([
+    path.src.css + '/**/*.css'
+  ], ['build:css']);
 });
 gulp.task('watch:js', function () {
   return gulp.watch([
@@ -247,5 +259,5 @@ gulp.task('watch:changes', function () {
  */
 
 gulp.task('default', ['build']);
-gulp.task('build', ['copy:assets', 'build:js', 'build:sass', 'run:autoprefixer', 'rename']);
-gulp.task('watch', ['connect', 'watch:js', 'watch:sass', 'watch:changes']);
+gulp.task('build', ['copy:assets', 'build:js', 'build:sass', 'build:css','run:autoprefixer', 'rename']);
+gulp.task('watch', ['connect', 'watch:js', 'watch:sass', 'watch:css', 'watch:changes']);
