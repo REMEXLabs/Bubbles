@@ -129,9 +129,10 @@ gulp.task('compile:js', function () {
 });
 
 gulp.task('cookies:js', function () {
+  console.log(path.src.js + '/remex-cookies.min.js')
   return gulp.src([
-    path.src.js + 'remex-cookies.min.js',
-    path.src.js + 'cookieconsent.min.js'
+    path.src.js + '/remex-cookies.min.js',
+    path.src.js + '/cookieconsent.min.js'
   ])
   .pipe(gulp.dest(path.public.js));
 });
