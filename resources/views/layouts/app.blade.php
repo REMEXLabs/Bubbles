@@ -110,7 +110,7 @@
       </div>
     </footer>
     <script src="/assets/js/main.js" charset="utf-8"></script>
-    <script src="/assets/js/helper.js" charset="utf-8"></script>
+    <script src="/assets/js/remex-cookies.min.js" charset="utf-8"></script>
     <script>remex_cookies_wp_language = 'en';</script>
 </body>
 </html>
