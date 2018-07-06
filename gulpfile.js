@@ -120,7 +120,7 @@ gulp.task('run:autoprefixer', ['build:sass'], function () {
  |--------------------------------------------------------------------------
  */
 
-gulp.task('compile:js', function () { 
+gulp.task('compile:js', function () {
   return gulp.src(path.src.js + '/main.js')
     .pipe(plug.rename('main.uglified.js'))
     .pipe(gulp.dest(path.src.js))
@@ -128,7 +128,15 @@ gulp.task('compile:js', function () { 
     .pipe(gulp.dest(path.src.js));
 });
 
-gulp.task('concat:js', ['compile:js'], function () { 
+gulp.task('cookies:js', function () {
+  return gulp.src([
+    path.src.js + 'remex-cookies.min.js',
+    path.src.js + 'cookieconsent.min.js'
+  ])
+  .pipe(gulp.dest(path.public.js));
+});
+
+gulp.task('concat:js', ['compile:js'], function () {
   return gulp.src([
       path.src.bower + '/jquery/dist/jquery.min.js',
       path.src.js + '/vendor/jquery.dataTables.min.js',
@@ -146,7 +154,7 @@ gulp.task('concat:js', ['compile:js'], function () { 
     .pipe(plug.sourcemaps.write('./maps'))
     .pipe(gulp.dest(path.public.js));
 });
-gulp.task('build:js', ['compile:js', 'concat:js']);
+gulp.task('build:js', ['cookies:js', 'compile:js', 'concat:js']);
 
 
 /*
