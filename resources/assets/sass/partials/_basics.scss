@@ -84,12 +84,20 @@ body {
     }
   }
 
-  .imprint {
+  .legal-links {
     position: absolute;
     right: 15px;
     bottom: 10px;
-    color: black;
+    
+    a {
+      color: black;
+
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+    }
   }
+
 
   a {
     &:focus {
