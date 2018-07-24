@@ -9108,11 +9108,14 @@ body {
     display: inline-block; }
     .site_footer .info a {
       display: inline-block; }
-  .site_footer .imprint {
+  .site_footer .legal-links {
     position: absolute;
     right: 15px;
-    bottom: 10px;
-    color: black; }
+    bottom: 10px; }
+    .site_footer .legal-links a {
+      color: black; }
+      .site_footer .legal-links a:not(:last-child) {
+        margin-right: 1em; }
   .site_footer a:focus {
     outline-style: dotted;
     outline-color: #000;

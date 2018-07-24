@@ -106,7 +106,10 @@
               <img src="/assets/img/hdm-logo.gif" alt="Logo of the Stuttgart Media University" />
           </a>
         </div>
-        <a href="{{ route('imprint') }}" class="imprint">Imprint</a>
+        <div class="legal-links">
+            <a href="https://gpii.eu/legal/en/imprint.html">Imprint</a>
+            <a href="https://gpii.eu/legal/en/privacy.html">Privacy Policy</a>
+        </div>
       </div>
     </footer>
     <script src="/assets/js/main.js" charset="utf-8"></script>
