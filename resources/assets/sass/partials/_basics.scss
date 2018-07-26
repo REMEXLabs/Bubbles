@@ -87,8 +87,12 @@ body {
       display: inline-block;
     }
 
-    .grayscale {
+    img {
       filter: grayscale(100%);
+
+      &:hover {
+        filter: grayscale(0%);
+      }
     }
   }
 

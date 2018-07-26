@@ -9110,9 +9110,12 @@ body {
       margin-left: 1em; }
     .site_footer .info a {
       display: inline-block; }
-    .site_footer .info .grayscale {
+    .site_footer .info img {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%); }
+      .site_footer .info img:hover {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%); }
   .site_footer .legal-links {
     position: absolute;
     right: 15px;

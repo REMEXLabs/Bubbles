@@ -9058,8 +9058,10 @@ body {
       margin-left: 1em; }
     .site_footer .info a {
       display: inline-block; }
-    .site_footer .info .grayscale {
+    .site_footer .info img {
       filter: grayscale(100%); }
+      .site_footer .info img:hover {
+        filter: grayscale(0%); }
   .site_footer .legal-links {
     position: absolute;
     right: 15px;
