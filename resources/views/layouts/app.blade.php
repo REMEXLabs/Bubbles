@@ -103,7 +103,7 @@
         </div>
         <div class="info">
           <a href="https://www.hdm-stuttgart.de/">
-              <img src="/assets/img/hdm-logo.gif" alt="Logo of the Stuttgart Media University" />
+              <img src="/assets/img/hdm_logo.svg" class="grayscale" height="44" alt="Logo of the Stuttgart Media University" />
           </a>
         </div>
         <div class="legal-links">

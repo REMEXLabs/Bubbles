@@ -9054,8 +9054,12 @@ body {
   font-size: 14px; }
   .site_footer .info {
     display: inline-block; }
+    .site_footer .info:not(:last-child) {
+      margin-left: 1em; }
     .site_footer .info a {
       display: inline-block; }
+    .site_footer .info .grayscale {
+      filter: grayscale(100%); }
   .site_footer .legal-links {
     position: absolute;
     right: 15px;
