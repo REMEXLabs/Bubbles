@@ -79,8 +79,20 @@ body {
   .info {
     display: inline-block;
 
+    &:not(:last-child) {
+      margin-left: 1em;
+    }
+
     a {
       display: inline-block;
+    }
+
+    img {
+      filter: grayscale(100%);
+
+      &:hover {
+        filter: grayscale(0%);
+      }
     }
   }
 
@@ -88,7 +100,7 @@ body {
     position: absolute;
     right: 15px;
     bottom: 10px;
-    
+
     a {
       color: black;
 
