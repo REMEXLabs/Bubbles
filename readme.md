@@ -2,6 +2,9 @@
 
 <img src="/screenshots/preview.png?raw=tru" width="240" align="right" style="margin-left: 20px;" alt="screenshot of Bubbles" />
 
+## Archived Project
+
+This project has been archived. Forking is still possible, but the code has known security issues in some of its dependencies, such as [axios](https://github.com/REMEXLabs/Bubbles/network/alert/package-lock.json/axios/open) and [tar](https://github.com/REMEXLabs/Bubbles/network/alert/package-lock.json/tar/open).
 
 ## Gamification Patterns
 
